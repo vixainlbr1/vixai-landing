@@ -19,5 +19,11 @@
     <priority>0.8</priority>
   </url>
 
+    <url>
+    <loc>https://vixai.app/asset-history-is-not-a-folder.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   
 </urlset>
