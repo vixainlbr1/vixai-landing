@@ -369,6 +369,8 @@
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
             <!-- IMPORTANT: Replace action with your form handler endpoint (Formspree, Cloudflare Workers, etc.) -->
             <form class="space-y-4" method="post" action="https://formspree.io/f/xeejqrbk">
+               <input type="hidden" name="_subject" value="New Vixai early access lead" />
+               <input type="hidden" name="_redirect" value="https://vixai.app/thanks" /> 
               <div>
                 <label class="text-xs text-slate-300" for="name">Name</label>
                 <input
