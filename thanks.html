@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Thank you — Vixai</title>
+
+  <meta
+    name="description"
+    content="Thank you for your interest in Vixai. We’ll be in touch shortly."
+  />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://vixai.app/thanks" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Thank you — Vixai" />
+  <meta property="og:description" content="We’ve received your request for early access." />
+  <meta property="og:url" content="https://vixai.app/thanks" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-slate-100 antialiased">
+
+  <!-- Header -->
+  <header class="border-b border-white/10 bg-slate-950/80 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+      <a href="/" class="flex items-center gap-2">
+        <div class="h-9 w-9 rounded-xl bg-white/10 ring-1 ring-white/15 flex items-center justify-center">
+          <span class="text-sm font-semibold tracking-tight">V</span>
+        </div>
+        <span class="text-base font-semibold tracking-tight">Vixai</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="relative overflow-hidden">
+    <!-- Background glow -->
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute -top-24 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-emerald-500/15 blur-3xl"></div>
+      <div class="absolute -bottom-48 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl"></div>
+    </div>
+
+    <section class="mx-auto max-w-6xl px-4 py-24">
+      <div class="mx-auto max-w-2xl text-center">
+        <!-- Icon -->
+        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/15 bg-white/10">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8 text-emerald-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+
+        <h1 class="mt-6 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+          Request received
+        </h1>
+
+        <p class="mt-4 text-lg leading-relaxed text-slate-300">
+          Thanks for your interest in Vixai.
+          We’ve received your request for early access and will review it shortly.
+        </p>
+
+        <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
+          <p class="text-sm text-slate-200">
+            We usually respond within <strong>1–2 business days</strong>.
+          </p>
+        </div>
+
+        <!-- Actions -->
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href="/"
+            class="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-950 hover:bg-slate-100"
+          >
+            Back to homepage
+          </a>
+
+          <a
+            href="mailto:vixai@vixai.app"
+            class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
+          >
+            Contact us
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10">
+    <div class="mx-auto max-w-6xl px-4 py-10 text-center">
+      <p class="text-sm font-semibold text-white">Vixai</p>
+      <p class="mt-1 text-sm text-slate-400">
+        Built for long-term engineering decisions.
+      </p>
+
+      <div class="mt-6 text-xs text-slate-500">
+        © <span id="year"></span> Vixai. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
