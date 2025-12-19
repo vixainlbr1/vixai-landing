@@ -1,47 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Basic -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Vixai — Technical Asset Memory Powered by AI</title>
+  <title>Vixai — AI Memory for Technical Assets</title>
 
   <meta
     name="description"
-    content="Vixai helps engineering-driven companies preserve, structure and reuse technical asset history — inspections, images, measurements, manuals and decisions — so future decisions are based on facts, not memory."
+    content="Vixai turns inspections into technical memory. Capture evidence, decisions and outcomes — starting with image-based analysis — so teams stop re-learning the same lessons."
   />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://vixai.app/" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Vixai — Technical Asset Memory Powered by AI" />
-  <meta
-    property="og:description"
-    content="Preserve and reuse technical asset history with AI-assisted engineering memory."
-  />
+  <meta property="og:title" content="Vixai — AI Memory for Technical Assets" />
+  <meta property="og:description" content="Evidence + decisions + outcomes. Starting with image-based inspections." />
   <meta property="og:url" content="https://vixai.app/" />
   <meta property="og:site_name" content="Vixai" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Vixai — Technical Asset Memory Powered by AI" />
-  <meta
-    name="twitter:description"
-    content="AI-assisted technical memory for engineering-driven organizations."
-  />
+  <meta name="twitter:title" content="Vixai — AI Memory for Technical Assets" />
+  <meta name="twitter:description" content="Turn inspections into technical memory. Starting with images." />
 
-  <!-- Tailwind (no build needed) -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    html { scroll-behavior: smooth; }
-  </style>
+  <style>html{scroll-behavior:smooth}</style>
 </head>
 
 <body class="bg-slate-950 text-slate-100 antialiased">
-  <!-- Top bar -->
+
+  <!-- Header -->
   <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
       <a href="#top" class="flex items-center gap-2">
@@ -52,17 +40,15 @@
       </a>
 
       <nav class="hidden items-center gap-6 text-sm text-slate-300 md:flex">
-        <a class="hover:text-white" href="#problem">Problem</a>
-        <a class="hover:text-white" href="#concept">Concept</a>
-        <a class="hover:text-white" href="#v1">V1</a>
-        <a class="hover:text-white" href="#roadmap">Roadmap</a>
-        <a class="hover:text-white" href="#for">Who it’s for</a>
+        <a class="hover:text-white" href="#how">Workflow</a>
+        <a class="hover:text-white" href="#modules">Modules</a>
+        <a class="hover:text-white" href="#who">Teams</a>
       </nav>
 
       <div class="flex items-center gap-3">
         <a
           href="#early-access"
-          class="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white hover:bg-white/10"
+          class="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-slate-100"
         >
           Request early access
         </a>
@@ -70,38 +56,33 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <main id="top">
+
+    <!-- HERO -->
     <section class="relative overflow-hidden">
       <div class="pointer-events-none absolute inset-0">
-        <div class="absolute -top-24 left-1/2 h-[520px] w-[920px] -translate-x-1/2 rounded-full bg-indigo-500/15 blur-3xl"></div>
-        <div class="absolute -bottom-48 left-1/2 h-[520px] w-[920px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl"></div>
+        <div class="absolute -top-24 left-1/2 h-[520px] w-[980px] -translate-x-1/2 rounded-full bg-indigo-500/15 blur-3xl"></div>
+        <div class="absolute -bottom-48 left-1/2 h-[520px] w-[980px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl"></div>
       </div>
 
       <div class="mx-auto max-w-6xl px-4 py-16 md:py-24">
         <div class="grid items-center gap-10 md:grid-cols-2">
+
+          <!-- Copy -->
           <div>
             <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-200">
               <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-              Early development • Limited pilot spots
+              Early pilot • Image-first v1
             </div>
 
-            <h1 class="mt-6 text-4xl font-semibold tracking-tight text-white md:text-5xl">
-              Technical Asset Memory,<br class="hidden md:block" />
-              <span class="text-slate-200">Powered by AI</span>
+            <h1 class="mt-6 text-4xl font-semibold tracking-tight text-white md:text-6xl">
+              Turn inspections into <span class="text-slate-200">technical memory</span>.
             </h1>
 
             <p class="mt-5 max-w-xl text-lg leading-relaxed text-slate-300">
-              Vixai preserves and structures your asset history — <span class="text-slate-200 font-medium">evidence + decisions + outcomes</span> —
-              so engineering teams stop re-analyzing the same problems and start making decisions with context.
+              Vixai captures <span class="text-slate-200 font-medium">evidence, decisions and outcomes</span>
+              so engineering teams stop re-learning the same lessons — starting with image-based analysis.
             </p>
-
-            <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 max-w-xl">
-              <p class="text-sm text-slate-200">
-                <span class="font-semibold text-white">Starting with image-based inspections (v1).</span>
-                Then expanding into manuals, system flows (series/parallel), and alerts for maintenance windows and decision review.
-              </p>
-            </div>
 
             <div class="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
@@ -111,379 +92,262 @@
                 Request early access
               </a>
               <a
-                href="#concept"
+                href="#how"
                 class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
               >
-                See the concept
+                See the workflow
               </a>
             </div>
 
-            <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <!-- Value props -->
+            <div class="mt-10 grid gap-3 sm:grid-cols-3">
               <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-xs text-slate-400">Outcome</p>
-                <p class="mt-1 text-sm font-semibold">Decisions with traceability</p>
+                <p class="text-sm font-semibold text-white">Less rework</p>
+                <p class="mt-1 text-sm text-slate-300">Find similar cases instantly.</p>
               </div>
               <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-xs text-slate-400">Input</p>
-                <p class="mt-1 text-sm font-semibold">Images, docs, readings</p>
+                <p class="text-sm font-semibold text-white">Traceable decisions</p>
+                <p class="mt-1 text-sm text-slate-300">Keep the “why” with evidence.</p>
               </div>
               <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-xs text-slate-400">Value</p>
-                <p class="mt-1 text-sm font-semibold">Knowledge that survives</p>
+                <p class="text-sm font-semibold text-white">Knowledge survives</p>
+                <p class="mt-1 text-sm text-slate-300">No more tribal knowledge loss.</p>
               </div>
             </div>
           </div>
 
-          <!-- Right “product” card -->
+          <!-- Visual panel -->
           <div class="relative">
             <div class="rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6 shadow-2xl shadow-indigo-500/10">
+
               <div class="flex items-center justify-between">
-                <p class="text-sm font-semibold">Asset memory timeline</p>
+                <p class="text-sm font-semibold text-white">Vixai Memory Panel</p>
                 <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-slate-200">
-                  Example
+                  Visual mock
                 </span>
               </div>
 
-              <div class="mt-5 space-y-3">
-                <div class="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
-                  <p class="text-xs text-slate-400">Image inspection • 2025-10-03</p>
-                  <p class="mt-1 text-sm text-slate-200">
-                    Visual anomaly detected. Evidence attached. Suggested defect mode: corrosion / coating loss.
-                  </p>
+              <!-- “Image card” -->
+              <div class="mt-5 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <p class="text-xs text-slate-400">Image inspection • Asset: Pump P-204</p>
+                    <p class="mt-1 text-sm text-slate-200">
+                      Detected: coating loss + corrosion pattern (confidence: high)
+                    </p>
+                  </div>
+                  <span class="rounded-full bg-emerald-500/15 text-emerald-200 border border-emerald-500/20 px-2.5 py-1 text-xs">
+                    New event
+                  </span>
                 </div>
-                <div class="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
-                  <p class="text-xs text-slate-400">Decision • 2025-10-04</p>
-                  <p class="mt-1 text-sm text-slate-200">
-                    Monitor and re-check in 90 days. Rationale recorded + risk accepted until review date.
-                  </p>
-                </div>
-                <div class="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
-                  <p class="text-xs text-slate-400">Alert • 2026-01-02</p>
-                  <p class="mt-1 text-sm text-slate-200">
-                    Decision review window reached. Recommend new inspection or confirmation of conditions.
-                  </p>
+
+                <!-- Fake “image” block -->
+                <div class="mt-4 grid grid-cols-3 gap-2">
+                  <div class="h-16 rounded-xl bg-white/5 border border-white/10"></div>
+                  <div class="h-16 rounded-xl bg-white/5 border border-white/10"></div>
+                  <div class="h-16 rounded-xl bg-white/5 border border-white/10"></div>
                 </div>
               </div>
 
-              <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-xs text-slate-400">Ask the memory</p>
+              <!-- Decision -->
+              <div class="mt-3 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+                <p class="text-xs text-slate-400">Decision</p>
                 <p class="mt-1 text-sm text-slate-200">
-                  “Have we seen this defect mode before? Show similar cases and what decision worked.”
+                  Monitor and re-check in 90 days. Rationale recorded. Review date set.
+                </p>
+              </div>
+
+              <!-- Alert -->
+              <div class="mt-3 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+                <p class="text-xs text-slate-400">Alert</p>
+                <p class="mt-1 text-sm text-slate-200">
+                  Decision review window reached → confirm conditions or schedule inspection.
+                </p>
+              </div>
+
+              <!-- Ask bar -->
+              <div class="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p class="text-xs text-slate-400">Ask Vixai</p>
+                <p class="mt-1 text-sm text-slate-200">
+                  “Show similar cases and outcomes for this defect mode.”
                 </p>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Quick feature strip -->
-        <div class="mt-12 grid gap-4 md:grid-cols-4">
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <p class="text-sm font-semibold text-white">Image-first (v1)</p>
-            <p class="mt-1 text-sm text-slate-300">Turn inspection photos into structured events.</p>
-          </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <p class="text-sm font-semibold text-white">Decisions captured</p>
-            <p class="mt-1 text-sm text-slate-300">Store the “why” — not just files.</p>
-          </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <p class="text-sm font-semibold text-white">Manual-aware</p>
-            <p class="mt-1 text-sm text-slate-300">Upload manuals so knowledge stays accessible.</p>
-          </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <p class="text-sm font-semibold text-white">Alerts with context</p>
-            <p class="mt-1 text-sm text-slate-300">Maintenance windows + decision review reminders.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Problem -->
-    <section id="problem" class="border-t border-white/10">
-      <div class="mx-auto max-w-6xl px-4 py-16">
-        <div class="grid gap-10 md:grid-cols-2">
-          <div>
-            <h2 class="text-2xl font-semibold tracking-tight text-white">The problem</h2>
-            <p class="mt-4 text-slate-300 leading-relaxed">
-              Most companies do not lack technical data. They lack technical memory.
-              Inspection photos are scattered. Measurements live in spreadsheets.
-              Reports are stored as PDFs. Decisions exist only in emails or in people’s heads.
-            </p>
-            <p class="mt-4 text-slate-300 leading-relaxed">
-              When experienced engineers leave, the knowledge leaves with them.
-              The same technical problems are analyzed repeatedly, past decisions are forgotten,
-              and risk slowly accumulates.
-            </p>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h3 class="text-sm font-semibold text-white">Why traditional asset management fails</h3>
-            <ul class="mt-4 space-y-3 text-sm text-slate-300">
-              <li class="flex gap-3">
-                <span class="mt-1 h-2 w-2 rounded-full bg-rose-400"></span>
-                CMMS systems track tasks, not reasoning
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-1 h-2 w-2 rounded-full bg-rose-400"></span>
-                Document repositories store files, not context
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-1 h-2 w-2 rounded-full bg-rose-400"></span>
-                Spreadsheets cannot represent technical history
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-1 h-2 w-2 rounded-full bg-rose-400"></span>
-                Photos without structure are not evidence
-              </li>
-            </ul>
-
-            <div class="mt-6 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
-              <p class="text-sm text-slate-200">
-                Technical history is not a folder. <span class="font-semibold text-white">It is a timeline of decisions.</span>
-              </p>
+            <div class="mt-4 text-xs text-slate-500">
+              *Illustrative UI mock (v1 focuses on image-based inspections).
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Concept -->
-    <section id="concept" class="border-t border-white/10">
-      <div class="mx-auto max-w-6xl px-4 py-16">
-        <div class="grid gap-10 md:grid-cols-2">
-          <div class="max-w-3xl">
-            <h2 class="text-2xl font-semibold tracking-tight text-white">The Vixai concept</h2>
-            <p class="mt-4 text-slate-300 leading-relaxed">
-              Vixai is built around one core idea:
-            </p>
-
-            <div class="mt-6 rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6">
-              <p class="text-lg font-semibold text-white">
-                Every physical asset has a technical history.
-              </p>
-              <p class="mt-3 text-slate-300 leading-relaxed">
-                That history includes inspections, images, measurements, failures,
-                maintenance actions and — most importantly — the decisions taken and why they were taken.
-              </p>
-              <p class="mt-3 text-slate-300 leading-relaxed">
-                Vixai structures this history into a living technical memory that can be queried,
-                compared and reused across assets and teams.
-              </p>
-            </div>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h3 class="text-sm font-semibold text-white">What “technical memory” means</h3>
-            <ul class="mt-4 space-y-3 text-sm text-slate-300">
-              <li class="flex gap-3">
-                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-300"></span>
-                Evidence: images, readings, reports and manuals
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-300"></span>
-                Context: what changed, when, and under which operating conditions
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-300"></span>
-                Decisions: the “why”, alternatives considered, risk accepted
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-300"></span>
-                Outcomes: what happened after — so teams can learn, not guess
-              </li>
-            </ul>
-
-            <div class="mt-6 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
-              <p class="text-sm text-slate-200">
-                The cost isn’t losing data. <span class="font-semibold text-white">It’s losing the “why”.</span>
-              </p>
-            </div>
+        <!-- Logos placeholder -->
+        <div class="mt-14 border-t border-white/10 pt-8">
+          <p class="text-xs text-slate-400">Built for engineering teams in:</p>
+          <div class="mt-4 grid grid-cols-2 gap-3 text-sm text-slate-300 sm:grid-cols-4">
+            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Manufacturing</div>
+            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Utilities</div>
+            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Facilities</div>
+            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Integrity</div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- V1 -->
-    <section id="v1" class="border-t border-white/10">
+    <!-- WORKFLOW (visual) -->
+    <section id="how" class="border-t border-white/10">
       <div class="mx-auto max-w-6xl px-4 py-16">
         <div class="flex items-end justify-between gap-6 flex-col md:flex-row">
           <div class="max-w-2xl">
-            <h2 class="text-2xl font-semibold tracking-tight text-white">What you get in v1</h2>
-            <p class="mt-4 text-slate-300 leading-relaxed">
-              A focused, image-first product that creates technical memory without changing how your team works.
+            <h2 class="text-3xl font-semibold tracking-tight text-white">Workflow</h2>
+            <p class="mt-3 text-slate-300">
+              A simple flow that turns inspection evidence into reusable decisions.
             </p>
           </div>
-          <a href="#early-access" class="text-sm font-semibold text-white/90 hover:text-white">
-            Join the pilot →
-          </a>
+          <a href="#early-access" class="text-sm font-semibold text-white/90 hover:text-white">Join the pilot →</a>
         </div>
 
-        <div class="mt-8 grid gap-6 md:grid-cols-3">
+        <!-- Steps -->
+        <div class="mt-10 grid gap-6 md:grid-cols-5">
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Image-based inspection events</p>
-            <p class="mt-2 text-sm text-slate-300">
-              Upload inspection photos and turn them into structured technical events with AI-assisted descriptions.
-            </p>
+            <p class="text-xs text-slate-400">Step 1</p>
+            <p class="mt-2 text-sm font-semibold text-white">Upload images</p>
+            <p class="mt-2 text-sm text-slate-300">Inspection photos become evidence.</p>
           </div>
+
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Decision capture</p>
-            <p class="mt-2 text-sm text-slate-300">
-              Record the decision taken, the rationale, risk accepted, and a review date — directly tied to evidence.
-            </p>
+            <p class="text-xs text-slate-400">Step 2</p>
+            <p class="mt-2 text-sm font-semibold text-white">Detect & describe</p>
+            <p class="mt-2 text-sm text-slate-300">AI assists with findings.</p>
           </div>
+
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Asset timelines + AI search</p>
-            <p class="mt-2 text-sm text-slate-300">
-              A clean timeline per asset and an “ask the memory” experience to find similar cases and outcomes.
-            </p>
+            <p class="text-xs text-slate-400">Step 3</p>
+            <p class="mt-2 text-sm font-semibold text-white">Record decisions</p>
+            <p class="mt-2 text-sm text-slate-300">Capture the “why” + risk.</p>
+          </div>
+
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p class="text-xs text-slate-400">Step 4</p>
+            <p class="mt-2 text-sm font-semibold text-white">Timeline memory</p>
+            <p class="mt-2 text-sm text-slate-300">Everything stays connected.</p>
+          </div>
+
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p class="text-xs text-slate-400">Step 5</p>
+            <p class="mt-2 text-sm font-semibold text-white">Alerts & reuse</p>
+            <p class="mt-2 text-sm text-slate-300">Review windows + similar cases.</p>
           </div>
         </div>
 
-        <div class="mt-6 rounded-3xl border border-white/10 bg-slate-950/40 p-6">
-          <p class="text-sm text-slate-200">
-            <span class="font-semibold text-white">Note:</span> v1 is not a CMMS replacement.
-            We focus on technical memory: evidence, decisions, and traceability.
-          </p>
+        <!-- Big workflow bar -->
+        <div class="mt-8 rounded-3xl border border-white/10 bg-slate-950/40 p-6">
+          <div class="grid gap-3 md:grid-cols-5 text-sm text-slate-200">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">Evidence</div>
+            <div class="hidden md:flex items-center justify-center text-slate-500">→</div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">Decision</div>
+            <div class="hidden md:flex items-center justify-center text-slate-500">→</div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">Outcome</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Roadmap -->
-    <section id="roadmap" class="border-t border-white/10">
+    <!-- MODULES (visual grid) -->
+    <section id="modules" class="border-t border-white/10">
       <div class="mx-auto max-w-6xl px-4 py-16">
-        <h2 class="text-2xl font-semibold tracking-tight text-white">Where Vixai goes next</h2>
-        <p class="mt-4 max-w-3xl text-slate-300 leading-relaxed">
-          The roadmap expands the same core idea — technical memory — into system-level context, alerts, and richer signals.
+        <h2 class="text-3xl font-semibold tracking-tight text-white">Modules</h2>
+        <p class="mt-3 max-w-2xl text-slate-300">
+          Start with images. Expand into system context, documents, signals, failures and maintenance awareness.
         </p>
 
-        <div class="mt-8 grid gap-6 md:grid-cols-3">
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Manual learning (docs → knowledge)</p>
-            <p class="mt-2 text-sm text-slate-300">
-              Upload equipment manuals so teams can ask: limits, procedures, troubleshooting — with source references.
-            </p>
+            <p class="text-sm font-semibold text-white">Image analysis (v1)</p>
+            <p class="mt-2 text-sm text-slate-300">Detect issues, summarize findings, attach evidence.</p>
+            <div class="mt-4 h-24 rounded-2xl border border-white/10 bg-slate-950/40"></div>
           </div>
 
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Asset connections (series / parallel)</p>
-            <p class="mt-2 text-sm text-slate-300">
-              Connect assets into real operating flows to understand dependencies, redundancy, and impact across the system.
-            </p>
+            <p class="text-sm font-semibold text-white">Manual learning</p>
+            <p class="mt-2 text-sm text-slate-300">Upload manuals & specs so teams can “ask the equipment”.</p>
+            <div class="mt-4 h-24 rounded-2xl border border-white/10 bg-slate-950/40"></div>
           </div>
 
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Alerts with context</p>
-            <p class="mt-2 text-sm text-slate-300">
-              Maintenance windows, preventive reviews, and “decision review” alerts — based on evidence and history.
-            </p>
+            <p class="text-sm font-semibold text-white">Asset connections</p>
+            <p class="mt-2 text-sm text-slate-300">Series/parallel flows to understand dependencies and impact.</p>
+            <div class="mt-4 h-24 rounded-2xl border border-white/10 bg-slate-950/40"></div>
           </div>
         </div>
 
         <div class="mt-6 grid gap-6 md:grid-cols-3">
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Multimodal signals</p>
-            <p class="mt-2 text-sm text-slate-300">
-              Add vibration/noise, thermal (thermography), and chemical analysis as technical events to enrich memory.
-            </p>
+            <p class="text-sm font-semibold text-white">Maintenance awareness</p>
+            <p class="mt-2 text-sm text-slate-300">Alerts for maintenance windows & decision review dates.</p>
+            <div class="mt-4 h-24 rounded-2xl border border-white/10 bg-slate-950/40"></div>
           </div>
 
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
             <p class="text-sm font-semibold text-white">Failure analysis</p>
-            <p class="mt-2 text-sm text-slate-300">
-              Capture failure modes, symptoms, evidence, root-cause (when known) and link outcomes back to decisions.
-            </p>
+            <p class="mt-2 text-sm text-slate-300">Link symptoms → evidence → decisions → outcomes.</p>
+            <div class="mt-4 h-24 rounded-2xl border border-white/10 bg-slate-950/40"></div>
           </div>
 
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Maintenance modules (P/C/PdM)</p>
-            <p class="mt-2 text-sm text-slate-300">
-              Preventive, corrective and predictive maintenance as part of memory — without becoming a heavy workflow tool.
-            </p>
+            <p class="text-sm font-semibold text-white">Multimodal signals</p>
+            <p class="mt-2 text-sm text-slate-300">Vibration/noise, thermal and chemical analysis as events.</p>
+            <div class="mt-4 h-24 rounded-2xl border border-white/10 bg-slate-950/40"></div>
           </div>
-        </div>
-
-        <div class="mt-6 rounded-3xl border border-white/10 bg-slate-950/40 p-6">
-          <p class="text-sm text-slate-200">
-            The long-term goal: technical memory that spans <span class="font-semibold text-white">assets + systems + signals + decisions</span>,
-            so teams learn from real history — not tribal knowledge.
-          </p>
         </div>
       </div>
     </section>
 
-    <!-- Who it's for -->
-    <section id="for" class="border-t border-white/10">
+    <!-- WHO -->
+    <section id="who" class="border-t border-white/10">
       <div class="mx-auto max-w-6xl px-4 py-16">
-        <div class="grid gap-10 md:grid-cols-2">
-          <div>
-            <h2 class="text-2xl font-semibold tracking-tight text-white">Who Vixai is for</h2>
-            <p class="mt-4 text-slate-300 leading-relaxed">
-              If your decisions depend on asset condition, history and risk,
-              Vixai is designed for you.
-            </p>
+        <h2 class="text-3xl font-semibold tracking-tight text-white">Built for teams that own risk</h2>
 
-            <div class="mt-6 grid gap-3 sm:grid-cols-2">
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-sm font-semibold text-white">Industrial & manufacturing</p>
-                <p class="mt-1 text-sm text-slate-300">Condition-driven decisions at scale.</p>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-sm font-semibold text-white">Facilities & utilities</p>
-                <p class="mt-1 text-sm text-slate-300">Long-lived assets and operational risk.</p>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-sm font-semibold text-white">Engineering consultancies</p>
-                <p class="mt-1 text-sm text-slate-300">Reusable insight across clients.</p>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-sm font-semibold text-white">Integrity teams</p>
-                <p class="mt-1 text-sm text-slate-300">Evidence, rationale, traceability.</p>
-              </div>
-            </div>
-          </div>
-
+        <div class="mt-10 grid gap-6 md:grid-cols-4">
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h3 class="text-sm font-semibold text-white">Why companies stay</h3>
-            <p class="mt-4 text-slate-300 leading-relaxed">
-              Over time, Vixai becomes the technical memory of your organization.
-              Past inspections, decisions and outcomes remain accessible. Recurring issues are recognized.
-              Knowledge survives personnel changes.
-            </p>
-            <p class="mt-4 text-slate-300 leading-relaxed">
-              Leaving the system means losing context — not just data.
-            </p>
+            <p class="text-sm font-semibold text-white">Integrity</p>
+            <p class="mt-2 text-sm text-slate-300">Traceability and evidence.</p>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p class="text-sm font-semibold text-white">Maintenance</p>
+            <p class="mt-2 text-sm text-slate-300">Review windows and history.</p>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p class="text-sm font-semibold text-white">Reliability</p>
+            <p class="mt-2 text-sm text-slate-300">Patterns across assets.</p>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p class="text-sm font-semibold text-white">Engineering</p>
+            <p class="mt-2 text-sm text-slate-300">Decisions with context.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Early access -->
+    <!-- EARLY ACCESS -->
     <section id="early-access" class="border-t border-white/10">
       <div class="mx-auto max-w-6xl px-4 py-16">
         <div class="grid gap-10 md:grid-cols-2">
           <div>
-            <h2 class="text-2xl font-semibold tracking-tight text-white">Early access</h2>
-            <p class="mt-4 text-slate-300 leading-relaxed">
-              Vixai is currently in early development. We’re working with a small number of companies
-              to shape the first version.
-            </p>
-            <p class="mt-4 text-slate-300 leading-relaxed">
-              If you’re interested in a pilot or want to discuss your use case,
-              leave your contact details below.
+            <h2 class="text-3xl font-semibold tracking-tight text-white">Request early access</h2>
+            <p class="mt-4 text-slate-300">
+              We’re onboarding a small number of pilot teams for v1 (image-first).
             </p>
 
             <div class="mt-6 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
               <p class="text-sm text-slate-200">
-                Looking for: teams with inspections + photos who want better traceability and decision memory.
+                Ideal pilots: teams with frequent inspections and lots of photos that need better traceability.
               </p>
             </div>
           </div>
 
           <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <form
-              class="space-y-4"
-              method="post"
-              action="https://formspree.io/f/xeejqrbk"
-            >
+            <form class="space-y-4" method="post" action="https://formspree.io/f/xeejqrbk">
               <input type="hidden" name="_subject" value="New Vixai early access lead" />
               <input type="hidden" name="_redirect" value="https://vixai.app/thanks" />
 
@@ -529,18 +393,13 @@
                 Request early access
               </button>
 
-              <p class="text-xs text-slate-400">
-                By submitting, you agree to be contacted about the pilot. No spam.
-              </p>
-
-              <p class="text-xs text-slate-500">
-                Note: Formspree redirect may show their confirmation page depending on plan.
-              </p>
+              <p class="text-xs text-slate-400">No spam. We’ll only reach out about the pilot.</p>
             </form>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- Footer -->
@@ -549,14 +408,12 @@
       <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <p class="text-sm font-semibold text-white">Vixai</p>
-          <p class="mt-1 text-sm text-slate-400">Built for long-term engineering decisions.</p>
+          <p class="mt-1 text-sm text-slate-400">AI memory for long-term engineering decisions.</p>
         </div>
 
         <div class="flex flex-wrap gap-4 text-sm text-slate-400">
-          <a class="hover:text-white" href="#problem">Problem</a>
-          <a class="hover:text-white" href="#concept">Concept</a>
-          <a class="hover:text-white" href="#v1">V1</a>
-          <a class="hover:text-white" href="#roadmap">Roadmap</a>
+          <a class="hover:text-white" href="#how">Workflow</a>
+          <a class="hover:text-white" href="#modules">Modules</a>
           <a class="hover:text-white" href="#early-access">Early access</a>
         </div>
       </div>
