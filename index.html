@@ -3,19 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Vixai — AI Memory for Technical Assets</title>
 
-  <meta
-    name="description"
-    content="Vixai turns inspections into technical memory. Capture evidence, decisions and outcomes — starting with image-based analysis — so teams stop re-learning the same lessons."
-  />
+  <meta name="description" content="Vixai turns inspections into technical memory. Capture evidence, decisions and outcomes — starting with image-based analysis — so teams stop re-learning the same lessons." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://vixai.app/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Vixai — AI Memory for Technical Assets" />
-  <meta property="og:description" content="Evidence + decisions + outcomes. Starting with image-based inspections." />
+  <meta property="og:description" content="Turn inspections into technical memory. Evidence + decisions + outcomes." />
   <meta property="og:url" content="https://vixai.app/" />
   <meta property="og:site_name" content="Vixai" />
 
@@ -24,13 +20,24 @@
   <meta name="twitter:description" content="Turn inspections into technical memory. Starting with images." />
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>html{scroll-behavior:smooth}</style>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body{
+      background:
+        radial-gradient(900px 500px at 50% -10%, rgba(99,102,241,.22), transparent 60%),
+        radial-gradient(900px 500px at 50% 110%, rgba(34,211,238,.16), transparent 60%),
+        url("assets/bg-starfield.png");
+      background-size: auto, auto, cover;
+      background-position: center, center, center;
+      background-attachment: fixed;
+    }
+  </style>
 </head>
 
-<body class="bg-slate-950 text-slate-100 antialiased">
-
+<body class="text-slate-100 antialiased">
   <!-- Header -->
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur">
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
       <a href="#top" class="flex items-center gap-2">
         <div class="h-9 w-9 rounded-xl bg-white/10 ring-1 ring-white/15 flex items-center justify-center">
@@ -40,35 +47,25 @@
       </a>
 
       <nav class="hidden items-center gap-6 text-sm text-slate-300 md:flex">
-        <a class="hover:text-white" href="#how">Workflow</a>
+        <a class="hover:text-white" href="#workflow">Workflow</a>
         <a class="hover:text-white" href="#modules">Modules</a>
-        <a class="hover:text-white" href="#who">Teams</a>
+        <a class="hover:text-white" href="#early-access">Early access</a>
       </nav>
 
-      <div class="flex items-center gap-3">
-        <a
-          href="#early-access"
-          class="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-slate-100"
-        >
-          Request early access
-        </a>
-      </div>
+      <a
+        href="#early-access"
+        class="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-slate-100"
+      >
+        Request early access
+      </a>
     </div>
   </header>
 
   <main id="top">
-
     <!-- HERO -->
     <section class="relative overflow-hidden">
-      <div class="pointer-events-none absolute inset-0">
-        <div class="absolute -top-24 left-1/2 h-[520px] w-[980px] -translate-x-1/2 rounded-full bg-indigo-500/15 blur-3xl"></div>
-        <div class="absolute -bottom-48 left-1/2 h-[520px] w-[980px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl"></div>
-      </div>
-
       <div class="mx-auto max-w-6xl px-4 py-16 md:py-24">
         <div class="grid items-center gap-10 md:grid-cols-2">
-
-          <!-- Copy -->
           <div>
             <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-200">
               <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
@@ -92,14 +89,13 @@
                 Request early access
               </a>
               <a
-                href="#how"
+                href="#workflow"
                 class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
               >
                 See the workflow
               </a>
             </div>
 
-            <!-- Value props -->
             <div class="mt-10 grid gap-3 sm:grid-cols-3">
               <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
                 <p class="text-sm font-semibold text-white">Less rework</p>
@@ -110,92 +106,44 @@
                 <p class="mt-1 text-sm text-slate-300">Keep the “why” with evidence.</p>
               </div>
               <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-sm font-semibold text-white">Knowledge survives</p>
-                <p class="mt-1 text-sm text-slate-300">No more tribal knowledge loss.</p>
+                <p class="text-sm font-semibold text-white">Maintenance awareness</p>
+                <p class="mt-1 text-sm text-slate-300">Review windows + reminders.</p>
               </div>
+            </div>
+
+            <div class="mt-12 grid grid-cols-2 gap-3 text-sm text-slate-300 sm:grid-cols-4">
+              <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Manufacturing</div>
+              <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Utilities</div>
+              <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Facilities</div>
+              <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Integrity</div>
             </div>
           </div>
 
-          <!-- Visual panel -->
           <div class="relative">
-            <div class="rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6 shadow-2xl shadow-indigo-500/10">
-
-              <div class="flex items-center justify-between">
-                <p class="text-sm font-semibold text-white">Vixai Memory Panel</p>
-                <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-slate-200">
-                  Visual mock
-                </span>
-              </div>
-
-              <!-- “Image card” -->
-              <div class="mt-5 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
-                <div class="flex items-start justify-between gap-4">
-                  <div>
-                    <p class="text-xs text-slate-400">Image inspection • Asset: Pump P-204</p>
-                    <p class="mt-1 text-sm text-slate-200">
-                      Detected: coating loss + corrosion pattern (confidence: high)
-                    </p>
-                  </div>
-                  <span class="rounded-full bg-emerald-500/15 text-emerald-200 border border-emerald-500/20 px-2.5 py-1 text-xs">
-                    New event
-                  </span>
-                </div>
-
-                <!-- Fake “image” block -->
-                <div class="mt-4 grid grid-cols-3 gap-2">
-                  <div class="h-16 rounded-xl bg-white/5 border border-white/10"></div>
-                  <div class="h-16 rounded-xl bg-white/5 border border-white/10"></div>
-                  <div class="h-16 rounded-xl bg-white/5 border border-white/10"></div>
-                </div>
-              </div>
-
-              <!-- Decision -->
-              <div class="mt-3 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
-                <p class="text-xs text-slate-400">Decision</p>
-                <p class="mt-1 text-sm text-slate-200">
-                  Monitor and re-check in 90 days. Rationale recorded. Review date set.
-                </p>
-              </div>
-
-              <!-- Alert -->
-              <div class="mt-3 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
-                <p class="text-xs text-slate-400">Alert</p>
-                <p class="mt-1 text-sm text-slate-200">
-                  Decision review window reached → confirm conditions or schedule inspection.
-                </p>
-              </div>
-
-              <!-- Ask bar -->
-              <div class="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div class="rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-5 shadow-2xl shadow-indigo-500/10">
+              <img
+                src="assets/hero-mock.png"
+                alt="Vixai product mock"
+                class="w-full rounded-2xl border border-white/10 bg-slate-950/40"
+                loading="lazy"
+              />
+              <div class="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4">
                 <p class="text-xs text-slate-400">Ask Vixai</p>
                 <p class="mt-1 text-sm text-slate-200">
                   “Show similar cases and outcomes for this defect mode.”
                 </p>
               </div>
             </div>
-
-            <div class="mt-4 text-xs text-slate-500">
+            <p class="mt-3 text-xs text-slate-400">
               *Illustrative UI mock (v1 focuses on image-based inspections).
-            </div>
+            </p>
           </div>
         </div>
-
-        <!-- Logos placeholder -->
-        <div class="mt-14 border-t border-white/10 pt-8">
-          <p class="text-xs text-slate-400">Built for engineering teams in:</p>
-          <div class="mt-4 grid grid-cols-2 gap-3 text-sm text-slate-300 sm:grid-cols-4">
-            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Manufacturing</div>
-            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Utilities</div>
-            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Facilities</div>
-            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Integrity</div>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- WORKFLOW (visual) -->
-    <section id="how" class="border-t border-white/10">
+    <!-- WORKFLOW -->
+    <section id="workflow" class="border-t border-white/10 bg-slate-950/40">
       <div class="mx-auto max-w-6xl px-4 py-16">
         <div class="flex items-end justify-between gap-6 flex-col md:flex-row">
           <div class="max-w-2xl">
@@ -207,130 +155,83 @@
           <a href="#early-access" class="text-sm font-semibold text-white/90 hover:text-white">Join the pilot →</a>
         </div>
 
-        <!-- Steps -->
-        <div class="mt-10 grid gap-6 md:grid-cols-5">
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-xs text-slate-400">Step 1</p>
-            <p class="mt-2 text-sm font-semibold text-white">Upload images</p>
-            <p class="mt-2 text-sm text-slate-300">Inspection photos become evidence.</p>
+        <div class="mt-10 grid gap-6 md:grid-cols-4">
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <img src="assets/wf-1-upload.png" alt="Upload images" class="rounded-2xl border border-white/10" loading="lazy" />
+            <p class="mt-4 text-sm font-semibold text-white">1) Upload images</p>
+            <p class="mt-1 text-sm text-slate-300">Inspection photos become structured evidence.</p>
           </div>
 
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-xs text-slate-400">Step 2</p>
-            <p class="mt-2 text-sm font-semibold text-white">Detect & describe</p>
-            <p class="mt-2 text-sm text-slate-300">AI assists with findings.</p>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <img src="assets/wf-2-detect.png" alt="Detect and describe" class="rounded-2xl border border-white/10" loading="lazy" />
+            <p class="mt-4 text-sm font-semibold text-white">2) Detect & describe</p>
+            <p class="mt-1 text-sm text-slate-300">AI highlights patterns and summarizes findings.</p>
           </div>
 
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-xs text-slate-400">Step 3</p>
-            <p class="mt-2 text-sm font-semibold text-white">Record decisions</p>
-            <p class="mt-2 text-sm text-slate-300">Capture the “why” + risk.</p>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <img src="assets/wf-3-decide.png" alt="Record decisions" class="rounded-2xl border border-white/10" loading="lazy" />
+            <p class="mt-4 text-sm font-semibold text-white">3) Record decisions</p>
+            <p class="mt-1 text-sm text-slate-300">Capture rationale, risk accepted and review date.</p>
           </div>
 
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-xs text-slate-400">Step 4</p>
-            <p class="mt-2 text-sm font-semibold text-white">Timeline memory</p>
-            <p class="mt-2 text-sm text-slate-300">Everything stays connected.</p>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-xs text-slate-400">Step 5</p>
-            <p class="mt-2 text-sm font-semibold text-white">Alerts & reuse</p>
-            <p class="mt-2 text-sm text-slate-300">Review windows + similar cases.</p>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <img src="assets/wf-4-timeline.png" alt="Timeline memory" class="rounded-2xl border border-white/10" loading="lazy" />
+            <p class="mt-4 text-sm font-semibold text-white">4) Timeline memory</p>
+            <p class="mt-1 text-sm text-slate-300">Everything stays connected, searchable and reusable.</p>
           </div>
         </div>
 
-        <!-- Big workflow bar -->
-        <div class="mt-8 rounded-3xl border border-white/10 bg-slate-950/40 p-6">
-          <div class="grid gap-3 md:grid-cols-5 text-sm text-slate-200">
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">Evidence</div>
-            <div class="hidden md:flex items-center justify-center text-slate-500">→</div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">Decision</div>
-            <div class="hidden md:flex items-center justify-center text-slate-500">→</div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-center">Outcome</div>
-          </div>
+        <div class="mt-10 rounded-3xl border border-white/10 bg-white/5 p-6">
+          <img src="assets/workflow.svg" alt="Vixai workflow diagram" class="w-full" loading="lazy" />
         </div>
       </div>
     </section>
 
-    <!-- MODULES (visual grid) -->
+    <!-- MODULES -->
     <section id="modules" class="border-t border-white/10">
       <div class="mx-auto max-w-6xl px-4 py-16">
         <h2 class="text-3xl font-semibold tracking-tight text-white">Modules</h2>
         <p class="mt-3 max-w-2xl text-slate-300">
-          Start with images. Expand into system context, documents, signals, failures and maintenance awareness.
+          Start with images. Expand into documents, system context, alerts and multimodal signals.
         </p>
 
-        <div class="mt-10 grid gap-6 md:grid-cols-3">
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Image analysis (v1)</p>
-            <p class="mt-2 text-sm text-slate-300">Detect issues, summarize findings, attach evidence.</p>
-            <div class="mt-4 h-24 rounded-2xl border border-white/10 bg-slate-950/40"></div>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Manual learning</p>
-            <p class="mt-2 text-sm text-slate-300">Upload manuals & specs so teams can “ask the equipment”.</p>
-            <div class="mt-4 h-24 rounded-2xl border border-white/10 bg-slate-950/40"></div>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Asset connections</p>
-            <p class="mt-2 text-sm text-slate-300">Series/parallel flows to understand dependencies and impact.</p>
-            <div class="mt-4 h-24 rounded-2xl border border-white/10 bg-slate-950/40"></div>
-          </div>
-        </div>
-
-        <div class="mt-6 grid gap-6 md:grid-cols-3">
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Maintenance awareness</p>
-            <p class="mt-2 text-sm text-slate-300">Alerts for maintenance windows & decision review dates.</p>
-            <div class="mt-4 h-24 rounded-2xl border border-white/10 bg-slate-950/40"></div>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Failure analysis</p>
-            <p class="mt-2 text-sm text-slate-300">Link symptoms → evidence → decisions → outcomes.</p>
-            <div class="mt-4 h-24 rounded-2xl border border-white/10 bg-slate-950/40"></div>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Multimodal signals</p>
-            <p class="mt-2 text-sm text-slate-300">Vibration/noise, thermal and chemical analysis as events.</p>
-            <div class="mt-4 h-24 rounded-2xl border border-white/10 bg-slate-950/40"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHO -->
-    <section id="who" class="border-t border-white/10">
-      <div class="mx-auto max-w-6xl px-4 py-16">
-        <h2 class="text-3xl font-semibold tracking-tight text-white">Built for teams that own risk</h2>
-
         <div class="mt-10 grid gap-6 md:grid-cols-4">
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Integrity</p>
-            <p class="mt-2 text-sm text-slate-300">Traceability and evidence.</p>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <img src="assets/mod-1-image.png" alt="Image analysis module" class="rounded-2xl border border-white/10" loading="lazy" />
+            <p class="mt-4 text-sm font-semibold text-white">Image analysis (v1)</p>
+            <p class="mt-1 text-sm text-slate-300">Detect issues, summarize findings, attach evidence.</p>
           </div>
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Maintenance</p>
-            <p class="mt-2 text-sm text-slate-300">Review windows and history.</p>
+
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <img src="assets/mod-2-manual.png" alt="Manual learning module" class="rounded-2xl border border-white/10" loading="lazy" />
+            <p class="mt-4 text-sm font-semibold text-white">Manual learning</p>
+            <p class="mt-1 text-sm text-slate-300">Upload manuals so teams can “ask the equipment”.</p>
           </div>
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Reliability</p>
-            <p class="mt-2 text-sm text-slate-300">Patterns across assets.</p>
+
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <img src="assets/mod-3-connections.png" alt="Asset connections module" class="rounded-2xl border border-white/10" loading="lazy" />
+            <p class="mt-4 text-sm font-semibold text-white">Asset connections</p>
+            <p class="mt-1 text-sm text-slate-300">Series/parallel flows to see dependencies and impact.</p>
           </div>
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p class="text-sm font-semibold text-white">Engineering</p>
-            <p class="mt-2 text-sm text-slate-300">Decisions with context.</p>
+
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <img src="assets/mod-4-maintenance.png" alt="Maintenance awareness module" class="rounded-2xl border border-white/10" loading="lazy" />
+            <p class="mt-4 text-sm font-semibold text-white">Maintenance awareness</p>
+            <p class="mt-1 text-sm text-slate-300">Alerts for maintenance windows and decision review dates.</p>
           </div>
+        </div>
+
+        <div class="mt-10 rounded-3xl border border-white/10 bg-slate-950/40 p-6">
+          <p class="text-sm text-slate-200">
+            Vixai is <span class="font-semibold text-white">not a CMMS replacement</span>.
+            We focus on technical memory: evidence, decisions, and traceability — with alerts that keep context alive.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- EARLY ACCESS -->
-    <section id="early-access" class="border-t border-white/10">
+    <section id="early-access" class="border-t border-white/10 bg-slate-950/40">
       <div class="mx-auto max-w-6xl px-4 py-16">
         <div class="grid gap-10 md:grid-cols-2">
           <div>
@@ -339,7 +240,7 @@
               We’re onboarding a small number of pilot teams for v1 (image-first).
             </p>
 
-            <div class="mt-6 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+            <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
               <p class="text-sm text-slate-200">
                 Ideal pilots: teams with frequent inspections and lots of photos that need better traceability.
               </p>
@@ -353,43 +254,24 @@
 
               <div>
                 <label class="text-xs text-slate-300" for="name">Name</label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Jane Doe"
-                  required
-                  class="mt-2 w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-white/20"
-                />
+                <input id="name" name="name" type="text" placeholder="Jane Doe" required
+                  class="mt-2 w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-white/20" />
               </div>
 
               <div>
                 <label class="text-xs text-slate-300" for="email">Work email</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="jane@company.com"
-                  required
-                  class="mt-2 w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-white/20"
-                />
+                <input id="email" name="email" type="email" placeholder="jane@company.com" required
+                  class="mt-2 w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-white/20" />
               </div>
 
               <div>
                 <label class="text-xs text-slate-300" for="company">Company</label>
-                <input
-                  id="company"
-                  name="company"
-                  type="text"
-                  placeholder="Company name"
-                  class="mt-2 w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-white/20"
-                />
+                <input id="company" name="company" type="text" placeholder="Company name"
+                  class="mt-2 w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-white/20" />
               </div>
 
-              <button
-                type="submit"
-                class="w-full rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-slate-100"
-              >
+              <button type="submit"
+                class="w-full rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-slate-100">
                 Request early access
               </button>
 
@@ -399,11 +281,10 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-white/10">
+  <footer class="border-t border-white/10 bg-slate-950/70">
     <div class="mx-auto max-w-6xl px-4 py-10">
       <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
@@ -412,7 +293,7 @@
         </div>
 
         <div class="flex flex-wrap gap-4 text-sm text-slate-400">
-          <a class="hover:text-white" href="#how">Workflow</a>
+          <a class="hover:text-white" href="#workflow">Workflow</a>
           <a class="hover:text-white" href="#modules">Modules</a>
           <a class="hover:text-white" href="#early-access">Early access</a>
         </div>
