@@ -1,312 +1,764 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vixai — AI Memory for Technical Assets</title>
-
-  <meta name="description" content="Vixai turns inspections into technical memory. Capture evidence, decisions and outcomes — starting with image-based analysis — so teams stop re-learning the same lessons." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://vixai.app/" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Vixai — AI Memory for Technical Assets" />
-  <meta property="og:description" content="Turn inspections into technical memory. Evidence + decisions + outcomes." />
-  <meta property="og:url" content="https://vixai.app/" />
-  <meta property="og:site_name" content="Vixai" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Vixai — AI Memory for Technical Assets" />
-  <meta name="twitter:description" content="Turn inspections into technical memory. Starting with images." />
-
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vixai — Find the Needle in Your Unstructured Data</title>
+  <meta name="description" content="Vixai turns messy emails and documents into searchable, explainable knowledge — for end users and via API." />
 
   <style>
-    html { scroll-behavior: smooth; }
+    :root{
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #0f172a;         /* slate-900 */
+      --muted: #475569;        /* slate-600 */
+      --line: rgba(15,23,42,.10);
+      --brand: #2563eb;        /* blue-600 */
+      --brand2:#06b6d4;        /* cyan-500 */
+      --ok:#16a34a;            /* green-600 */
+      --warn:#f59e0b;          /* amber-500 */
+      --shadow: 0 18px 50px rgba(2,6,23,.08);
+      --radius: 18px;
+      --radius2: 14px;
+      --max: 1120px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
     body{
-      background:
-        radial-gradient(900px 500px at 50% -10%, rgba(99,102,241,.22), transparent 60%),
-        radial-gradient(900px 500px at 50% 110%, rgba(34,211,238,.16), transparent 60%),
-        url("assets/bg-starfield.png");
-      background-size: auto, auto, cover;
-      background-position: center, center, center;
-      background-attachment: fixed;
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(37,99,235,.16), transparent 60%),
+                  radial-gradient(900px 520px at 90% 10%, rgba(6,182,212,.14), transparent 55%),
+                  var(--bg);
+      line-height: 1.45;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .container{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    /* Top nav */
+    .nav{
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(247,249,252,.78);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .logo{
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 10px 20px rgba(37,99,235,.20);
+      position: relative;
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset: 7px;
+      border-radius: 9px;
+      background: rgba(255,255,255,.85);
+      mix-blend-mode: overlay;
+    }
+    .nav-links{
+      display:flex; align-items:center; gap: 18px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .nav-links a{ padding: 8px 10px; border-radius: 10px; }
+    .nav-links a:hover{ background: rgba(15,23,42,.05); color: var(--text); }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.65);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 14px;
+      cursor:pointer;
+      transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn:hover{ background: #fff; box-shadow: 0 14px 30px rgba(2,6,23,.10); }
+    .btn:active{ transform: translateY(1px); }
+    .btn-primary{
+      border-color: rgba(37,99,235,.25);
+      background: linear-gradient(135deg, rgba(37,99,235,1), rgba(6,182,212,1));
+      color: #fff;
+      box-shadow: 0 18px 40px rgba(37,99,235,.25);
+    }
+    .btn-primary:hover{ box-shadow: 0 22px 50px rgba(37,99,235,.30); }
+
+    /* Hero */
+    .hero{
+      padding: 56px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .hero-card{
+      background: rgba(255,255,255,.75);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap: 8px;
+      font-size: 13px; font-weight: 800;
+      color: rgba(37,99,235,1);
+      background: rgba(37,99,235,.10);
+      border: 1px solid rgba(37,99,235,.18);
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+    .sub{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 60ch;
+    }
+    .hero-actions{
+      display:flex; flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .stats{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .stat{
+      background: rgba(255,255,255,.7);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 12px;
+    }
+    .stat b{ display:block; font-size: 14px; }
+    .stat span{ color: var(--muted); font-size: 12px; }
+
+    .hero-side{
+      display:grid; gap: 12px;
+    }
+    .side-card{
+      background: rgba(255,255,255,.75);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      overflow:hidden;
+      position: relative;
+    }
+    .chip-row{ display:flex; flex-wrap:wrap; gap: 8px; margin-top: 10px; }
+    .chip{
+      font-size: 12px; font-weight: 700;
+      color: rgba(15,23,42,.85);
+      background: rgba(15,23,42,.05);
+      border: 1px solid rgba(15,23,42,.08);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+    .mono{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(15,23,42,.80);
+      background: rgba(2,6,23,.03);
+      border: 1px solid rgba(2,6,23,.06);
+      border-radius: 14px;
+      padding: 12px;
+      margin-top: 10px;
+      overflow:auto;
+      white-space: pre;
+    }
+
+    /* Sections */
+    section{ padding: 28px 0; }
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+    .lead{
+      margin:0;
+      color: var(--muted);
+      max-width: 85ch;
+      font-size: 14px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .card{
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .card h3{ margin: 0 0 8px; font-size: 16px; letter-spacing: -0.01em; }
+    .card p{ margin: 0; color: var(--muted); font-size: 13px; }
+
+    .bullet{
+      margin-top: 10px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .bullet li{ margin: 6px 0; }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(22,163,74,.18);
+      background: rgba(22,163,74,.10);
+      color: rgba(22,163,74,1);
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    /* API block */
+    .api{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+    .codebox{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(15,23,42,.88);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      overflow:auto;
+      white-space: pre;
+      margin: 0;
+    }
+    .tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 12px; }
+    .tag{
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 6px 10px;
+      border: 1px solid rgba(37,99,235,.18);
+      background: rgba(37,99,235,.10);
+      color: rgba(37,99,235,1);
+    }
+
+    /* Form */
+    .form-wrap{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+    form{
+      display:grid;
+      gap: 10px;
+    }
+    label{
+      font-size: 12px;
+      color: rgba(15,23,42,.75);
+      font-weight: 800;
+    }
+    input, select, textarea{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.95);
+      outline: none;
+      font: inherit;
+      font-size: 14px;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(37,99,235,.45);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .form-note{
+      color: var(--muted);
+      font-size: 12px;
+      margin: 0;
+    }
+
+    /* Footer */
+    footer{
+      padding: 22px 0 38px;
+      border-top: 1px solid var(--line);
+      color: rgba(71,85,105,.9);
+      font-size: 12px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; align-items:center;
+      gap: 10px; flex-wrap:wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .api{ grid-template-columns: 1fr; }
+      .form-wrap{ grid-template-columns: 1fr; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .grid-2{ grid-template-columns: 1fr; }
+      .stats{ grid-template-columns: 1fr; }
+      .nav-links{ display:none; }
     }
   </style>
 </head>
 
-<body class="text-slate-100 antialiased">
-  <!-- Header -->
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-      <a href="#top" class="flex items-center gap-2">
-        <div class="h-9 w-9 rounded-xl bg-white/10 ring-1 ring-white/15 flex items-center justify-center">
-          <span class="text-sm font-semibold tracking-tight">V</span>
+<body>
+
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Vixai Home">
+          <span class="logo" aria-hidden="true"></span>
+          <span>Vixai</span>
+        </a>
+
+        <div class="nav-links" aria-label="Primary navigation">
+          <a href="#product">Product</a>
+          <a href="#api">API</a>
+          <a href="#trust">Trust</a>
+          <a href="#how">How it works</a>
+          <a href="#signup">Sign up</a>
         </div>
-        <span class="text-base font-semibold tracking-tight">Vixai</span>
-      </a>
 
-      <nav class="hidden items-center gap-6 text-sm text-slate-300 md:flex">
-        <a class="hover:text-white" href="#workflow">Workflow</a>
-        <a class="hover:text-white" href="#modules">Modules</a>
-        <a class="hover:text-white" href="#early-access">Early access</a>
-      </nav>
-
-      <a
-        href="#early-access"
-        class="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-slate-100"
-      >
-        Request early access
-      </a>
+        <a class="btn btn-primary" href="#signup">Request Access</a>
+      </div>
     </div>
-  </header>
+  </div>
 
-  <main id="top">
+  <main id="top" class="container">
+
     <!-- HERO -->
-    <section class="relative overflow-hidden">
-      <div class="mx-auto max-w-6xl px-4 py-16 md:py-24">
-        <div class="grid items-center gap-10 md:grid-cols-2">
-          <div>
-            <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-200">
-              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-            <!--  Early pilot • Image-first v1 -->
-            </div>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="kicker">Search-grade AI for unstructured data</div>
 
-            <h1 class="mt-6 text-4xl font-semibold tracking-tight text-white md:text-6xl">
-              Turn inspections into <span class="text-slate-200">technical memory</span>.
-            </h1>
+          <h1>Find the needle in your emails and documents — with proof.</h1>
 
-            <p class="mt-5 max-w-xl text-lg leading-relaxed text-slate-300">
-              Vixai captures <span class="text-slate-200 font-medium">evidence, decisions and outcomes</span>
-              so engineering teams stop re-learning the same lessons — starting with image-based analysis.
-            </p>
+          <p class="sub">
+            Vixai ingests unstructured information (email threads, PDFs, images, attachments, notes),
+            structures it progressively, and delivers high-recall search + grounded answers with citations.
+            Built to work across domains — legal, engineering, operations, finance, and beyond.
+          </p>
 
-            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#early-access"
-                class="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-slate-100"
-              >
-                Request early access
-              </a>
-              <a
-                href="#workflow"
-                class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
-              >
-                See the workflow
-              </a>
-            </div>
-
-            <div class="mt-10 grid gap-3 sm:grid-cols-3">
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-sm font-semibold text-white">Less rework</p>
-                <p class="mt-1 text-sm text-slate-300">Find similar cases instantly.</p>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-sm font-semibold text-white">Traceable decisions</p>
-                <p class="mt-1 text-sm text-slate-300">Keep the “why” with evidence.</p>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-sm font-semibold text-white">Maintenance awareness</p>
-                <p class="mt-1 text-sm text-slate-300">Review windows + reminders.</p>
-              </div>
-            </div>
-
-            <div class="mt-12 grid grid-cols-2 gap-3 text-sm text-slate-300 sm:grid-cols-4">
-              <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Manufacturing</div>
-              <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Utilities</div>
-              <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Facilities</div>
-              <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">Integrity</div>
-            </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#signup">Get access</a>
+            <a class="btn" href="#api">Explore the API</a>
+            <a class="btn" href="#how">See how it works</a>
           </div>
 
-          <div class="relative">
-            <div class="rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-5 shadow-2xl shadow-indigo-500/10">
-              <img
-                src="assets/hero-mock.png"
-                alt="Vixai product mock"
-                class="w-full rounded-2xl border border-white/10 bg-slate-950/40"
-                loading="lazy"
-              />
-              <div class="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p class="text-xs text-slate-400">Ask Vixai</p>
-                <p class="mt-1 text-sm text-slate-200">
-                  “Show similar cases and outcomes for this defect mode.”
-                </p>
-              </div>
+          <div class="stats" aria-label="Key capabilities">
+            <div class="stat">
+              <b>High recall retrieval</b>
+              <span>Hybrid search + reranking</span>
             </div>
-            <p class="mt-3 text-xs text-slate-400">
-              *Illustrative UI mock (v1 focuses on image-based inspections).
+            <div class="stat">
+              <b>Grounded answers</b>
+              <span>Citations + “not found” support</span>
+            </div>
+            <div class="stat">
+              <b>Multi-tenant by design</b>
+              <span>Isolation, auditability, cost control</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="side-card">
+            <div class="pill">Production-ready pipeline</div>
+            <div class="chip-row" aria-label="Highlights">
+              <span class="chip">IMAP sync</span>
+              <span class="chip">Attachments</span>
+              <span class="chip">Deduplication</span>
+              <span class="chip">Incremental ingest</span>
+              <span class="chip">Explainable retrieval</span>
+            </div>
+
+            <pre class="mono" aria-label="Example query + answer">
+Q: “Do we have a clause about termination notice?”
+A: Found in 2 documents.
+- Contract_2024.pdf (Section 9.2), citation included
+- Email thread “Renewal terms” (Mar 18), citation included
+Confidence: High
+            </pre>
+          </div>
+
+          <div class="side-card">
+            <div style="font-weight:900; letter-spacing:-0.01em;">Built for both end users and builders</div>
+            <p style="margin:8px 0 0; color: var(--muted); font-size:13px;">
+              Use Vixai as a full product or integrate it as your internal search engine via API — same core, same guarantees.
             </p>
+            <div class="tag-row">
+              <span class="tag">Search</span>
+              <span class="tag">Ingestion</span>
+              <span class="tag">RAG</span>
+              <span class="tag">API-first</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WORKFLOW -->
-    <section id="workflow" class="border-t border-white/10 bg-slate-950/40">
-      <div class="mx-auto max-w-6xl px-4 py-16">
-        <div class="flex items-end justify-between gap-6 flex-col md:flex-row">
-          <div class="max-w-2xl">
-            <h2 class="text-3xl font-semibold tracking-tight text-white">Workflow</h2>
-            <p class="mt-3 text-slate-300">
-              A simple flow that turns inspection evidence into reusable decisions.
-            </p>
-          </div>
-          <a href="#early-access" class="text-sm font-semibold text-white/90 hover:text-white">Join the pilot →</a>
-        </div>
-
-        <div class="mt-10 grid gap-6 md:grid-cols-4">
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-            <img src="assets/wf-1-upload.png" alt="Upload images" class="rounded-2xl border border-white/10" loading="lazy" />
-            <p class="mt-4 text-sm font-semibold text-white">1) Upload images</p>
-            <p class="mt-1 text-sm text-slate-300">Inspection photos become structured evidence.</p>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-            <img src="assets/wf-2-detect.png" alt="Detect and describe" class="rounded-2xl border border-white/10" loading="lazy" />
-            <p class="mt-4 text-sm font-semibold text-white">2) Detect & describe</p>
-            <p class="mt-1 text-sm text-slate-300">AI highlights patterns and summarizes findings.</p>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-            <img src="assets/wf-3-decide.png" alt="Record decisions" class="rounded-2xl border border-white/10" loading="lazy" />
-            <p class="mt-4 text-sm font-semibold text-white">3) Record decisions</p>
-            <p class="mt-1 text-sm text-slate-300">Capture rationale, risk accepted and review date.</p>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-            <img src="assets/wf-4-timeline.png" alt="Timeline memory" class="rounded-2xl border border-white/10" loading="lazy" />
-            <p class="mt-4 text-sm font-semibold text-white">4) Timeline memory</p>
-            <p class="mt-1 text-sm text-slate-300">Everything stays connected, searchable and reusable.</p>
-          </div>
-        </div>
-
-        <div class="mt-10 rounded-3xl border border-white/10 bg-white/5 p-6">
-          <img src="assets/workflow.svg" alt="Vixai workflow diagram" class="w-full" loading="lazy" />
-        </div>
-      </div>
-    </section>
-
-    <!-- MODULES -->
-    <section id="modules" class="border-t border-white/10">
-      <div class="mx-auto max-w-6xl px-4 py-16">
-        <h2 class="text-3xl font-semibold tracking-tight text-white">Modules</h2>
-        <p class="mt-3 max-w-2xl text-slate-300">
-          Start with images. Expand into documents, system context, alerts and multimodal signals.
-        </p>
-
-        <div class="mt-10 grid gap-6 md:grid-cols-4">
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-            <img src="assets/mod-1-image.png" alt="Image analysis module" class="rounded-2xl border border-white/10" loading="lazy" />
-            <p class="mt-4 text-sm font-semibold text-white">Image analysis (v1)</p>
-            <p class="mt-1 text-sm text-slate-300">Detect issues, summarize findings, attach evidence.</p>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-            <img src="assets/mod-2-manual.png" alt="Manual learning module" class="rounded-2xl border border-white/10" loading="lazy" />
-            <p class="mt-4 text-sm font-semibold text-white">Manual learning</p>
-            <p class="mt-1 text-sm text-slate-300">Upload manuals so teams can “ask the equipment”.</p>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-            <img src="assets/mod-3-connections.png" alt="Asset connections module" class="rounded-2xl border border-white/10" loading="lazy" />
-            <p class="mt-4 text-sm font-semibold text-white">Asset connections</p>
-            <p class="mt-1 text-sm text-slate-300">Series/parallel flows to see dependencies and impact.</p>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-            <img src="assets/mod-4-maintenance.png" alt="Maintenance awareness module" class="rounded-2xl border border-white/10" loading="lazy" />
-            <p class="mt-4 text-sm font-semibold text-white">Maintenance awareness</p>
-            <p class="mt-1 text-sm text-slate-300">Alerts for maintenance windows and decision review dates.</p>
-          </div>
-        </div>
-
-        <div class="mt-10 rounded-3xl border border-white/10 bg-slate-950/40 p-6">
-          <p class="text-sm text-slate-200">
-            Vixai is <span class="font-semibold text-white">not a CMMS replacement</span>.
-            We focus on technical memory: evidence, decisions, and traceability — with alerts that keep context alive.
+    <!-- PRODUCT (Consumer) -->
+    <section id="product">
+      <div class="section-title">
+        <div>
+          <h2>For end users: clarity, speed, and traceability</h2>
+          <p class="lead">
+            Vixai turns messy information into a reliable knowledge layer. Ask questions, locate sources, and validate answers instantly.
           </p>
         </div>
       </div>
-    </section>
 
-    <!-- EARLY ACCESS -->
-    <section id="early-access" class="border-t border-white/10 bg-slate-950/40">
-      <div class="mx-auto max-w-6xl px-4 py-16">
-        <div class="grid gap-10 md:grid-cols-2">
-          <div>
-            <h2 class="text-3xl font-semibold tracking-tight text-white">Request early access</h2>
-            <p class="mt-4 text-slate-300">
-              We’re onboarding a small number of pilot teams for v1 (image-first).
-            </p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Ingest everything you already use</h3>
+          <p>Emails, threads, PDFs, images, attachments and documents — processed and structured without manual tagging.</p>
+          <ul class="bullet">
+            <li>Incremental sync and deduplication to avoid reprocessing</li>
+            <li>Progress tracking per sync job</li>
+            <li>Multi-tenant isolation by default</li>
+          </ul>
+        </div>
 
-            <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p class="text-sm text-slate-200">
-                Ideal pilots: teams with frequent inspections and lots of photos that need better traceability.
-              </p>
-            </div>
-          </div>
+        <div class="card">
+          <h3>Search that doesn’t miss the rare detail</h3>
+          <p>Hybrid retrieval is built to catch identifiers, names, and rare terms — not just “similar” content.</p>
+          <ul class="bullet">
+            <li>Dense + sparse signals (needle-friendly)</li>
+            <li>Reranking for precision</li>
+            <li>Document/thread consolidation</li>
+          </ul>
+        </div>
 
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <form class="space-y-4" method="post" action="https://formspree.io/f/xeejqrbk">
-              <input type="hidden" name="_subject" value="New Vixai early access lead" />
-              <input type="hidden" name="_redirect" value="https://vixai.app/thanks" />
-
-              <div>
-                <label class="text-xs text-slate-300" for="name">Name</label>
-                <input id="name" name="name" type="text" placeholder="Jane Doe" required
-                  class="mt-2 w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-white/20" />
-              </div>
-
-              <div>
-                <label class="text-xs text-slate-300" for="email">Work email</label>
-                <input id="email" name="email" type="email" placeholder="jane@company.com" required
-                  class="mt-2 w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-white/20" />
-              </div>
-
-              <div>
-                <label class="text-xs text-slate-300" for="company">Company</label>
-                <input id="company" name="company" type="text" placeholder="Company name"
-                  class="mt-2 w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-white/20" />
-              </div>
-
-              <button type="submit"
-                class="w-full rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-slate-100">
-                Request early access
-              </button>
-
-              <p class="text-xs text-slate-400">No spam. We’ll only reach out about the pilot.</p>
-            </form>
-          </div>
+        <div class="card">
+          <h3>Answers you can trust</h3>
+          <p>Every response is grounded in source material with citations. If it’s not there, Vixai says so.</p>
+          <ul class="bullet">
+            <li>Mandatory citations</li>
+            <li>Explicit “not found” behavior</li>
+            <li>Auditability and traceability</li>
+          </ul>
         </div>
       </div>
     </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how">
+      <div class="section-title">
+        <div>
+          <h2>How it works</h2>
+          <p class="lead">
+            A universal ingestion + retrieval pipeline designed for any domain, with progressive structure and explainable outcomes.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>1) Ingest & normalize</h3>
+          <p>Connect your mailbox (IMAP), sync manual or automatic, extract email body + attachments, and normalize into a canonical model.</p>
+          <ul class="bullet">
+            <li>Canonical entities: Document, Artifact, Chunk, Relations</li>
+            <li>Universal metadata: source, time, author, type, language</li>
+            <li>Deduplication: Message-ID + normalized fingerprint fallback</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>2) Structure progressively</h3>
+          <p>Build lightweight hierarchy and summaries over time — without domain-specific assumptions.</p>
+          <ul class="bullet">
+            <li>Section/page hierarchy when available</li>
+            <li>Email ↔ attachment relationships</li>
+            <li>Summaries per section and per document</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>3) Index multi-representation</h3>
+          <p>Multiple search views for higher recall: chunk, document, title/subject, and sparse tokens for rare identifiers.</p>
+          <ul class="bullet">
+            <li>Chunk embeddings + doc-level embeddings</li>
+            <li>Title/subject embeddings</li>
+            <li>Sparse representation for exact matches</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>4) Retrieve, rerank, cite</h3>
+          <p>Candidate generation → reranking → consolidation → grounded response with citations (or explicit “not found”).</p>
+          <ul class="bullet">
+            <li>Hybrid candidate generation</li>
+            <li>Lightweight reranking for precision</li>
+            <li>Citations and confidence signals</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- API -->
+    <section id="api">
+      <div class="section-title">
+        <div>
+          <h2>For builders: Vixai as your Search & Intelligence Engine (API)</h2>
+          <p class="lead">
+            Integrate Vixai into your product as a retrieval layer over unstructured data — with multi-tenant isolation, observability, and grounded outputs.
+          </p>
+        </div>
+      </div>
+
+      <div class="api">
+        <div class="card">
+          <h3>API outcomes (what you get)</h3>
+          <p>Not just embeddings: a complete retrieval pipeline with explainability and operational guarantees.</p>
+          <ul class="bullet">
+            <li>Ingestion + incremental sync + deduplication</li>
+            <li>Hybrid retrieval + reranking pipeline</li>
+            <li>Grounded answers with citations, confidence, and “not found”</li>
+            <li>Per-tenant cost control and job progress traceability</li>
+          </ul>
+
+          <div class="tag-row" aria-label="API characteristics">
+            <span class="tag">Multi-tenant</span>
+            <span class="tag">Hybrid search</span>
+            <span class="tag">Reranking</span>
+            <span class="tag">Citations</span>
+            <span class="tag">Observability</span>
+          </div>
+        </div>
+
+        <pre class="codebox" aria-label="Illustrative API shape (example)">
+# Illustrative API shape (example)
+POST /v1/ingest
+{
+  "tenant_id": "t_123",
+  "source": { "type": "imap", "mailbox": "INBOX" },
+  "mode": "incremental"
+}
+
+POST /v1/search
+{
+  "tenant_id": "t_123",
+  "query": "termination notice clause",
+  "filters": { "source_type": ["email","pdf"], "date_from": "2024-01-01" },
+  "k": 25
+}
+
+POST /v1/answer
+{
+  "tenant_id": "t_123",
+  "query": "What is the termination notice period?",
+  "policy": { "require_citations": true, "allow_not_found": true }
+}
+
+# Response returns:
+# - citations (doc_id + excerpt)
+# - confidence
+# - retrieval trace (optional)
+        </pre>
+      </div>
+    </section>
+
+    <!-- TRUST / SECURITY -->
+    <section id="trust">
+      <div class="section-title">
+        <div>
+          <h2>Trust, safety, and operational control</h2>
+          <p class="lead">
+            Built for production realities: isolation, traceability, and conservative behavior when evidence is insufficient.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Isolation by tenant</h3>
+          <p>Collections and storage are segmented per tenant, preventing cross-tenant leakage and enabling clean compliance boundaries.</p>
+        </div>
+        <div class="card">
+          <h3>Auditability</h3>
+          <p>Every sync run is a job with status, progress, errors, and cost signals — designed to debug production issues fast.</p>
+        </div>
+        <div class="card">
+          <h3>Conservative answers</h3>
+          <p>Grounding is mandatory. If evidence is missing, Vixai returns “not found” instead of guessing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNUP -->
+    <section id="signup">
+      <div class="section-title">
+        <div>
+          <h2>Request access</h2>
+          <p class="lead">
+            Tell us what you want to use: the end-user product, the API, or both. We’ll follow up with the next steps.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-wrap">
+        <div class="card">
+          <h3>Sign up</h3>
+          <p class="form-note">No pricing shown here. We’ll contact you with onboarding details.</p>
+          <div style="height:10px"></div>
+
+          <!-- Formspree endpoint provided -->
+          <form action="https://formspree.io/f/xeejqrbk" method="POST">
+            <div class="row">
+              <div>
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="jane@company.com" required />
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="company">Company (optional)</label>
+                <input id="company" name="company" type="text" placeholder="Vixai Technologies Ltd" />
+              </div>
+              <div>
+                <label for="interest">Interested in</label>
+                <select id="interest" name="interest" required>
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="consumer">End-user product</option>
+                  <option value="api">API / Engine</option>
+                  <option value="both">Both</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="message">What do you want to solve?</label>
+              <textarea id="message" name="message" placeholder="Example: We want to search across emails and PDFs and always cite the source."></textarea>
+            </div>
+
+            <!-- Helps Formspree identify subject -->
+            <input type="hidden" name="_subject" value="New Vixai signup request" />
+
+            <button class="btn btn-primary" type="submit">Submit request</button>
+            <p class="form-note">By submitting, you agree to be contacted about Vixai. Do not include sensitive secrets in this form.</p>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>What happens next</h3>
+          <p>We’ll reply with access and onboarding guidance depending on your use case.</p>
+          <ul class="bullet">
+            <li><b>End-user product:</b> connect your mailbox, ingest documents, and start asking questions with citations.</li>
+            <li><b>API:</b> receive integration details, tenant provisioning, and example workflows.</li>
+            <li><b>Both:</b> use the UI for validation and the API for embedding in your product.</li>
+          </ul>
+
+          <div style="height:12px"></div>
+          <h3 style="margin-top:0;">Use cases that fit any domain</h3>
+          <ul class="bullet">
+            <li>Contract / policy discovery with citations</li>
+            <li>Engineering support over manuals and incident emails</li>
+            <li>Operations: approvals, receipts, and decision trails</li>
+            <li>Finance: invoices, vendor terms, audit preparation</li>
+            <li>Customer support escalation and root-cause discovery</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="section-title">
+        <div>
+          <h2>FAQ</h2>
+          <p class="lead">Short, direct answers.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Does Vixai work outside a specific niche?</h3>
+          <p>Yes. The ingestion model and retrieval pipeline are domain-agnostic. Optional per-tenant calibration improves relevance without custom development.</p>
+        </div>
+
+        <div class="card">
+          <h3>Will Vixai hallucinate answers?</h3>
+          <p>Grounding is mandatory. Responses include citations, and Vixai can explicitly return “not found” when evidence is insufficient.</p>
+        </div>
+
+        <div class="card">
+          <h3>Can I integrate via API only?</h3>
+          <p>Yes. The same retrieval engine that powers the product can be exposed as an API layer for your application.</p>
+        </div>
+
+        <div class="card">
+          <h3>Do you support automatic sync?</h3>
+          <p>Yes. Sync runs can be manual or scheduled, with job status, progress, and error visibility.</p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-white/10 bg-slate-950/70">
-    <div class="mx-auto max-w-6xl px-4 py-10">
-      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div>
-          <p class="text-sm font-semibold text-white">Vixai</p>
-          <p class="mt-1 text-sm text-slate-400">AI memory for long-term engineering decisions.</p>
-        </div>
-
-        <div class="flex flex-wrap gap-4 text-sm text-slate-400">
-          <a class="hover:text-white" href="#workflow">Workflow</a>
-          <a class="hover:text-white" href="#modules">Modules</a>
-          <a class="hover:text-white" href="#early-access">Early access</a>
-        </div>
-      </div>
-
-      <div class="mt-8 text-xs text-slate-500">
-        © <span id="year"></span> Vixai. All rights reserved.
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div><b>Vixai</b> — Unstructured data, searchable and explainable.</div>
+        <div>© <span id="year">2025</span> Vixai. All rights reserved.</div>
       </div>
     </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
