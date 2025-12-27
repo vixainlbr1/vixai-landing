@@ -3,215 +3,221 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vixai — Find the Needle in Your Unstructured Data</title>
-  <meta name="description" content="Vixai turns messy emails and documents into searchable, explainable knowledge — for end users and via API." />
+  <title>Vixai — Search-Grade Intelligence for Unstructured Data</title>
+  <meta name="description" content="Vixai ingests unstructured data, structures it progressively, and delivers grounded search and answers with citations — for end users and via API." />
 
   <style>
     :root{
-      --bg: #f7f9fc;
-      --card: #ffffff;
-      --text: #0f172a;         /* slate-900 */
-      --muted: #475569;        /* slate-600 */
-      --line: rgba(15,23,42,.10);
-      --brand: #2563eb;        /* blue-600 */
-      --brand2:#06b6d4;        /* cyan-500 */
-      --ok:#16a34a;            /* green-600 */
-      --warn:#f59e0b;          /* amber-500 */
-      --shadow: 0 18px 50px rgba(2,6,23,.08);
-      --radius: 18px;
-      --radius2: 14px;
-      --max: 1120px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --bg:#ffffff;
+      --bg2:#fbfbfc;
+      --text:#0b0f17;
+      --muted:#5c6370;
+      --line:rgba(15, 23, 42, .10);
+      --line2:rgba(15, 23, 42, .08);
+      --card:#ffffff;
+      --shadow: 0 20px 70px rgba(2, 6, 23, .06);
+      --shadow2: 0 8px 24px rgba(2, 6, 23, .05);
+      --radius:18px;
+      --radius2:14px;
+      --max: 1080px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+
+      /* Apple-ish accent (subtle) */
+      --accent:#0a84ff;
+      --accentSoft: rgba(10,132,255,.12);
+      --ok:#16a34a;
+      --okSoft: rgba(22,163,74,.10);
     }
 
-    *{ box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
-      font-family: var(--sans);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--text);
-      background: radial-gradient(1200px 600px at 20% -10%, rgba(37,99,235,.16), transparent 60%),
-                  radial-gradient(900px 520px at 90% 10%, rgba(6,182,212,.14), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(900px 540px at 50% -10%, rgba(10,132,255,.08), transparent 60%),
+        linear-gradient(#fff, var(--bg2));
       line-height: 1.45;
     }
 
-    a{ color: inherit; text-decoration: none; }
-    .container{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    a{ color:inherit; text-decoration:none; }
+    .container{ width: min(var(--max), calc(100% - 44px)); margin: 0 auto; }
 
-    /* Top nav */
+    /* Nav */
     .nav{
       position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(247,249,252,.78);
-      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+      background: rgba(255,255,255,.78);
+      border-bottom: 1px solid var(--line2);
     }
     .nav-inner{
       display:flex; align-items:center; justify-content:space-between;
       padding: 14px 0;
-      gap: 14px;
+      gap: 16px;
     }
     .brand{
       display:flex; align-items:center; gap:10px;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: -0.02em;
+      font-size: 15px;
     }
-    .logo{
-      width: 34px; height: 34px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      box-shadow: 0 10px 20px rgba(37,99,235,.20);
-      position: relative;
-    }
-    .logo:after{
-      content:"";
-      position:absolute; inset: 7px;
+    .mark{
+      width: 28px; height: 28px;
       border-radius: 9px;
-      background: rgba(255,255,255,.85);
-      mix-blend-mode: overlay;
+      background: #0b0f17;
+      position: relative;
+      box-shadow: var(--shadow2);
     }
+    .mark:after{
+      content:"";
+      position:absolute; inset: 8px;
+      border-radius: 999px;
+      background: #fff;
+      opacity: .9;
+    }
+
     .nav-links{
-      display:flex; align-items:center; gap: 18px;
+      display:flex; align-items:center; gap: 10px;
       color: var(--muted);
+      font-size: 13px;
       font-weight: 600;
-      font-size: 14px;
     }
-    .nav-links a{ padding: 8px 10px; border-radius: 10px; }
-    .nav-links a:hover{ background: rgba(15,23,42,.05); color: var(--text); }
+    .nav-links a{
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    .nav-links a:hover{
+      background: rgba(15,23,42,.04);
+      color: var(--text);
+    }
 
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
       padding: 10px 14px;
       border-radius: 12px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.65);
-      color: var(--text);
-      font-weight: 700;
-      font-size: 14px;
+      background: rgba(255,255,255,.9);
+      font-weight: 650;
+      font-size: 13px;
       cursor:pointer;
-      transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+      transition: transform .08s ease, box-shadow .18s ease, background .18s ease;
     }
-    .btn:hover{ background: #fff; box-shadow: 0 14px 30px rgba(2,6,23,.10); }
+    .btn:hover{ box-shadow: var(--shadow2); }
     .btn:active{ transform: translateY(1px); }
     .btn-primary{
-      border-color: rgba(37,99,235,.25);
-      background: linear-gradient(135deg, rgba(37,99,235,1), rgba(6,182,212,1));
+      border-color: rgba(10,132,255,.20);
+      background: #0b0f17;
       color: #fff;
-      box-shadow: 0 18px 40px rgba(37,99,235,.25);
     }
-    .btn-primary:hover{ box-shadow: 0 22px 50px rgba(37,99,235,.30); }
+    .btn-primary:hover{ box-shadow: var(--shadow); }
 
     /* Hero */
-    .hero{
-      padding: 56px 0 26px;
-    }
+    .hero{ padding: 58px 0 26px; }
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 22px;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
       align-items: stretch;
     }
-    .hero-card{
-      background: rgba(255,255,255,.75);
-      border: 1px solid var(--line);
+    .panel{
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--line2);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 26px;
+      box-shadow: var(--shadow2);
+      padding: 24px;
     }
-    .kicker{
-      display:inline-flex; align-items:center; gap: 8px;
-      font-size: 13px; font-weight: 800;
-      color: rgba(37,99,235,1);
-      background: rgba(37,99,235,.10);
-      border: 1px solid rgba(37,99,235,.18);
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      border: 1px solid rgba(10,132,255,.18);
+      background: var(--accentSoft);
+      color: rgba(10,132,255,1);
       padding: 6px 10px;
       border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
       margin-bottom: 14px;
+    }
+    .dot{
+      width: 7px; height: 7px;
+      border-radius: 999px;
+      background: rgba(10,132,255,1);
+      box-shadow: 0 0 0 4px rgba(10,132,255,.12);
     }
     h1{
       margin: 0 0 10px;
-      font-size: clamp(28px, 3.4vw, 44px);
-      line-height: 1.05;
+      font-size: clamp(30px, 3.4vw, 46px);
+      line-height: 1.06;
       letter-spacing: -0.03em;
+      font-weight: 750;
     }
     .sub{
-      margin: 0 0 18px;
+      margin: 0;
       color: var(--muted);
       font-size: 16px;
-      max-width: 60ch;
+      max-width: 64ch;
     }
-    .hero-actions{
-      display:flex; flex-wrap:wrap;
-      gap: 10px;
-      margin-top: 16px;
+    .actions{
+      display:flex; gap: 10px; flex-wrap:wrap;
+      margin-top: 18px;
     }
 
-    .stats{
-      display:grid; grid-template-columns: repeat(3, 1fr);
+    .mini-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       margin-top: 18px;
     }
-    .stat{
-      background: rgba(255,255,255,.7);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px 12px;
+    .mini{
+      border: 1px solid var(--line2);
+      background: rgba(251,251,252,.85);
+      border-radius: var(--radius2);
+      padding: 12px;
     }
-    .stat b{ display:block; font-size: 14px; }
-    .stat span{ color: var(--muted); font-size: 12px; }
+    .mini b{ display:block; font-size: 13px; }
+    .mini span{ display:block; margin-top: 4px; color: var(--muted); font-size: 12px; }
 
-    .hero-side{
+    .side{
       display:grid; gap: 12px;
     }
-    .side-card{
-      background: rgba(255,255,255,.75);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      overflow:hidden;
-      position: relative;
-    }
-    .chip-row{ display:flex; flex-wrap:wrap; gap: 8px; margin-top: 10px; }
-    .chip{
-      font-size: 12px; font-weight: 700;
-      color: rgba(15,23,42,.85);
-      background: rgba(15,23,42,.05);
-      border: 1px solid rgba(15,23,42,.08);
-      padding: 6px 10px;
-      border-radius: 999px;
+    .quote{
+      border-left: 3px solid rgba(15,23,42,.16);
+      padding-left: 12px;
+      color: rgba(15,23,42,.78);
+      font-size: 13px;
+      margin: 10px 0 0;
     }
     .mono{
       font-family: var(--mono);
       font-size: 12px;
-      color: rgba(15,23,42,.80);
-      background: rgba(2,6,23,.03);
-      border: 1px solid rgba(2,6,23,.06);
-      border-radius: 14px;
+      background: rgba(251,251,252,.95);
+      border: 1px solid var(--line2);
+      border-radius: var(--radius2);
       padding: 12px;
-      margin-top: 10px;
+      margin-top: 12px;
       overflow:auto;
       white-space: pre;
+      color: rgba(15,23,42,.88);
     }
 
     /* Sections */
-    section{ padding: 28px 0; }
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between;
+    section{ padding: 30px 0; }
+    .section-head{
+      display:flex; justify-content:space-between; align-items:flex-end;
       gap: 14px;
       margin-bottom: 14px;
     }
     h2{
       margin:0;
       font-size: 22px;
+      font-weight: 750;
       letter-spacing: -0.02em;
     }
     .lead{
       margin:0;
       color: var(--muted);
-      max-width: 85ch;
       font-size: 14px;
+      max-width: 85ch;
     }
 
     .grid-3{
@@ -224,64 +230,47 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
     }
+
     .card{
-      background: rgba(255,255,255,.78);
-      border: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+      border: 1px solid var(--line2);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow2);
       padding: 18px;
     }
-    .card h3{ margin: 0 0 8px; font-size: 16px; letter-spacing: -0.01em; }
-    .card p{ margin: 0; color: var(--muted); font-size: 13px; }
-
-    .bullet{
-      margin-top: 10px;
+    .card h3{
+      margin:0 0 8px;
+      font-size: 15px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+    .card p{ margin:0; color: var(--muted); font-size: 13px; }
+    ul{
+      margin: 10px 0 0;
       padding-left: 18px;
       color: var(--muted);
       font-size: 13px;
     }
-    .bullet li{ margin: 6px 0; }
+    li{ margin: 6px 0; }
 
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(22,163,74,.18);
-      background: rgba(22,163,74,.10);
-      color: rgba(22,163,74,1);
-      font-weight: 800;
-      font-size: 12px;
-    }
-
-    /* API block */
+    /* API */
     .api{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
       align-items: stretch;
     }
-    .codebox{
+    pre.code{
+      margin:0;
       font-family: var(--mono);
       font-size: 12px;
-      color: rgba(15,23,42,.88);
-      background: #fff;
-      border: 1px solid var(--line);
+      background: rgba(251,251,252,.96);
+      border: 1px solid var(--line2);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow2);
       padding: 14px;
       overflow:auto;
       white-space: pre;
-      margin: 0;
-    }
-    .tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 12px; }
-    .tag{
-      font-size: 12px;
-      font-weight: 800;
-      border-radius: 999px;
-      padding: 6px 10px;
-      border: 1px solid rgba(37,99,235,.18);
-      background: rgba(37,99,235,.10);
-      color: rgba(37,99,235,1);
     }
 
     /* Form */
@@ -291,28 +280,25 @@
       gap: 12px;
       align-items: stretch;
     }
-    form{
-      display:grid;
-      gap: 10px;
-    }
+    form{ display:grid; gap: 10px; }
     label{
       font-size: 12px;
+      font-weight: 700;
       color: rgba(15,23,42,.75);
-      font-weight: 800;
     }
     input, select, textarea{
-      width: 100%;
-      padding: 12px 12px;
+      width:100%;
+      border: 1px solid rgba(15,23,42,.14);
       border-radius: 12px;
-      border: 1px solid rgba(15,23,42,.12);
-      background: rgba(255,255,255,.95);
-      outline: none;
+      padding: 12px 12px;
       font: inherit;
       font-size: 14px;
+      outline:none;
+      background: rgba(255,255,255,.98);
     }
     input:focus, select:focus, textarea:focus{
-      border-color: rgba(37,99,235,.45);
-      box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+      border-color: rgba(10,132,255,.45);
+      box-shadow: 0 0 0 4px rgba(10,132,255,.12);
     }
     textarea{ min-height: 120px; resize: vertical; }
     .row{
@@ -320,17 +306,28 @@
       grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
-    .form-note{
+    .note{
+      margin: 0;
       color: var(--muted);
       font-size: 12px;
-      margin: 0;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border: 1px solid rgba(22,163,74,.18);
+      background: var(--okSoft);
+      color: var(--ok);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 750;
     }
 
     /* Footer */
     footer{
-      padding: 22px 0 38px;
-      border-top: 1px solid var(--line);
-      color: rgba(71,85,105,.9);
+      margin-top: 10px;
+      padding: 24px 0 40px;
+      border-top: 1px solid var(--line2);
+      color: rgba(92,99,112,.95);
       font-size: 12px;
     }
     .foot{
@@ -340,28 +337,27 @@
 
     /* Responsive */
     @media (max-width: 980px){
+      .nav-links{ display:none; }
       .hero-grid{ grid-template-columns: 1fr; }
-      .api{ grid-template-columns: 1fr; }
-      .form-wrap{ grid-template-columns: 1fr; }
+      .mini-grid{ grid-template-columns: 1fr; }
       .grid-3{ grid-template-columns: 1fr; }
       .grid-2{ grid-template-columns: 1fr; }
-      .stats{ grid-template-columns: 1fr; }
-      .nav-links{ display:none; }
+      .api{ grid-template-columns: 1fr; }
+      .form-wrap{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
-
   <div class="nav">
     <div class="container">
       <div class="nav-inner">
         <a class="brand" href="#top" aria-label="Vixai Home">
-          <span class="logo" aria-hidden="true"></span>
+          <span class="mark" aria-hidden="true"></span>
           <span>Vixai</span>
         </a>
 
-        <div class="nav-links" aria-label="Primary navigation">
+        <div class="nav-links">
           <a href="#product">Product</a>
           <a href="#api">API</a>
           <a href="#trust">Trust</a>
@@ -379,101 +375,87 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-grid">
-        <div class="hero-card">
-          <div class="kicker">Search-grade AI for unstructured data</div>
-
+        <div class="panel">
+          <div class="badge"><span class="dot" aria-hidden="true"></span> Search-grade AI for unstructured data</div>
           <h1>Find the needle in your emails and documents — with proof.</h1>
-
           <p class="sub">
             Vixai ingests unstructured information (email threads, PDFs, images, attachments, notes),
             structures it progressively, and delivers high-recall search + grounded answers with citations.
             Built to work across domains — legal, engineering, operations, finance, and beyond.
           </p>
 
-          <div class="hero-actions">
+          <div class="actions">
             <a class="btn btn-primary" href="#signup">Get access</a>
             <a class="btn" href="#api">Explore the API</a>
             <a class="btn" href="#how">See how it works</a>
           </div>
 
-          <div class="stats" aria-label="Key capabilities">
-            <div class="stat">
+          <div class="mini-grid" aria-label="Key capabilities">
+            <div class="mini">
               <b>High recall retrieval</b>
               <span>Hybrid search + reranking</span>
             </div>
-            <div class="stat">
+            <div class="mini">
               <b>Grounded answers</b>
               <span>Citations + “not found” support</span>
             </div>
-            <div class="stat">
+            <div class="mini">
               <b>Multi-tenant by design</b>
               <span>Isolation, auditability, cost control</span>
             </div>
           </div>
         </div>
 
-        <div class="hero-side">
-          <div class="side-card">
+        <div class="side">
+          <div class="panel">
             <div class="pill">Production-ready pipeline</div>
-            <div class="chip-row" aria-label="Highlights">
-              <span class="chip">IMAP sync</span>
-              <span class="chip">Attachments</span>
-              <span class="chip">Deduplication</span>
-              <span class="chip">Incremental ingest</span>
-              <span class="chip">Explainable retrieval</span>
-            </div>
-
-            <pre class="mono" aria-label="Example query + answer">
-Q: “Do we have a clause about termination notice?”
-A: Found in 2 documents.
-- Contract_2024.pdf (Section 9.2), citation included
-- Email thread “Renewal terms” (Mar 18), citation included
+            <p class="quote">
+              “Do we have a clause about termination notice?” → Vixai returns the clause, the document section,
+              and the exact cited excerpt — or clearly says it can’t be found.
+            </p>
+            <pre class="mono" aria-label="Example response format">
+Answer: Termination notice is 30 days.
+Sources:
+- Contract_2024.pdf — Section 9.2 (excerpt cited)
+- Email thread “Renewal terms” — Mar 18 (excerpt cited)
 Confidence: High
             </pre>
           </div>
 
-          <div class="side-card">
-            <div style="font-weight:900; letter-spacing:-0.01em;">Built for both end users and builders</div>
-            <p style="margin:8px 0 0; color: var(--muted); font-size:13px;">
+          <div class="panel">
+            <h3 style="margin:0 0 6px; font-size:15px; font-weight:750;">Built for end users and builders</h3>
+            <p style="margin:0; color: var(--muted); font-size:13px;">
               Use Vixai as a full product or integrate it as your internal search engine via API — same core, same guarantees.
             </p>
-            <div class="tag-row">
-              <span class="tag">Search</span>
-              <span class="tag">Ingestion</span>
-              <span class="tag">RAG</span>
-              <span class="tag">API-first</span>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PRODUCT (Consumer) -->
+    <!-- PRODUCT -->
     <section id="product">
-      <div class="section-title">
+      <div class="section-head">
         <div>
-          <h2>For end users: clarity, speed, and traceability</h2>
-          <p class="lead">
-            Vixai turns messy information into a reliable knowledge layer. Ask questions, locate sources, and validate answers instantly.
-          </p>
+          <h2>For end users</h2>
+          <p class="lead">Clarity, speed, and traceability — across emails and documents.</p>
         </div>
       </div>
 
       <div class="grid-3">
         <div class="card">
-          <h3>Ingest everything you already use</h3>
+          <h3>Ingest what you already use</h3>
           <p>Emails, threads, PDFs, images, attachments and documents — processed and structured without manual tagging.</p>
-          <ul class="bullet">
-            <li>Incremental sync and deduplication to avoid reprocessing</li>
+          <ul>
+            <li>Incremental sync + deduplication to avoid reprocessing</li>
             <li>Progress tracking per sync job</li>
-            <li>Multi-tenant isolation by default</li>
+            <li>Tenant isolation by design</li>
           </ul>
         </div>
 
         <div class="card">
-          <h3>Search that doesn’t miss the rare detail</h3>
-          <p>Hybrid retrieval is built to catch identifiers, names, and rare terms — not just “similar” content.</p>
-          <ul class="bullet">
+          <h3>Search that catches rare details</h3>
+          <p>Hybrid retrieval is built to catch identifiers, names, and rare terms — not just “similar” text.</p>
+          <ul>
             <li>Dense + sparse signals (needle-friendly)</li>
             <li>Reranking for precision</li>
             <li>Document/thread consolidation</li>
@@ -481,9 +463,9 @@ Confidence: High
         </div>
 
         <div class="card">
-          <h3>Answers you can trust</h3>
-          <p>Every response is grounded in source material with citations. If it’s not there, Vixai says so.</p>
-          <ul class="bullet">
+          <h3>Answers you can verify</h3>
+          <p>Every response is grounded with citations. If evidence is missing, Vixai returns “not found”.</p>
+          <ul>
             <li>Mandatory citations</li>
             <li>Explicit “not found” behavior</li>
             <li>Auditability and traceability</li>
@@ -492,22 +474,20 @@ Confidence: High
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
+    <!-- HOW -->
     <section id="how">
-      <div class="section-title">
+      <div class="section-head">
         <div>
           <h2>How it works</h2>
-          <p class="lead">
-            A universal ingestion + retrieval pipeline designed for any domain, with progressive structure and explainable outcomes.
-          </p>
+          <p class="lead">A domain-agnostic ingestion + retrieval pipeline designed for production.</p>
         </div>
       </div>
 
       <div class="grid-2">
         <div class="card">
           <h3>1) Ingest & normalize</h3>
-          <p>Connect your mailbox (IMAP), sync manual or automatic, extract email body + attachments, and normalize into a canonical model.</p>
-          <ul class="bullet">
+          <p>Connect your mailbox (IMAP), sync manual or automatic, extract body + attachments, and normalize into a canonical model.</p>
+          <ul>
             <li>Canonical entities: Document, Artifact, Chunk, Relations</li>
             <li>Universal metadata: source, time, author, type, language</li>
             <li>Deduplication: Message-ID + normalized fingerprint fallback</li>
@@ -517,7 +497,7 @@ Confidence: High
         <div class="card">
           <h3>2) Structure progressively</h3>
           <p>Build lightweight hierarchy and summaries over time — without domain-specific assumptions.</p>
-          <ul class="bullet">
+          <ul>
             <li>Section/page hierarchy when available</li>
             <li>Email ↔ attachment relationships</li>
             <li>Summaries per section and per document</li>
@@ -527,7 +507,7 @@ Confidence: High
         <div class="card">
           <h3>3) Index multi-representation</h3>
           <p>Multiple search views for higher recall: chunk, document, title/subject, and sparse tokens for rare identifiers.</p>
-          <ul class="bullet">
+          <ul>
             <li>Chunk embeddings + doc-level embeddings</li>
             <li>Title/subject embeddings</li>
             <li>Sparse representation for exact matches</li>
@@ -537,7 +517,7 @@ Confidence: High
         <div class="card">
           <h3>4) Retrieve, rerank, cite</h3>
           <p>Candidate generation → reranking → consolidation → grounded response with citations (or explicit “not found”).</p>
-          <ul class="bullet">
+          <ul>
             <li>Hybrid candidate generation</li>
             <li>Lightweight reranking for precision</li>
             <li>Citations and confidence signals</li>
@@ -548,36 +528,26 @@ Confidence: High
 
     <!-- API -->
     <section id="api">
-      <div class="section-title">
+      <div class="section-head">
         <div>
-          <h2>For builders: Vixai as your Search & Intelligence Engine (API)</h2>
-          <p class="lead">
-            Integrate Vixai into your product as a retrieval layer over unstructured data — with multi-tenant isolation, observability, and grounded outputs.
-          </p>
+          <h2>For builders: API / Engine</h2>
+          <p class="lead">Integrate Vixai as your search & intelligence layer for unstructured data.</p>
         </div>
       </div>
 
       <div class="api">
         <div class="card">
-          <h3>API outcomes (what you get)</h3>
-          <p>Not just embeddings: a complete retrieval pipeline with explainability and operational guarantees.</p>
-          <ul class="bullet">
+          <h3>What the API provides</h3>
+          <p>Not just embeddings — a full retrieval pipeline with explainability and operational guarantees.</p>
+          <ul>
             <li>Ingestion + incremental sync + deduplication</li>
             <li>Hybrid retrieval + reranking pipeline</li>
             <li>Grounded answers with citations, confidence, and “not found”</li>
             <li>Per-tenant cost control and job progress traceability</li>
           </ul>
-
-          <div class="tag-row" aria-label="API characteristics">
-            <span class="tag">Multi-tenant</span>
-            <span class="tag">Hybrid search</span>
-            <span class="tag">Reranking</span>
-            <span class="tag">Citations</span>
-            <span class="tag">Observability</span>
-          </div>
         </div>
 
-        <pre class="codebox" aria-label="Illustrative API shape (example)">
+        <pre class="code" aria-label="Illustrative API shape (example)">
 # Illustrative API shape (example)
 POST /v1/ingest
 {
@@ -609,14 +579,12 @@ POST /v1/answer
       </div>
     </section>
 
-    <!-- TRUST / SECURITY -->
+    <!-- TRUST -->
     <section id="trust">
-      <div class="section-title">
+      <div class="section-head">
         <div>
-          <h2>Trust, safety, and operational control</h2>
-          <p class="lead">
-            Built for production realities: isolation, traceability, and conservative behavior when evidence is insufficient.
-          </p>
+          <h2>Trust and control</h2>
+          <p class="lead">Built for production realities: isolation, traceability, and conservative behavior.</p>
         </div>
       </div>
 
@@ -638,22 +606,19 @@ POST /v1/answer
 
     <!-- SIGNUP -->
     <section id="signup">
-      <div class="section-title">
+      <div class="section-head">
         <div>
           <h2>Request access</h2>
-          <p class="lead">
-            Tell us what you want to use: the end-user product, the API, or both. We’ll follow up with the next steps.
-          </p>
+          <p class="lead">Tell us what you want to use: the product, the API, or both. We’ll follow up with next steps.</p>
         </div>
       </div>
 
       <div class="form-wrap">
         <div class="card">
           <h3>Sign up</h3>
-          <p class="form-note">No pricing shown here. We’ll contact you with onboarding details.</p>
+          <p class="note">No pricing shown here. We’ll contact you with onboarding details.</p>
           <div style="height:10px"></div>
 
-          <!-- Formspree endpoint provided -->
           <form action="https://formspree.io/f/xeejqrbk" method="POST">
             <div class="row">
               <div>
@@ -669,7 +634,7 @@ POST /v1/answer
             <div class="row">
               <div>
                 <label for="company">Company (optional)</label>
-                <input id="company" name="company" type="text" placeholder="Vixai Technologies Ltd" />
+                <input id="company" name="company" type="text" placeholder="Company name" />
               </div>
               <div>
                 <label for="interest">Interested in</label>
@@ -687,64 +652,31 @@ POST /v1/answer
               <textarea id="message" name="message" placeholder="Example: We want to search across emails and PDFs and always cite the source."></textarea>
             </div>
 
-            <!-- Helps Formspree identify subject -->
             <input type="hidden" name="_subject" value="New Vixai signup request" />
 
             <button class="btn btn-primary" type="submit">Submit request</button>
-            <p class="form-note">By submitting, you agree to be contacted about Vixai. Do not include sensitive secrets in this form.</p>
+            <p class="note">By submitting, you agree to be contacted about Vixai. Do not include sensitive secrets in this form.</p>
           </form>
         </div>
 
         <div class="card">
           <h3>What happens next</h3>
-          <p>We’ll reply with access and onboarding guidance depending on your use case.</p>
-          <ul class="bullet">
-            <li><b>End-user product:</b> connect your mailbox, ingest documents, and start asking questions with citations.</li>
+          <p class="note">We’ll reply with onboarding guidance depending on your use case.</p>
+          <ul>
+            <li><b>Product:</b> connect your mailbox, ingest documents, and start asking questions with citations.</li>
             <li><b>API:</b> receive integration details, tenant provisioning, and example workflows.</li>
             <li><b>Both:</b> use the UI for validation and the API for embedding in your product.</li>
           </ul>
 
           <div style="height:12px"></div>
-          <h3 style="margin-top:0;">Use cases that fit any domain</h3>
-          <ul class="bullet">
+          <h3>Domain-agnostic use cases</h3>
+          <ul>
             <li>Contract / policy discovery with citations</li>
             <li>Engineering support over manuals and incident emails</li>
             <li>Operations: approvals, receipts, and decision trails</li>
             <li>Finance: invoices, vendor terms, audit preparation</li>
-            <li>Customer support escalation and root-cause discovery</li>
+            <li>Support escalation and root-cause discovery</li>
           </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq">
-      <div class="section-title">
-        <div>
-          <h2>FAQ</h2>
-          <p class="lead">Short, direct answers.</p>
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>Does Vixai work outside a specific niche?</h3>
-          <p>Yes. The ingestion model and retrieval pipeline are domain-agnostic. Optional per-tenant calibration improves relevance without custom development.</p>
-        </div>
-
-        <div class="card">
-          <h3>Will Vixai hallucinate answers?</h3>
-          <p>Grounding is mandatory. Responses include citations, and Vixai can explicitly return “not found” when evidence is insufficient.</p>
-        </div>
-
-        <div class="card">
-          <h3>Can I integrate via API only?</h3>
-          <p>Yes. The same retrieval engine that powers the product can be exposed as an API layer for your application.</p>
-        </div>
-
-        <div class="card">
-          <h3>Do you support automatic sync?</h3>
-          <p>Yes. Sync runs can be manual or scheduled, with job status, progress, and error visibility.</p>
         </div>
       </div>
     </section>
@@ -755,10 +687,9 @@ POST /v1/answer
     <div class="container">
       <div class="foot">
         <div><b>Vixai</b> — Unstructured data, searchable and explainable.</div>
-        <div>© <span id="year">2025</span> Vixai. All rights reserved.</div>
+        <div>© 2025 Vixai. All rights reserved.</div>
       </div>
     </div>
   </footer>
-
 </body>
 </html>
