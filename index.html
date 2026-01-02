@@ -11,7 +11,6 @@
   <meta property="og:description" content="Vixai turns messy emails, documents, spreadsheets and attachments into searchable, explainable knowledge. Grounded answers with citations — for end users and via API." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://vixai.app" />
-  <meta property="og:image" content="https://vixai.app/og-image.jpg" /> <!-- adicione uma imagem 1200x630 na raiz depois -->
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -25,13 +24,13 @@
     :root{
       --bg: #f7f9fc;
       --card: #ffffff;
-      --text: #0f172a; /* slate-900 */
-      --muted: #475569; /* slate-600 */
+      --text: #0f172a;
+      --muted: #475569;
       --line: rgba(15,23,42,.10);
-      --brand: #2563eb; /* blue-600 */
-      --brand2:#06b6d4; /* cyan-500 */
-      --ok:#16a34a; /* green-600 */
-      --warn:#f59e0b; /* amber-500 */
+      --brand: #2563eb;
+      --brand2:#06b6d4;
+      --ok:#16a34a;
+      --warn:#f59e0b;
       --shadow: 0 18px 50px rgba(2,6,23,.08);
       --radius: 18px;
       --radius2: 14px;
@@ -52,7 +51,6 @@
     }
     a{ color: inherit; text-decoration: none; }
     .container{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-    /* Top nav */
     .nav{
       position: sticky; top: 0; z-index: 50;
       backdrop-filter: blur(14px);
@@ -112,7 +110,6 @@
       box-shadow: 0 18px 40px rgba(37,99,235,.25);
     }
     .btn-primary:hover{ box-shadow: 0 22px 50px rgba(37,99,235,.30); }
-    /* Hero */
     .hero{
       padding: 56px 0 26px;
     }
@@ -208,7 +205,6 @@
       overflow:auto;
       white-space: pre;
     }
-    /* Sections */
     section{ padding: 28px 0; }
     .section-title{
       display:flex; align-items:flex-end; justify-content:space-between;
@@ -262,7 +258,6 @@
       font-weight: 800;
       font-size: 12px;
     }
-    /* API block */
     .api{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -292,7 +287,6 @@
       background: rgba(37,99,235,.10);
       color: rgba(37,99,235,1);
     }
-    /* Form */
     .form-wrap{
       display:grid;
       grid-template-columns: 1.05fr .95fr;
@@ -333,7 +327,6 @@
       font-size: 12px;
       margin: 0;
     }
-    /* Footer */
     footer{
       padding: 22px 0 38px;
       border-top: 1px solid var(--line);
@@ -344,7 +337,6 @@
       display:flex; justify-content:space-between; align-items:center;
       gap: 10px; flex-wrap:wrap;
     }
-    /* Responsive */
     @media (max-width: 980px){
       .hero-grid{ grid-template-columns: 1fr; }
       .api{ grid-template-columns: 1fr; }
@@ -376,7 +368,6 @@
     </div>
   </div>
   <main id="top" class="container">
-    <!-- HERO -->
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-card">
@@ -441,12 +432,279 @@ Confidence: High
         </div>
       </div>
     </section>
-    <!-- O resto da página permanece exatamente igual ao seu original -->
-    <!-- (PRODUCT, HOW, API, TRUST, SIGNUP, FAQ, FOOTER) -->
-    <!-- Copiei apenas até aqui para não repetir tudo, mas você mantém o resto igual -->
 
-    <!-- ... todo o conteúdo que você já tinha abaixo permanece inalterado ... -->
+    <!-- PRODUCT -->
+    <section id="product">
+      <div class="section-title">
+        <div>
+          <h2>For end users: clarity, speed, and traceability</h2>
+          <p class="lead">
+            Vixai turns messy information into a reliable knowledge layer. Ask questions, locate sources, and validate answers instantly.
+          </p>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Ingest everything you already use</h3>
+          <p>Emails, threads, PDFs, images, attachments and documents — processed and structured without manual tagging.</p>
+          <ul class="bullet">
+            <li>Incremental sync and deduplication to avoid reprocessing</li>
+            <li>Progress tracking per sync job</li>
+            <li>Multi-tenant isolation by default</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Search that doesn’t miss the rare detail</h3>
+          <p>Hybrid retrieval is built to catch identifiers, names, and rare terms — not just “similar” content.</p>
+          <ul class="bullet">
+            <li>Dense + sparse signals (needle-friendly)</li>
+            <li>Reranking for precision</li>
+            <li>Document/thread consolidation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Answers you can trust</h3>
+          <p>Every response is grounded in source material with citations. If it’s not there, Vixai says so.</p>
+          <ul class="bullet">
+            <li>Mandatory citations</li>
+            <li>Explicit “not found” behavior</li>
+            <li>Auditability and traceability</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
+    <!-- HOW IT WORKS -->
+    <section id="how">
+      <div class="section-title">
+        <div>
+          <h2>How it works</h2>
+          <p class="lead">
+            A universal ingestion + retrieval pipeline designed for any domain, with progressive structure and explainable outcomes.
+          </p>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>1) Ingest & normalize</h3>
+          <p>Connect your mailbox (IMAP), sync manual or automatic, extract email body + attachments, and normalize into a canonical model.</p>
+          <ul class="bullet">
+            <li>Canonical entities: Document, Artifact, Chunk, Relations</li>
+            <li>Universal metadata: source, time, author, type, language</li>
+            <li>Deduplication: Message-ID + normalized fingerprint fallback</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>2) Structure progressively</h3>
+          <p>Build lightweight hierarchy and summaries over time — without domain-specific assumptions.</p>
+          <ul class="bullet">
+            <li>Section/page hierarchy when available</li>
+            <li>Email ↔ attachment relationships</li>
+            <li>Summaries per section and per document</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>3) Index multi-representation</h3>
+          <p>Multiple search views for higher recall: chunk, document, title/subject, and sparse tokens for rare identifiers.</p>
+          <ul class="bullet">
+            <li>Chunk embeddings + doc-level embeddings</li>
+            <li>Title/subject embeddings</li>
+            <li>Sparse representation for exact matches</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>4) Retrieve, rerank, cite</h3>
+          <p>Candidate generation → reranking → consolidation → grounded response with citations (or explicit “not found”).</p>
+          <ul class="bullet">
+            <li>Hybrid candidate generation</li>
+            <li>Lightweight reranking for precision</li>
+            <li>Citations and confidence signals</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- API -->
+    <section id="api">
+      <div class="section-title">
+        <div>
+          <h2>For builders: Vixai as your Search & Intelligence Engine (API)</h2>
+          <p class="lead">
+            Integrate Vixai into your product as a retrieval layer over unstructured data — with multi-tenant isolation, observability, and grounded outputs.
+          </p>
+        </div>
+      </div>
+      <div class="api">
+        <div class="card">
+          <h3>API outcomes (what you get)</h3>
+          <p>Not just embeddings: a complete retrieval pipeline with explainability and operational guarantees.</p>
+          <ul class="bullet">
+            <li>Ingestion + incremental sync + deduplication</li>
+            <li>Hybrid retrieval + reranking pipeline</li>
+            <li>Grounded answers with citations, confidence, and “not found”</li>
+            <li>Per-tenant cost control and job progress traceability</li>
+          </ul>
+          <div class="tag-row" aria-label="API characteristics">
+            <span class="tag">Multi-tenant</span>
+            <span class="tag">Hybrid search</span>
+            <span class="tag">Reranking</span>
+            <span class="tag">Citations</span>
+            <span class="tag">Observability</span>
+          </div>
+        </div>
+        <pre class="codebox" aria-label="Illustrative API shape (example)">
+# Illustrative API shape (example)
+POST /v1/ingest
+{
+  "tenant_id": "t_123",
+  "source": { "type": "imap", "mailbox": "INBOX" },
+  "mode": "incremental"
+}
+POST /v1/search
+{
+  "tenant_id": "t_123",
+  "query": "termination notice clause",
+  "filters": { "source_type": ["email","pdf"], "date_from": "2024-01-01" },
+  "k": 25
+}
+POST /v1/answer
+{
+  "tenant_id": "t_123",
+  "query": "What is the termination notice period?",
+  "policy": { "require_citations": true, "allow_not_found": true }
+}
+# Response returns:
+# - citations (doc_id + excerpt)
+# - confidence
+# - retrieval trace (optional)
+        </pre>
+      </div>
+    </section>
+
+    <!-- TRUST / SECURITY -->
+    <section id="trust">
+      <div class="section-title">
+        <div>
+          <h2>Trust, safety, and operational control</h2>
+          <p class="lead">
+            Built for production realities: isolation, traceability, and conservative behavior when evidence is insufficient.
+          </p>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Isolation by tenant</h3>
+          <p>Collections and storage are segmented per tenant, preventing cross-tenant leakage and enabling clean compliance boundaries.</p>
+        </div>
+        <div class="card">
+          <h3>Auditability</h3>
+          <p>Every sync run is a job with status, progress, errors, and cost signals — designed to debug production issues fast.</p>
+        </div>
+        <div class="card">
+          <h3>Conservative answers</h3>
+          <p>Grounding is mandatory. If evidence is missing, Vixai returns “not found” instead of guessing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNUP (FORMULÁRIO COMPLETO PRESERVADO) -->
+    <section id="signup">
+      <div class="section-title">
+        <div>
+          <h2>Request access</h2>
+          <p class="lead">
+            Tell us what you want to use: the end-user product, the API, or both. We’ll follow up with the next steps.
+          </p>
+        </div>
+      </div>
+      <div class="form-wrap">
+        <div class="card">
+          <h3>Sign up</h3>
+          <p class="form-note">No pricing shown here. We’ll contact you with onboarding details.</p>
+          <div style="height:10px"></div>
+          <form action="https://formspree.io/f/xeejqrbk" method="POST">
+            <div class="row">
+              <div>
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="jane@company.com" required />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="company">Company (optional)</label>
+                <input id="company" name="company" type="text" placeholder="Vixai Technologies Ltd" />
+              </div>
+              <div>
+                <label for="interest">Interested in</label>
+                <select id="interest" name="interest" required>
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="consumer">End-user product</option>
+                  <option value="api">API / Engine</option>
+                  <option value="both">Both</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="message">What do you want to solve?</label>
+              <textarea id="message" name="message" placeholder="Example: We want to search across emails and PDFs and always cite the source."></textarea>
+            </div>
+            <input type="hidden" name="_subject" value="New Vixai signup request" />
+            <button class="btn btn-primary" type="submit">Submit request</button>
+            <p class="form-note">By submitting, you agree to be contacted about Vixai. Do not include sensitive secrets in this form.</p>
+          </form>
+        </div>
+        <div class="card">
+          <h3>What happens next</h3>
+          <p>We’ll reply with access and onboarding guidance depending on your use case.</p>
+          <ul class="bullet">
+            <li><b>End-user product:</b> connect your mailbox, ingest documents, and start asking questions with citations.</li>
+            <li><b>API:</b> receive integration details, tenant provisioning, and example workflows.</li>
+            <li><b>Both:</b> use the UI for validation and the API for embedding in your product.</li>
+          </ul>
+          <div style="height:12px"></div>
+          <h3 style="margin-top:0;">Use cases that fit any domain</h3>
+          <ul class="bullet">
+            <li>Contract / policy discovery with citations</li>
+            <li>Engineering support over manuals and incident emails</li>
+            <li>Operations: approvals, receipts, and decision trails</li>
+            <li>Finance: invoices, vendor terms, audit preparation</li>
+            <li>Customer support escalation and root-cause discovery</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="section-title">
+        <div>
+          <h2>FAQ</h2>
+          <p class="lead">Short, direct answers.</p>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Does Vixai work outside a specific niche?</h3>
+          <p>Yes. The ingestion model and retrieval pipeline are domain-agnostic. Optional per-tenant calibration improves relevance without custom development.</p>
+        </div>
+        <div class="card">
+          <h3>Will Vixai hallucinate answers?</h3>
+          <p>Grounding is mandatory. Responses include citations, and Vixai can explicitly return “not found” when evidence is insufficient.</p>
+        </div>
+        <div class="card">
+          <h3>Can I integrate via API only?</h3>
+          <p>Yes. The same retrieval engine that powers the product can be exposed as an API layer for your application.</p>
+        </div>
+        <div class="card">
+          <h3>Do you support automatic sync?</h3>
+          <p>Yes. Sync runs can be manual or scheduled, with job status, progress, and error visibility.</p>
+        </div>
+      </div>
+    </section>
   </main>
   <footer>
     <div class="container">
