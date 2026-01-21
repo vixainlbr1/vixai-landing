@@ -1,17 +1,25 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta
-      name="description"
-      content="Vixai automates business systems with AI — practical workflows, measurable ROI, and production-grade operations across Europe."
-    />
-    <title>Vixai — AI Automation for Business Systems</title>
-
-    <!-- Tailwind CDN (fast launch). For production, consider compiling Tailwind. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Vixai — Desenvolvedor full stack especializado em soluções web com IA. Automação inteligente, integrações LLM, RAG, fluxos produtivos e manutenção confiável na Europa (Groningen, NL)." />
+    <meta name="keywords" content="desenvolvedor full stack IA, automação IA, integração IA full stack, desenvolvedor web IA Europa, freelancer full stack Groningen, soluções IA para empresas, RAG LLM, automação processos negócios, desenvolvimento full stack Next.js" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Vixai - Gabriel" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Vixai — Full Stack Developer & Soluções com IA" />
+    <meta property="og:description" content="Desenvolvimento full stack com IA integrada: sistemas web, automações, extração de dados, chatbots RAG e manutenção produção-grade na Europa." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vixai.app" />
+    <meta property="og:locale" content="pt_PT" />
+    
+    <title>Vixai — Desenvolvedor Full Stack & Soluções com IA | Groningen, NL</title>
+    
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    
     <style>
       .glass { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
       .gradient-bg {
@@ -21,44 +29,55 @@
           radial-gradient(1000px circle at 40% 92%, rgba(168,85,247,0.18), transparent 48%),
           #0b1220;
       }
-      .card {
-        background: rgba(255,255,255,0.06);
-        border: 1px solid rgba(255,255,255,0.10);
-      }
-      .card-light {
-        background: rgba(0,0,0,0.02);
-        border: 1px solid rgba(0,0,0,0.08);
-      }
-      .focus-ring:focus {
-        outline: none;
-        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
-        border-color: rgba(99, 102, 241, 0.6);
-      }
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.35rem 0.75rem;
-        border-radius: 9999px;
-        background: rgba(255,255,255,0.10);
-        border: 1px solid rgba(255,255,255,0.12);
-        color: rgba(255,255,255,0.85);
-        font-size: 0.875rem;
-      }
-      .pill {
-        display: inline-flex;
-        padding: 0.25rem 0.6rem;
-        border-radius: 9999px;
-        background: rgba(99,102,241,0.12);
-        border: 1px solid rgba(99,102,241,0.25);
-        color: rgb(79,70,229);
-        font-size: 0.75rem;
-        font-weight: 600;
-      }
+      .card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); }
+      .card-light { background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.08); }
+      .focus-ring:focus { outline: none; box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25); border-color: rgba(99, 102, 241, 0.6); }
+      .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.75rem; border-radius: 9999px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); font-size: 0.875rem; }
+      .pill { display: inline-flex; padding: 0.25rem 0.6rem; border-radius: 9999px; background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25); color: rgb(79,70,229); font-size: 0.75rem; font-weight: 600; }
     </style>
-  </head>
 
-  <body class="text-slate-900 bg-white">
+    <!-- JSON-LD para SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Vixai",
+      "url": "https://vixai.app",
+      "logo": "https://vixai.app/logo.png",
+      "description": "Estúdio de desenvolvimento full stack com foco em integrações de IA para empresas europeias.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Groningen",
+        "addressCountry": "NL"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Gabriel"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Desenvolvimento Full Stack com IA",
+      "provider": {
+        "@type": "Organization",
+        "name": "Vixai"
+      },
+      "areaServed": "Europa",
+      "description": "Criação de sistemas web completos, automações com IA, integrações LLM, RAG e manutenção produção-grade.",
+      "offers": {
+        "@type": "Offer",
+        "name": "AI Automation Audit",
+        "priceCurrency": "EUR",
+        "price": "TBD",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+  </head>
+  <body class="text-slate-900 bg-white antialiased">
     <!-- Header / Hero -->
     <header class="gradient-bg text-white">
       <div class="mx-auto max-w-6xl px-6">
@@ -69,24 +88,21 @@
             </div>
             <div class="leading-tight">
               <div class="font-semibold tracking-tight text-lg">Vixai</div>
-              <div class="text-xs text-white/70">AI Automation Studio</div>
+              <div class="text-xs text-white/70">Full Stack & IA</div>
             </div>
           </a>
-
           <div class="hidden md:flex items-center gap-7 text-sm text-white/80">
-            <a class="hover:text-white" href="#what">What We Automate</a>
-            <a class="hover:text-white" href="#services">Services</a>
-            <a class="hover:text-white" href="#packages">Packages</a>
-            <a class="hover:text-white" href="#process">Process</a>
-            <a class="hover:text-white" href="#stack">Stack</a>
-            <a class="hover:text-white" href="#contact">Contact</a>
+            <a class="hover:text-white" href="#skills">Skills</a>
+            <a class="hover:text-white" href="#what">O que entrego</a>
+            <a class="hover:text-white" href="#services">Serviços</a>
+            <a class="hover:text-white" href="#packages">Pacotes</a>
+            <a class="hover:text-white" href="#process">Processo</a>
+            <a class="hover:text-white" href="#contact">Contato</a>
           </div>
-
           <div class="flex items-center gap-3">
             <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-sm font-medium">
-              Book a Call
+              Agende uma Call
             </a>
-
             <button id="mobileMenuBtn" class="md:hidden inline-flex px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-sm">
               Menu
             </button>
@@ -97,12 +113,12 @@
         <div id="mobileMenu" class="md:hidden hidden pb-6">
           <div class="glass card rounded-xl p-4">
             <div class="grid gap-3 text-sm text-white/85">
-              <a class="hover:text-white" href="#what">What We Automate</a>
-              <a class="hover:text-white" href="#services">Services</a>
-              <a class="hover:text-white" href="#packages">Packages</a>
-              <a class="hover:text-white" href="#process">Process</a>
-              <a class="hover:text-white" href="#stack">Stack</a>
-              <a class="hover:text-white" href="#contact">Contact</a>
+              <a class="hover:text-white" href="#skills">Skills</a>
+              <a class="hover:text-white" href="#what">O que entrego</a>
+              <a class="hover:text-white" href="#services">Serviços</a>
+              <a class="hover:text-white" href="#packages">Pacotes</a>
+              <a class="hover:text-white" href="#process">Processo</a>
+              <a class="hover:text-white" href="#contact">Contato</a>
             </div>
           </div>
         </div>
@@ -112,481 +128,358 @@
             <div class="lg:col-span-7">
               <div class="badge">
                 <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-                AI-first automation for business systems (Europe)
+                Desenvolvedor full stack + IA — Groningen, NL
               </div>
-
               <h1 class="mt-5 text-4xl md:text-5xl font-semibold tracking-tight">
-                Automate operations with AI — reduce manual work, accelerate decisions, and scale reliably.
+                Soluções full stack com IA integrada — sistemas rápidos, confiáveis e escaláveis
               </h1>
-
               <p class="mt-4 text-lg text-white/75 leading-relaxed">
-                Vixai builds AI-powered automations on top of your existing tools and data. We deliver end-to-end:
-                design, engineering, deployment, and ongoing maintenance with measurable outcomes.
+                Vixai desenvolve aplicações web completas (frontend, backend, banco, integrações) e incorpora IA de forma prática: automações, extração de documentos, chat inteligente, RAG, workflows produtivos — sempre com governança, logs de auditoria e controle de custos.
               </p>
-
               <div class="mt-7 flex flex-col sm:flex-row gap-3">
                 <a href="#contact" class="inline-flex justify-center px-5 py-3 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-medium">
-                  Get an AI Automation Proposal
+                  Solicite Proposta Personalizada
                 </a>
                 <a href="#packages" class="inline-flex justify-center px-5 py-3 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium">
-                  View Packages
+                  Ver Pacotes
                 </a>
               </div>
-
               <div class="mt-8 grid sm:grid-cols-3 gap-4">
                 <div class="card glass rounded-xl p-4">
-                  <div class="text-sm text-white/70">Typical ROI drivers</div>
-                  <div class="mt-1 text-xl font-semibold">Time + Cost</div>
-                  <div class="mt-1 text-sm text-white/70">Less manual work, fewer errors</div>
+                  <div class="text-sm text-white/70">Foco principal</div>
+                  <div class="mt-1 text-xl font-semibold">Full Stack + IA</div>
+                  <div class="mt-1 text-sm text-white/70">Sistemas completos e inteligentes</div>
                 </div>
                 <div class="card glass rounded-xl p-4">
-                  <div class="text-sm text-white/70">Core capability</div>
-                  <div class="mt-1 text-xl font-semibold">Automation</div>
-                  <div class="mt-1 text-sm text-white/70">AI workflows + integrations</div>
+                  <div class="text-sm text-white/70">Entrega</div>
+                  <div class="mt-1 text-xl font-semibold">Produção</div>
+                  <div class="mt-1 text-sm text-white/70">Monitoramento, backups, governança</div>
                 </div>
                 <div class="card glass rounded-xl p-4">
-                  <div class="text-sm text-white/70">Operations</div>
-                  <div class="mt-1 text-xl font-semibold">Reliable</div>
-                  <div class="mt-1 text-sm text-white/70">Monitoring, budgets, governance</div>
+                  <div class="text-sm text-white/70">Localização</div>
+                  <div class="mt-1 text-xl font-semibold">Europa</div>
+                  <div class="mt-1 text-sm text-white/70">Groningen, Países Baixos</div>
                 </div>
               </div>
-
               <div class="mt-8 flex flex-wrap gap-2">
-                <span class="pill">RAG / Knowledge Chat</span>
-                <span class="pill">Email + Ticket triage</span>
-                <span class="pill">Document automation</span>
-                <span class="pill">Customer support copilots</span>
-                <span class="pill">Reporting automation</span>
-                <span class="pill">AI cost controls</span>
+                <span class="pill">Full Stack</span>
+                <span class="pill">Integração IA</span>
+                <span class="pill">LLM / RAG</span>
+                <span class="pill">Automação</span>
+                <span class="pill">Extração Dados</span>
+                <span class="pill">Manutenção</span>
               </div>
             </div>
 
-            <div class="lg:col-span-5">
+            <div class="lg:col-span-5 space-y-6">
               <div class="card glass rounded-2xl p-6">
                 <div class="flex items-center justify-between">
                   <div>
-                    <div class="text-sm text-white/70">Fast entry offer</div>
+                    <div class="text-sm text-white/70">Oferta rápida</div>
                     <div class="text-lg font-semibold">AI Automation Audit</div>
                   </div>
-                  <div class="text-sm text-white/80 px-3 py-1.5 rounded-full bg-white/10 border border-white/10">7 days</div>
+                  <div class="text-sm text-white/80 px-3 py-1.5 rounded-full bg-white/10 border border-white/10">7 dias</div>
                 </div>
-
                 <p class="mt-3 text-sm text-white/75">
-                  Identify the highest-leverage workflows to automate, quantify impact, and deliver a small working proof of concept.
+                  Mapeio fluxos, identifico oportunidades de IA/automação, estimo ROI e entrego PoC funcional.
                 </p>
-
                 <ul class="mt-5 text-sm text-white/75 space-y-2">
-                  <li>• Workflow map + automation opportunities</li>
-                  <li>• ROI estimate (time saved / cost avoided)</li>
-                  <li>• PoC: one automation live (limited scope)</li>
-                  <li>• Production plan (security, ops, budget controls)</li>
+                  <li>• Mapa de processos + oportunidades</li>
+                  <li>• Estimativa ROI (tempo/custo)</li>
+                  <li>• PoC live (escopo pequeno)</li>
+                  <li>• Plano de produção (segurança, orçamento)</li>
                 </ul>
-
                 <a href="#contact" class="mt-6 inline-flex w-full justify-center px-4 py-2.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium">
-                  Request the Audit
+                  Solicitar Audit
                 </a>
               </div>
 
-              <div class="mt-4 card glass rounded-2xl p-6">
-                <h2 class="text-lg font-semibold">What “AI automation” means in practice</h2>
+              <div class="card glass rounded-2xl p-6">
+                <h2 class="text-lg font-semibold">O que significa "full stack com IA" na prática</h2>
                 <div class="mt-4 grid gap-3 text-sm text-white/75">
                   <div class="flex gap-3 items-start">
                     <div class="mt-0.5 h-7 w-7 rounded-lg bg-white/10 border border-white/10 grid place-items-center">✓</div>
                     <div>
-                      <div class="font-medium">Read + Extract</div>
-                      <div class="text-white/70">Invoices, PDFs, emails → structured data.</div>
+                      <div class="font-medium">Construir sistemas completos</div>
+                      <div class="text-white/70">Frontend, backend, banco, APIs, autenticação.</div>
                     </div>
                   </div>
                   <div class="flex gap-3 items-start">
                     <div class="mt-0.5 h-7 w-7 rounded-lg bg-white/10 border border-white/10 grid place-items-center">✓</div>
                     <div>
-                      <div class="font-medium">Decide + Route</div>
-                      <div class="text-white/70">Classify, prioritize, assign, escalate.</div>
+                      <div class="font-medium">Integrar IA de forma útil</div>
+                      <div class="text-white/70">Extração, classificação, chat, decisões automáticas.</div>
                     </div>
                   </div>
                   <div class="flex gap-3 items-start">
                     <div class="mt-0.5 h-7 w-7 rounded-lg bg-white/10 border border-white/10 grid place-items-center">✓</div>
                     <div>
-                      <div class="font-medium">Act + Report</div>
-                      <div class="text-white/70">Update systems, trigger tasks, send summaries.</div>
+                      <div class="font-medium">Produção confiável</div>
+                      <div class="text-white/70">Logs, monitoramento, controle de custos, GDPR.</div>
                     </div>
-                  </div>
-                </div>
-
-                <div class="mt-6 rounded-xl bg-white/5 border border-white/10 p-4">
-                  <div class="text-sm text-white/70">Important</div>
-                  <div class="mt-1 text-sm text-white/85">
-                    We implement governance: audit logs, access control, data retention, and AI usage budgets to avoid runaway costs.
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="py-10"></div>
         </section>
       </div>
     </header>
 
-    <!-- What we automate -->
+    <!-- Skills -->
+    <section id="skills" class="py-16 bg-slate-50">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl font-semibold tracking-tight">Minhas Skills Principais</h2>
+          <p class="mt-3 text-slate-600">
+            Desenvolvimento full stack moderno + integração inteligente de IA
+          </p>
+        </div>
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg">Frontend</h3>
+            <p class="mt-2 text-sm text-slate-600">React • Next.js • Tailwind • TypeScript • Responsivo • Performance</p>
+          </div>
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg">Backend & Dados</h3>
+            <p class="mt-2 text-sm text-slate-600">Node.js • FastAPI/Python • PostgreSQL • APIs REST/GraphQL • Filas • Webhooks</p>
+          </div>
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg">IA & Automação</h3>
+            <p class="mt-2 text-sm text-slate-600">LLM (OpenAI/Anthropic) • RAG • Embeddings • Agents • Extração documentos • Guardrails • Controle de custo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O que entrego -->
     <section id="what" class="py-16">
       <div class="mx-auto max-w-6xl px-6">
         <div class="max-w-2xl">
-          <h2 class="text-3xl font-semibold tracking-tight">What We Automate</h2>
+          <h2 class="text-3xl font-semibold tracking-tight">Soluções que Entrego</h2>
           <p class="mt-3 text-slate-600">
-            High-frequency, high-cost workflows where AI reliably reduces manual effort and improves consistency.
+            Sistemas e funcionalidades que resolvem problemas reais de empresas, com ou sem IA.
           </p>
         </div>
-
         <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="card-light rounded-2xl p-6">
-            <h3 class="font-semibold text-lg">Knowledge & Search (RAG)</h3>
-            <p class="mt-2 text-slate-600 text-sm">
-              Chat over internal documents, SOPs, policies, and technical manuals with traceable sources.
-            </p>
-            <ul class="mt-4 text-sm text-slate-700 space-y-2">
-              <li>• Document ingestion (PDF/Office/Email)</li>
-              <li>• Answer with citations and audit trail</li>
-              <li>• Multilingual Q&A</li>
+            <h3 class="font-semibold text-lg">Sistemas Web Full Stack</h3>
+            <p class="mt-2 text-slate-600 text-sm">Aplicações internas, dashboards, CRMs custom, portais.</p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-1">
+              <li>• Autenticação segura</li>
+              <li>• Integrações externas</li>
+              <li>• Escalável e manutenível</li>
             </ul>
           </div>
-
           <div class="card-light rounded-2xl p-6">
-            <h3 class="font-semibold text-lg">Email & Ticket Automation</h3>
-            <p class="mt-2 text-slate-600 text-sm">
-              Classify, summarize, route, and draft replies. Escalate only what needs humans.
-            </p>
-            <ul class="mt-4 text-sm text-slate-700 space-y-2">
-              <li>• Priority detection</li>
-              <li>• Auto-tagging and assignment</li>
-              <li>• Suggested responses</li>
+            <h3 class="font-semibold text-lg">Automação com IA</h3>
+            <p class="mt-2 text-slate-600 text-sm">Processamento de documentos, e-mails, tickets, relatórios automáticos.</p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-1">
+              <li>• Extração estruturada</li>
+              <li>• Classificação e roteamento</li>
+              <li>• Ações automáticas</li>
             </ul>
           </div>
-
           <div class="card-light rounded-2xl p-6">
-            <h3 class="font-semibold text-lg">Document Extraction</h3>
-            <p class="mt-2 text-slate-600 text-sm">
-              Turn unstructured PDFs into structured fields for systems, finance, and operations.
-            </p>
-            <ul class="mt-4 text-sm text-slate-700 space-y-2">
-              <li>• Invoices, contracts, forms</li>
-              <li>• Validation rules + human review</li>
-              <li>• Sync to ERP/CRM</li>
+            <h3 class="font-semibold text-lg">Chatbots & RAG</h3>
+            <p class="mt-2 text-slate-600 text-sm">Busca inteligente em documentos internos, suporte automatizado com fontes citadas.</p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-1">
+              <li>• Multilingual</li>
+              <li>• Auditoria de respostas</li>
+              <li>• Integração com sistemas</li>
             </ul>
           </div>
-
           <div class="card-light rounded-2xl p-6">
-            <h3 class="font-semibold text-lg">Reporting & Summaries</h3>
-            <p class="mt-2 text-slate-600 text-sm">
-              Automated daily/weekly reports from multiple sources, with highlights and action items.
-            </p>
-            <ul class="mt-4 text-sm text-slate-700 space-y-2">
-              <li>• KPI summaries</li>
-              <li>• Anomaly highlights</li>
-              <li>• Executive-ready notes</li>
-            </ul>
-          </div>
-
-          <div class="card-light rounded-2xl p-6">
-            <h3 class="font-semibold text-lg">Workflow Orchestration</h3>
-            <p class="mt-2 text-slate-600 text-sm">
-              AI as a decision layer inside workflows: approve, route, schedule, and notify.
-            </p>
-            <ul class="mt-4 text-sm text-slate-700 space-y-2">
-              <li>• Rules + AI (hybrid)</li>
-              <li>• Audit logs and traceability</li>
-              <li>• Safe fallbacks</li>
-            </ul>
-          </div>
-
-          <div class="card-light rounded-2xl p-6">
-            <h3 class="font-semibold text-lg">AI Cost & Quality Control</h3>
-            <p class="mt-2 text-slate-600 text-sm">
-              Usage tracking, budgets, and guardrails so AI features stay predictable and stable.
-            </p>
-            <ul class="mt-4 text-sm text-slate-700 space-y-2">
-              <li>• Token/cost tracking</li>
-              <li>• Quality feedback loops</li>
-              <li>• Fail-closed safety patterns</li>
+            <h3 class="font-semibold text-lg">Manutenção & Operação</h3>
+            <p class="mt-2 text-slate-600 text-sm">Hosting, monitoramento, backups, patches de segurança, melhorias contínuas.</p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-1">
+              <li>• Uptime e alertas</li>
+              <li>• Controle de custos IA</li>
+              <li>• SLA básico</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
+    <!-- Serviços -->
     <section id="services" class="py-16 bg-slate-50">
       <div class="mx-auto max-w-6xl px-6">
         <div class="max-w-2xl">
-          <h2 class="text-3xl font-semibold tracking-tight">Services</h2>
+          <h2 class="text-3xl font-semibold tracking-tight">Serviços</h2>
           <p class="mt-3 text-slate-600">
-            We build automations, ship them to production, and operate them with governance and reliability.
+            Do desenvolvimento ao deploy e operação — foco em qualidade e resultados mensuráveis.
           </p>
         </div>
-
-        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
           <div class="rounded-2xl p-6 bg-white border border-slate-200">
-            <h3 class="font-semibold text-lg">AI Automation Engineering</h3>
-            <p class="mt-2 text-slate-600 text-sm">
-              End-to-end automation: ingestion → reasoning → actions → monitoring.
-            </p>
-            <ul class="mt-4 text-sm text-slate-700 space-y-2">
-              <li>• Workflow design</li>
-              <li>• Integration and orchestration</li>
-              <li>• Human-in-the-loop when needed</li>
+            <h3 class="font-semibold text-lg">Desenvolvimento Full Stack</h3>
+            <p class="mt-2 text-slate-600 text-sm">Criação de aplicações completas, do frontend ao banco de dados.</p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-1">
+              <li>• Arquitetura limpa</li>
+              <li>• Testes básicos</li>
+              <li>• Documentação</li>
             </ul>
           </div>
-
           <div class="rounded-2xl p-6 bg-white border border-slate-200">
-            <h3 class="font-semibold text-lg">AI-Powered Systems</h3>
-            <p class="mt-2 text-slate-600 text-sm">
-              New products or internal systems built with AI as a core capability, not an add-on.
-            </p>
-            <ul class="mt-4 text-sm text-slate-700 space-y-2">
-              <li>• Web apps + APIs</li>
-              <li>• Secure auth + roles</li>
-              <li>• Audit logs</li>
+            <h3 class="font-semibold text-lg">Integração e Automação com IA</h3>
+            <p class="mt-2 text-slate-600 text-sm">Adição de capacidades inteligentes em sistemas existentes ou novos.</p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-1">
+              <li>• LLM e RAG</li>
+              <li>• Workflows híbridos</li>
+              <li>• Governança</li>
             </ul>
           </div>
-
           <div class="rounded-2xl p-6 bg-white border border-slate-200">
-            <h3 class="font-semibold text-lg">Operations & Maintenance</h3>
-            <p class="mt-2 text-slate-600 text-sm">
-              Hosting, monitoring, backups, security patches, and SLA-based support.
-            </p>
-            <ul class="mt-4 text-sm text-slate-700 space-y-2">
-              <li>• Production deployments</li>
-              <li>• Incident response</li>
-              <li>• Continuous improvement</li>
+            <h3 class="font-semibold text-lg">Manutenção & Suporte</h3>
+            <p class="mt-2 text-slate-600 text-sm">Operação contínua, atualizações e melhorias.</p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-1">
+              <li>• Monitoramento</li>
+              <li>• Incidentes</li>
+              <li>• Retainer mensal</li>
             </ul>
           </div>
-        </div>
-
-        <div class="mt-8 text-sm text-slate-600">
-          AI features are implemented with guardrails: auditability, access control, retention options, and usage budgets.
         </div>
       </div>
     </section>
 
-    <!-- Packages -->
+    <!-- Pacotes -->
     <section id="packages" class="py-16">
       <div class="mx-auto max-w-6xl px-6">
         <div class="max-w-2xl">
-          <h2 class="text-3xl font-semibold tracking-tight">Packages</h2>
+          <h2 class="text-3xl font-semibold tracking-tight">Pacotes</h2>
           <p class="mt-3 text-slate-600">
-            Fixed-scope delivery to prevent scope creep. If Vixai hosts your system, a monthly retainer is required.
+            Escopos fixos para previsibilidade. Se hospedado por mim, há retainer mensal.
           </p>
         </div>
-
         <div class="mt-10 grid lg:grid-cols-3 gap-6">
           <div class="card-light rounded-2xl p-6">
             <div class="flex items-center justify-between">
               <h3 class="font-semibold text-lg">A) AI Automation Audit</h3>
-              <span class="text-xs px-3 py-1.5 rounded-full bg-slate-100 text-slate-700">7 days</span>
+              <span class="text-xs px-3 py-1.5 rounded-full bg-slate-100 text-slate-700">7 dias</span>
             </div>
-            <p class="mt-2 text-slate-600 text-sm">
-              Identify high-impact automations, quantify ROI, and ship one small PoC into a safe environment.
-            </p>
+            <p class="mt-2 text-slate-600 text-sm">Diagnóstico + PoC pequeno.</p>
             <div class="mt-5">
               <div class="text-3xl font-semibold">€ <span class="text-slate-400">TBD</span></div>
-              <div class="text-sm text-slate-500 mt-1">Fixed price (complexity-based)</div>
+              <div class="text-sm text-slate-500 mt-1">Preço fixo</div>
             </div>
             <ul class="mt-5 text-sm text-slate-700 space-y-2">
-              <li>• Workflow map + opportunities</li>
-              <li>• ROI estimate (hours/cost saved)</li>
-              <li>• PoC automation (limited scope)</li>
-              <li>• Production plan + risks</li>
+              <li>• Mapeamento</li>
+              <li>• ROI estimado</li>
+              <li>• PoC funcional</li>
+              <li>• Plano produção</li>
             </ul>
             <a href="#contact" class="mt-6 inline-flex w-full justify-center px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-medium">
-              Start with the Audit
+              Iniciar Audit
             </a>
           </div>
 
           <div class="rounded-2xl p-6 bg-white border-2 border-indigo-300 shadow-sm">
             <div class="flex items-center justify-between">
-              <h3 class="font-semibold text-lg">B) Automation MVP</h3>
-              <span class="text-xs px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-700">4–6 weeks</span>
+              <h3 class="font-semibold text-lg">B) MVP Full Stack / IA</h3>
+              <span class="text-xs px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-700">4–8 semanas</span>
             </div>
-            <p class="mt-2 text-slate-600 text-sm">
-              Production-ready automation system: ingestion, routing, action layer, and dashboards.
-            </p>
+            <p class="mt-2 text-slate-600 text-sm">Sistema produção-ready com IA onde aplicável.</p>
             <div class="mt-5">
               <div class="text-3xl font-semibold">€ <span class="text-slate-400">TBD</span></div>
-              <div class="text-sm text-slate-500 mt-1">Milestones (40/40/20)</div>
+              <div class="text-sm text-slate-500 mt-1">Milestones</div>
             </div>
             <ul class="mt-5 text-sm text-slate-700 space-y-2">
-              <li>• Integrations + workflows</li>
-              <li>• Human-in-the-loop reviews</li>
-              <li>• Audit logs + governance</li>
-              <li>• AI usage budgets + metrics</li>
-              <li>• Monitoring + backups</li>
+              <li>• Design + desenvolvimento</li>
+              <li>• Integrações</li>
+              <li>• Governança</li>
+              <li>• Deploy</li>
             </ul>
             <a href="#contact" class="mt-6 inline-flex w-full justify-center px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium">
-              Request MVP Proposal
+              Solicitar Proposta MVP
             </a>
           </div>
 
           <div class="card-light rounded-2xl p-6">
             <div class="flex items-center justify-between">
-              <h3 class="font-semibold text-lg">C) Operate & Improve</h3>
-              <span class="text-xs px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700">Monthly</span>
+              <h3 class="font-semibold text-lg">C) Manutenção Mensal</h3>
+              <span class="text-xs px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700">Recorrente</span>
             </div>
-            <p class="mt-2 text-slate-600 text-sm">
-              Hosting, SLA support, security updates, and continuous automation improvements.
-            </p>
+            <p class="mt-2 text-slate-600 text-sm">Hospedagem, suporte, atualizações e melhorias.</p>
             <div class="mt-5">
-              <div class="text-3xl font-semibold">€ <span class="text-slate-400">TBD</span> /mo</div>
-              <div class="text-sm text-slate-500 mt-1">Tiered retainer (Basic / Standard / Premium)</div>
+              <div class="text-3xl font-semibold">€ <span class="text-slate-400">TBD</span> /mês</div>
+              <div class="text-sm text-slate-500 mt-1">Tiered</div>
             </div>
             <ul class="mt-5 text-sm text-slate-700 space-y-2">
-              <li>• Hosting + uptime monitoring</li>
-              <li>• Backups + restore plan</li>
-              <li>• Dependency + security patches</li>
-              <li>• Included support hours</li>
-              <li>• SLA response windows</li>
+              <li>• Monitoramento</li>
+              <li>• Backups</li>
+              <li>• Suporte incluído</li>
+              <li>• Melhorias contínuas</li>
             </ul>
             <a href="#contact" class="mt-6 inline-flex w-full justify-center px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-medium">
-              Discuss Retainer
+              Discutir Retainer
             </a>
           </div>
         </div>
-
-        <div class="mt-8 text-sm text-slate-600">
-          Change Requests apply to new features beyond the agreed scope. We keep delivery predictable by design.
-        </div>
       </div>
     </section>
 
-    <!-- Process -->
+    <!-- Processo -->
     <section id="process" class="py-16 bg-slate-50">
       <div class="mx-auto max-w-6xl px-6">
         <div class="max-w-2xl">
-          <h2 class="text-3xl font-semibold tracking-tight">Process</h2>
+          <h2 class="text-3xl font-semibold tracking-tight">Meu Processo</h2>
           <p class="mt-3 text-slate-600">
-            Practical, measurable, production-first. AI is only “good” if it is reliable, auditable, and controlled.
+            Foco em entrega previsível, qualidade e resultados reais.
           </p>
         </div>
-
-        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="mt-10 grid md:grid-cols-4 gap-6">
           <div class="rounded-2xl p-6 bg-white border border-slate-200">
-            <div class="text-xs font-semibold text-indigo-700">Step 1</div>
-            <h3 class="mt-2 font-semibold">Identify ROI</h3>
-            <p class="mt-2 text-sm text-slate-600">
-              Map workflows, quantify time spent, and select automations with clear ROI.
-            </p>
+            <div class="text-xs font-semibold text-indigo-700">1</div>
+            <h3 class="mt-2 font-semibold">Entender & Planejar</h3>
+            <p class="mt-2 text-sm text-slate-600">Mapear necessidades e definir escopo com ROI claro.</p>
           </div>
           <div class="rounded-2xl p-6 bg-white border border-slate-200">
-            <div class="text-xs font-semibold text-indigo-700">Step 2</div>
-            <h3 class="mt-2 font-semibold">Build with Guardrails</h3>
-            <p class="mt-2 text-sm text-slate-600">
-              Hybrid rules + AI, human review points, audit logs, and safe fallbacks.
-            </p>
+            <div class="text-xs font-semibold text-indigo-700">2</div>
+            <h3 class="mt-2 font-semibold">Construir com Qualidade</h3>
+            <p class="mt-2 text-sm text-slate-600">Desenvolvimento limpo, testes, guardrails IA quando aplicável.</p>
           </div>
           <div class="rounded-2xl p-6 bg-white border border-slate-200">
-            <div class="text-xs font-semibold text-indigo-700">Step 3</div>
-            <h3 class="mt-2 font-semibold">Deploy to Production</h3>
-            <p class="mt-2 text-sm text-slate-600">
-              Monitoring, backups, alerts, and usage budgets. No “demo-only” automations.
-            </p>
+            <div class="text-xs font-semibold text-indigo-700">3</div>
+            <h3 class="mt-2 font-semibold">Deploy & Monitorar</h3>
+            <p class="mt-2 text-sm text-slate-600">Produção segura, monitoramento, documentação.</p>
           </div>
           <div class="rounded-2xl p-6 bg-white border border-slate-200">
-            <div class="text-xs font-semibold text-indigo-700">Step 4</div>
-            <h3 class="mt-2 font-semibold">Operate & Improve</h3>
-            <p class="mt-2 text-sm text-slate-600">
-              Track performance, cost, and quality. Iterate with controlled changes.
-            </p>
+            <div class="text-xs font-semibold text-indigo-700">4</div>
+            <h3 class="mt-2 font-semibold">Manter & Melhorar</h3>
+            <p class="mt-2 text-sm text-slate-600">Suporte contínuo, atualizações, otimizações.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Stack -->
-    <section id="stack" class="py-16">
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="max-w-2xl">
-          <h2 class="text-3xl font-semibold tracking-tight">Engineering Stack</h2>
-          <p class="mt-3 text-slate-600">
-            We build automation systems using modern, maintainable components and production-grade defaults.
-          </p>
-        </div>
-
-        <div class="mt-10 grid lg:grid-cols-3 gap-6">
-          <div class="card-light rounded-2xl p-6">
-            <h3 class="font-semibold">AI Layer</h3>
-            <p class="mt-2 text-sm text-slate-600">
-              LLM-powered reasoning with retrieval (RAG), evaluation, and cost controls.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2 text-xs">
-              <span class="px-2 py-1 rounded bg-slate-100">RAG</span>
-              <span class="px-2 py-1 rounded bg-slate-100">Embeddings</span>
-              <span class="px-2 py-1 rounded bg-slate-100">Evaluation</span>
-              <span class="px-2 py-1 rounded bg-slate-100">Budgets</span>
-            </div>
-          </div>
-
-          <div class="card-light rounded-2xl p-6">
-            <h3 class="font-semibold">Backend & Data</h3>
-            <p class="mt-2 text-sm text-slate-600">
-              APIs, databases, background jobs, and integrations with clear ownership.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2 text-xs">
-              <span class="px-2 py-1 rounded bg-slate-100">FastAPI / Node.js</span>
-              <span class="px-2 py-1 rounded bg-slate-100">PostgreSQL</span>
-              <span class="px-2 py-1 rounded bg-slate-100">Queues / Workers</span>
-              <span class="px-2 py-1 rounded bg-slate-100">Webhooks</span>
-            </div>
-          </div>
-
-          <div class="card-light rounded-2xl p-6">
-            <h3 class="font-semibold">Operations</h3>
-            <p class="mt-2 text-sm text-slate-600">
-              Docker deployment, monitoring, alerting, backups, and secure secrets management.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2 text-xs">
-              <span class="px-2 py-1 rounded bg-slate-100">Docker</span>
-              <span class="px-2 py-1 rounded bg-slate-100">CI/CD</span>
-              <span class="px-2 py-1 rounded bg-slate-100">Sentry</span>
-              <span class="px-2 py-1 rounded bg-slate-100">Grafana</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-8 text-sm text-slate-600">
-          We implement multilingual experiences when relevant: users can ask in one language and receive answers in their preferred language.
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-16 bg-slate-50">
+    <!-- Contato -->
+    <section id="contact" class="py-16">
       <div class="mx-auto max-w-6xl px-6">
         <div class="grid lg:grid-cols-12 gap-10 items-start">
           <div class="lg:col-span-6">
-            <h2 class="text-3xl font-semibold tracking-tight">Contact Vixai</h2>
+            <h2 class="text-3xl font-semibold tracking-tight">Fale comigo</h2>
             <p class="mt-3 text-slate-600">
-              Describe your workflows and systems. We will propose the best automation path, expected ROI, and an execution plan.
+              Conte sobre seu projeto, problema ou ideia. Retorno com proposta, prazos e estimativa de valor.
             </p>
-
             <div class="mt-8 rounded-2xl bg-white border border-slate-200 p-6">
-              <h3 class="font-semibold">Best requests include</h3>
+              <h3 class="font-semibold">Informações úteis no pedido</h3>
               <ul class="mt-3 text-sm text-slate-700 space-y-2">
-                <li>• What is the repetitive work you want to eliminate?</li>
-                <li>• Where does the data live (email, PDFs, ERP, CRM)?</li>
-                <li>• What decisions need to be made (routing, approvals, classification)?</li>
-                <li>• Timeline and budget range</li>
-                <li>• Compliance needs (GDPR, audit logs, retention)</li>
+                <li>• Qual o problema ou objetivo principal?</li>
+                <li>• Quais ferramentas/sistemas já usa?</li>
+                <li>• Prazo desejado?</li>
+                <li>• Faixa de orçamento aproximada?</li>
+                <li>• Requisitos especiais (GDPR, multilíngue, etc.)?</li>
               </ul>
             </div>
-
-            <div class="mt-3 text-sm">
-              <div><span class="font-medium">Email:</span> <span class="text-slate-600">vixai@vixai.app</span></div>
-              <div class="mt-1"><span class="font-medium">Location:</span> <span class="text-slate-600">Europe (Remote)</span></div>
+            <div class="mt-6 text-sm">
+              <div><span class="font-medium">Email:</span> <span class="text-slate-600">vixai@vixai.app</span> (ou use o formulário)</div>
+              <div class="mt-1"><span class="font-medium">Localização:</span> <span class="text-slate-600">Groningen, Países Baixos (remoto Europa)</span></div>
             </div>
           </div>
 
           <div class="lg:col-span-6">
             <div class="rounded-2xl bg-white border border-slate-200 p-6">
-             
               <form
                 id="contactForm"
                 action="https://formspree.io/f/xeejqrbk"
@@ -595,66 +488,58 @@
               >
                 <div class="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label class="text-sm font-medium text-slate-700">Name</label>
-                    <input name="name" required class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring" placeholder="Your name" />
+                    <label class="text-sm font-medium text-slate-700">Nome</label>
+                    <input name="name" required class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring focus:ring-indigo-200 focus:border-indigo-400" placeholder="Seu nome" />
                   </div>
                   <div>
-                    <label class="text-sm font-medium text-slate-700">Company</label>
-                    <input name="company" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring" placeholder="Company name" />
+                    <label class="text-sm font-medium text-slate-700">Empresa</label>
+                    <input name="company" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring focus:ring-indigo-200 focus:border-indigo-400" placeholder="Nome da empresa" />
                   </div>
                 </div>
-
                 <div class="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label class="text-sm font-medium text-slate-700">Email</label>
-                    <input name="email" type="email" required class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring" placeholder="you@company.com" />
+                    <input name="email" type="email" required class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring focus:ring-indigo-200 focus:border-indigo-400" placeholder="seu@email.com" />
                   </div>
                   <div>
-                    <label class="text-sm font-medium text-slate-700">Phone (optional)</label>
-                    <input name="phone" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring" placeholder="+31 ..." />
+                    <label class="text-sm font-medium text-slate-700">Telefone (opcional)</label>
+                    <input name="phone" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring focus:ring-indigo-200 focus:border-indigo-400" placeholder="+31 ..." />
                   </div>
                 </div>
-
                 <div>
-                  <label class="text-sm font-medium text-slate-700">What do you want to automate?</label>
-                  <textarea name="message" required rows="6" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring" placeholder="Describe the manual workflow, the tools involved, and what “success” looks like."></textarea>
+                  <label class="text-sm font-medium text-slate-700">O que você precisa? (descreva o projeto ou problema)</label>
+                  <textarea name="message" required rows="6" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring focus:ring-indigo-200 focus:border-indigo-400" placeholder="Ex: Preciso automatizar processamento de faturas, integrar com ERP, ou criar um dashboard com chat IA..."></textarea>
                 </div>
-
                 <div class="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label class="text-sm font-medium text-slate-700">Preferred starting point</label>
-                    <select name="package" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring">
-                      <option>AI Automation Audit (7 days)</option>
-                      <option>Automation MVP (4–6 weeks)</option>
-                      <option>Operate & Improve (Monthly)</option>
-                      <option>Not sure yet</option>
+                    <label class="text-sm font-medium text-slate-700">Ponto de partida preferido</label>
+                    <select name="package" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring focus:ring-indigo-200 focus:border-indigo-400">
+                      <option>Audit de 7 dias</option>
+                      <option>MVP completo</option>
+                      <option>Manutenção mensal</option>
+                      <option>Não sei ainda</option>
                     </select>
                   </div>
                   <div>
-                    <label class="text-sm font-medium text-slate-700">Budget range</label>
-                    <select name="budget" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring">
-                      <option>Not specified</option>
-                      <option>€2k–€5k</option>
-                      <option>€5k–€15k</option>
-                      <option>€15k–€50k</option>
-                      <option>€50k+</option>
+                    <label class="text-sm font-medium text-slate-700">Faixa de orçamento aproximada</label>
+                    <select name="budget" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring focus:ring-indigo-200 focus:border-indigo-400">
+                      <option>Não especificado</option>
+                      <option>€2.000 – €5.000</option>
+                      <option>€5.000 – €15.000</option>
+                      <option>€15.000 – €50.000</option>
+                      <option>Acima de €50.000</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="flex items-start gap-3">
                   <input id="consent" type="checkbox" required class="mt-1" />
                   <label for="consent" class="text-sm text-slate-600">
-                    I agree that Vixai may contact me about this request.
+                    Concordo que a Vixai pode me contatar sobre esta solicitação.
                   </label>
                 </div>
-
-                <button type="submit" class="w-full px-4 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium">
-                  Send Request
+                <button type="submit" class="w-full px-4 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-medium transition">
+                  Enviar Solicitação
                 </button>
-
-                <p id="formStatus" class="text-sm text-slate-600 hidden"></p>
-
               </form>
             </div>
           </div>
@@ -663,31 +548,30 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-10">
+    <footer class="py-10 bg-slate-900 text-white">
       <div class="mx-auto max-w-6xl px-6">
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
           <div>
             <div class="font-semibold">Vixai</div>
-            <div class="text-sm text-slate-600">AI Automation for Business Systems</div>
+            <div class="opacity-70">Desenvolvedor Full Stack & Soluções com IA — Groningen, NL</div>
           </div>
-          <div class="text-sm text-slate-600">
-            © <span id="year"></span> Vixai. All rights reserved.
+          <div class="opacity-70">
+            © <span id="year"></span> Vixai. Todos os direitos reservados.
           </div>
         </div>
       </div>
     </footer>
 
     <script>
-      // Mobile menu toggle
+      // Ano no footer
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Menu mobile
       const btn = document.getElementById("mobileMenuBtn");
       const menu = document.getElementById("mobileMenu");
       if (btn && menu) {
         btn.addEventListener("click", () => menu.classList.toggle("hidden"));
       }
-
-      // Footer year
-      document.getElementById("year").textContent = new Date().getFullYear();
-
     </script>
   </body>
 </html>
