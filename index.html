@@ -691,29 +691,6 @@
       // Footer year
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Contact form behavior (static demo)
-      // Replace with a real POST to your backend, e.g. /api/contact
-      const form = document.getElementById("contactForm");
-      const statusEl = document.getElementById("formStatus");
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const data = Object.fromEntries(new FormData(form).entries());
-
-        statusEl.classList.remove("hidden");
-        statusEl.textContent =
-          "Form captured locally. Connect this to your backend endpoint to send email/CRM. Data: " +
-          JSON.stringify(data);
-
-        // Example real request:
-        // const res = await fetch("/api/contact", {
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/json" },
-        //   body: JSON.stringify(data),
-        // });
-        // statusEl.textContent = res.ok ? "Sent. We'll respond shortly." : "Error sending. Try again.";
-        // if (res.ok) form.reset();
-      });
     </script>
   </body>
 </html>
