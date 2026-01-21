@@ -1,242 +1,426 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Vixai — Full Stack Developer & AI Solutions. Build complete web apps with practical AI integrations (LLM, RAG, automation), production-grade, Europe-based (Groningen, NL)." />
-  <meta name="keywords" content="full stack developer AI, AI automation developer, LLM integration, RAG full stack, freelancer full stack Groningen" />
-  <meta name="robots" content="index, follow" />
-  <title>Vixai — Full Stack Developer & AI Solutions | Groningen, NL</title>
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    .glass { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-    .gradient-bg {
-      background:
-        radial-gradient(900px circle at 18% 12%, rgba(99,102,241,0.28), transparent 42%),
-        radial-gradient(900px circle at 82% 18%, rgba(16,185,129,0.22), transparent 42%),
-        radial-gradient(1000px circle at 40% 92%, rgba(168,85,247,0.18), transparent 48%),
-        #0b1220;
-    }
-    .card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); }
-    .card-light { background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.08); }
-    .focus-ring:focus { outline: none; box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25); border-color: rgba(99, 102, 241, 0.6); }
-    .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.75rem; border-radius: 9999px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); font-size: 0.875rem; }
-    .pill { display: inline-flex; padding: 0.25rem 0.6rem; border-radius: 9999px; background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25); color: rgb(79,70,229); font-size: 0.75rem; font-weight: 600; }
-
-    /* Lógica bilíngue principal */
-    body[data-lang="pt"] [data-en] { display: none !important; }
-    body[data-lang="en"] [data-pt] { display: none !important; }
-    body[data-lang="pt"] [data-pt] { display: block !important; }
-    body[data-lang="en"] [data-en] { display: block !important; }
-
-    /* Para elementos inline que usam span com data-en / data-pt */
-    [data-en], [data-pt] { display: inline; }
-  </style>
-</head>
-<body class="text-slate-900 bg-white antialiased" data-lang="en">
-
-  <!-- Header / Hero -->
-  <header class="gradient-bg text-white">
-    <div class="mx-auto max-w-6xl px-6">
-      <nav class="flex items-center justify-between py-6">
-        <a href="#top" class="flex items-center gap-2">
-          <div class="h-9 w-9 rounded-lg bg-white/10 border border-white/10 grid place-items-center">
-            <span class="font-semibold tracking-tight">V</span>
-          </div>
-          <div class="leading-tight">
-            <div class="font-semibold tracking-tight text-lg">Vixai</div>
-            <div class="text-xs text-white/70" data-en>Full Stack & AI</div>
-            <div class="text-xs text-white/70" data-pt hidden>Full Stack & IA</div>
-          </div>
-        </a>
-
-        <div class="hidden md:flex items-center gap-7 text-sm text-white/80">
-          <a href="#skills" class="hover:text-white" data-en>Skills</a>
-          <a href="#skills" class="hover:text-white" data-pt hidden>Habilidades</a>
-
-          <a href="#what" class="hover:text-white" data-en>What I Deliver</a>
-          <a href="#what" class="hover:text-white" data-pt hidden>O que entrego</a>
-
-          <a href="#services" class="hover:text-white" data-en>Services</a>
-          <a href="#services" class="hover:text-white" data-pt hidden>Serviços</a>
-
-          <a href="#packages" class="hover:text-white" data-en>Packages</a>
-          <a href="#packages" class="hover:text-white" data-pt hidden>Pacotes</a>
-
-          <a href="#process" class="hover:text-white" data-en>Process</a>
-          <a href="#process" class="hover:text-white" data-pt hidden>Processo</a>
-
-          <a href="#contact" class="hover:text-white" data-en>Contact</a>
-          <a href="#contact" class="hover:text-white" data-pt hidden>Contato</a>
-        </div>
-
-        <div class="flex items-center gap-4">
-          <!-- Language Switcher -->
-          <div class="flex items-center gap-2 text-sm font-medium">
-            <button onclick="setLanguage('en')" class="px-3 py-1.5 rounded hover:bg-white/20 transition font-bold" data-en>EN</button>
-            <button onclick="setLanguage('pt')" class="px-3 py-1.5 rounded hover:bg-white/20 transition" data-pt hidden>PT</button>
-          </div>
-
-          <a href="#contact" class="hidden sm:inline-flex px-5 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-sm font-medium transition">
-            <span data-en>Book a Call</span>
-            <span data-pt hidden>Agende uma Call</span>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Vixai delivers full-stack systems that work — web apps, APIs, integrations, and AI features when they add real value."
+    />
+    <title>Vixai — Full-Stack Systems & Smart Automation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .glass { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+      .gradient-bg {
+        background:
+          radial-gradient(900px circle at 18% 12%, rgba(99,102,241,0.28), transparent 42%),
+          radial-gradient(900px circle at 82% 18%, rgba(16,185,129,0.22), transparent 42%),
+          radial-gradient(1000px circle at 40% 92%, rgba(168,85,247,0.18), transparent 48%),
+          #0b1220;
+      }
+      .card {
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.10);
+      }
+      .card-light {
+        background: rgba(0,0,0,0.02);
+        border: 1px solid rgba(0,0,0,0.08);
+      }
+      .focus-ring:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+        border-color: rgba(99, 102, 241, 0.6);
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 9999px;
+        background: rgba(255,255,255,0.10);
+        border: 1px solid rgba(255,255,255,0.12);
+        color: rgba(255,255,255,0.85);
+        font-size: 0.875rem;
+      }
+      .pill {
+        display: inline-flex;
+        padding: 0.25rem 0.6rem;
+        border-radius: 9999px;
+        background: rgba(99,102,241,0.12);
+        border: 1px solid rgba(99,102,241,0.25);
+        color: rgb(79,70,229);
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      .lang-btn {
+        padding: 0.25rem 0.6rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        transition: all 0.2s;
+      }
+      .lang-btn.active {
+        background: rgba(255,255,255,0.15);
+        font-weight: 600;
+      }
+      .lang-btn:hover {
+        background: rgba(255,255,255,0.10);
+      }
+      [data-lang="pt"] { display: none; }
+      body[data-active-lang="pt"] [data-lang="en"] { display: none; }
+      body[data-active-lang="pt"] [data-lang="pt"] { display: block; }
+      body[data-active-lang="pt"] [data-lang="pt"].inline { display: inline; }
+      body[data-active-lang="pt"] [data-lang="pt"].inline-flex { display: inline-flex; }
+      body[data-active-lang="pt"] [data-lang="pt"].flex { display: flex; }
+      body[data-active-lang="pt"] [data-lang="pt"].grid { display: grid; }
+    </style>
+  </head>
+  <body class="text-slate-900 bg-white" data-active-lang="en">
+    <!-- Header / Hero -->
+    <header class="gradient-bg text-white">
+      <div class="mx-auto max-w-6xl px-6">
+        <nav class="flex items-center justify-between py-6">
+          <a href="#top" class="flex items-center gap-2">
+            <div class="h-9 w-9 rounded-lg bg-white/10 border border-white/10 grid place-items-center">
+              <span class="font-semibold tracking-tight">V</span>
+            </div>
+            <div class="leading-tight">
+              <div class="font-semibold tracking-tight text-lg">Vixai</div>
+              <div class="text-xs text-white/70" data-lang="en">Full-Stack Systems</div>
+              <div class="text-xs text-white/70" data-lang="pt">Sistemas Full-Stack</div>
+            </div>
           </a>
-
-          <button id="mobileMenuBtn" class="md:hidden px-4 py-2 rounded-lg bg-white/15 hover:bg-white/25 border border-white/20 text-sm">
-            Menu
-          </button>
-        </div>
-      </nav>
-
-      <!-- Mobile Menu -->
-      <div id="mobileMenu" class="md:hidden hidden pb-6">
-        <div class="glass card rounded-xl p-5 space-y-4 text-base text-white/90">
-          <a href="#skills" class="block hover:text-white" data-en>Skills</a>
-          <a href="#skills" class="block hover:text-white" data-pt hidden>Habilidades</a>
-
-          <a href="#what" class="block hover:text-white" data-en>What I Deliver</a>
-          <a href="#what" class="block hover:text-white" data-pt hidden>O que entrego</a>
-
-          <a href="#services" class="block hover:text-white" data-en>Services</a>
-          <a href="#services" class="block hover:text-white" data-pt hidden>Serviços</a>
-
-          <a href="#packages" class="block hover:text-white" data-en>Packages</a>
-          <a href="#packages" class="block hover:text-white" data-pt hidden>Pacotes</a>
-
-          <a href="#process" class="block hover:text-white" data-en>Process</a>
-          <a href="#process" class="block hover:text-white" data-pt hidden>Processo</a>
-
-          <a href="#contact" class="block hover:text-white" data-en>Contact</a>
-          <a href="#contact" class="block hover:text-white" data-pt hidden>Contato</a>
-        </div>
-      </div>
-
-      <section id="top" class="py-14 md:py-20">
-        <div class="grid lg:grid-cols-12 gap-10 items-start">
-          <div class="lg:col-span-7">
-            <div class="badge">
-              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-              <span data-en>Full Stack Developer + AI — Groningen, NL</span>
-              <span data-pt hidden>Desenvolvedor Full Stack + IA — Groningen, NL</span>
+          <div class="hidden md:flex items-center gap-7 text-sm text-white/80">
+            <a class="hover:text-white" href="#services" data-lang="en">Services</a>
+            <a class="hover:text-white" href="#services" data-lang="pt">Serviços</a>
+            <a class="hover:text-white" href="#solutions" data-lang="en">Solutions</a>
+            <a class="hover:text-white" href="#solutions" data-lang="pt">Soluções</a>
+            <a class="hover:text-white" href="#packages" data-lang="en">Packages</a>
+            <a class="hover:text-white" href="#packages" data-lang="pt">Pacotes</a>
+            <a class="hover:text-white" href="#stack" data-lang="en">Stack</a>
+            <a class="hover:text-white" href="#stack" data-lang="pt">Stack</a>
+            <a class="hover:text-white" href="#contact" data-lang="en">Contact</a>
+            <a class="hover:text-white" href="#contact" data-lang="pt">Contato</a>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-1 bg-white/10 border border-white/10 rounded-lg p-1">
+              <button class="lang-btn active" data-set-lang="en">EN</button>
+              <button class="lang-btn" data-set-lang="pt">PT</button>
             </div>
-
-            <h1 class="mt-5 text-4xl md:text-5xl font-semibold tracking-tight">
-              <span data-en>Full stack solutions with integrated AI — fast, reliable, scalable</span>
-              <span data-pt hidden>Soluções full stack com IA integrada — rápidas, confiáveis e escaláveis</span>
-            </h1>
-
-            <p class="mt-4 text-lg text-white/75 leading-relaxed">
-              <span data-en>Vixai builds complete web applications and adds practical AI: automation, document extraction, intelligent chat (RAG), workflows — with governance, audit logs and cost controls.</span>
-              <span data-pt hidden>Vixai desenvolve aplicações web completas e adiciona IA prática: automações, extração de documentos, chat inteligente (RAG), fluxos — com governança, logs de auditoria e controle de custos.</span>
-            </p>
-
-            <div class="mt-7 flex flex-col sm:flex-row gap-3">
-              <a href="#contact" class="inline-flex justify-center px-5 py-3 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-medium">
-                <span data-en>Get Proposal</span>
-                <span data-pt hidden>Solicitar Proposta</span>
-              </a>
-              <a href="#packages" class="inline-flex justify-center px-5 py-3 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium">
-                <span data-en>View Packages</span>
-                <span data-pt hidden>Ver Pacotes</span>
-              </a>
+            <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-sm font-medium" data-lang="en">
+              Get Started
+            </a>
+            <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-sm font-medium" data-lang="pt">
+              Começar
+            </a>
+            <button id="mobileMenuBtn" class="md:hidden inline-flex px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-sm">
+              Menu
+            </button>
+          </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden pb-6">
+          <div class="glass card rounded-xl p-4">
+            <div class="grid gap-3 text-sm text-white/85">
+              <a class="hover:text-white" href="#services" data-lang="en">Services</a>
+              <a class="hover:text-white" href="#services" data-lang="pt">Serviços</a>
+              <a class="hover:text-white" href="#solutions" data-lang="en">Solutions</a>
+              <a class="hover:text-white" href="#solutions" data-lang="pt">Soluções</a>
+              <a class="hover:text-white" href="#packages" data-lang="en">Packages</a>
+              <a class="hover:text-white" href="#packages" data-lang="pt">Pacotes</a>
+              <a class="hover:text-white" href="#stack" data-lang="en">Stack</a>
+              <a class="hover:text-white" href="#stack" data-lang="pt">Stack</a>
+              <a class="hover:text-white" href="#contact" data-lang="en">Contact</a>
+              <a class="hover:text-white" href="#contact" data-lang="pt">Contato</a>
             </div>
           </div>
-
-          <div class="lg:col-span-5">
-            <div class="card glass rounded-2xl p-6">
-              <div class="flex items-center justify-between">
-                <div>
-                  <div class="text-sm text-white/70" data-en>Quick offer</div>
-                  <div class="text-sm text-white/70" data-pt hidden>Oferta rápida</div>
-                  <div class="text-lg font-semibold" data-en>AI Automation Audit</div>
-                  <div class="text-lg font-semibold" data-pt hidden>Audit de Automação IA</div>
-                </div>
-                <div class="text-sm text-white/80 px-3 py-1.5 rounded-full bg-white/10 border border-white/10">7 days / 7 dias</div>
+        </div>
+        <section id="top" class="py-14 md:py-20">
+          <div class="grid lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-7">
+              <div class="badge">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                <span data-lang="en">European full-stack development studio</span>
+                <span data-lang="pt">Estúdio europeu de desenvolvimento full-stack</span>
               </div>
-              <p class="mt-3 text-sm text-white/75">
-                <span data-en>Map processes, identify opportunities, estimate ROI, deliver small PoC.</span>
-                <span data-pt hidden>Mapeio processos, identifico oportunidades, estimo ROI, entrego PoC pequeno.</span>
+              <h1 class="mt-5 text-4xl md:text-5xl font-semibold tracking-tight" data-lang="en">
+                We build systems that work — web apps, APIs, integrations, and smart automation.
+              </h1>
+              <h1 class="mt-5 text-4xl md:text-5xl font-semibold tracking-tight" data-lang="pt">
+                Construímos sistemas que funcionam — web apps, APIs, integrações e automação inteligente.
+              </h1>
+              <p class="mt-4 text-lg text-white/75 leading-relaxed" data-lang="en">
+                Vixai delivers production-ready full-stack solutions for European businesses. From custom platforms to workflow automation, we design, build, deploy, and maintain systems that eliminate repetitive work and scale operations.
               </p>
-              <ul class="mt-5 text-sm text-white/75 space-y-2">
-                <li>• <span data-en>Process map + opportunities</span><span data-pt hidden>Mapa de processos + oportunidades</span></li>
-                <li>• <span data-en>ROI estimate</span><span data-pt hidden>Estimativa de ROI</span></li>
-                <li>• <span data-en>Live PoC</span><span data-pt hidden>PoC funcional</span></li>
-                <li>• <span data-en>Production plan</span><span data-pt hidden>Plano de produção</span></li>
-              </ul>
-              <a href="#contact" class="mt-6 inline-flex w-full justify-center px-4 py-2.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium">
-                <span data-en>Request Audit</span>
-                <span data-pt hidden>Solicitar Audit</span>
-              </a>
+              <p class="mt-4 text-lg text-white/75 leading-relaxed" data-lang="pt">
+                A Vixai entrega soluções full-stack prontas para produção para empresas europeias. De plataformas customizadas a automação de workflows, projetamos, construímos, implantamos e mantemos sistemas que eliminam trabalho repetitivo e escalam operações.
+              </p>
+              <div class="mt-7 flex flex-col sm:flex-row gap-3">
+                <a href="#contact" class="inline-flex justify-center px-5 py-3 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-medium" data-lang="en">
+                  Discuss Your Project
+                </a>
+                <a href="#contact" class="inline-flex justify-center px-5 py-3 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-medium" data-lang="pt">
+                  Discutir Seu Projeto
+                </a>
+                <a href="#packages" class="inline-flex justify-center px-5 py-3 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium" data-lang="en">
+                  View Packages
+                </a>
+                <a href="#packages" class="inline-flex justify-center px-5 py-3 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium" data-lang="pt">
+                  Ver Pacotes
+                </a>
+              </div>
+              <div class="mt-8 grid sm:grid-cols-3 gap-4">
+                <div class="card glass rounded-xl p-4">
+                  <div class="text-sm text-white/70" data-lang="en">Core offering</div>
+                  <div class="text-sm text-white/70" data-lang="pt">Oferta principal</div>
+                  <div class="mt-1 text-xl font-semibold" data-lang="en">Full-Stack Dev</div>
+                  <div class="mt-1 text-xl font-semibold" data-lang="pt">Dev Full-Stack</div>
+                  <div class="mt-1 text-sm text-white/70" data-lang="en">End-to-end system delivery</div>
+                  <div class="mt-1 text-sm text-white/70" data-lang="pt">Entrega de sistemas completos</div>
+                </div>
+                <div class="card glass rounded-xl p-4">
+                  <div class="text-sm text-white/70" data-lang="en">Key strength</div>
+                  <div class="text-sm text-white/70" data-lang="pt">Força principal</div>
+                  <div class="mt-1 text-xl font-semibold" data-lang="en">Integration</div>
+                  <div class="mt-1 text-xl font-semibold" data-lang="pt">Integração</div>
+                  <div class="mt-1 text-sm text-white/70" data-lang="en">Connect your existing tools</div>
+                  <div class="mt-1 text-sm text-white/70" data-lang="pt">Conecte suas ferramentas</div>
+                </div>
+                <div class="card glass rounded-xl p-4">
+                  <div class="text-sm text-white/70" data-lang="en">Value add</div>
+                  <div class="text-sm text-white/70" data-lang="pt">Diferencial</div>
+                  <div class="mt-1 text-xl font-semibold" data-lang="en">AI Features</div>
+                  <div class="mt-1 text-xl font-semibold" data-lang="pt">Features de IA</div>
+                  <div class="mt-1 text-sm text-white/70" data-lang="en">When it adds real value</div>
+                  <div class="mt-1 text-sm text-white/70" data-lang="pt">Quando agrega valor real</div>
+                </div>
+              </div>
+              <div class="mt-8 flex flex-wrap gap-2">
+                <span class="pill" data-lang="en">Custom Web Apps</span>
+                <span class="pill" data-lang="pt">Web Apps Customizados</span>
+                <span class="pill" data-lang="en">REST APIs</span>
+                <span class="pill" data-lang="pt">REST APIs</span>
+                <span class="pill" data-lang="en">Database Design</span>
+                <span class="pill" data-lang="pt">Design de Banco de Dados</span>
+                <span class="pill" data-lang="en">Third-Party Integration</span>
+                <span class="pill" data-lang="pt">Integração com Terceiros</span>
+                <span class="pill" data-lang="en">Workflow Automation</span>
+                <span class="pill" data-lang="pt">Automação de Workflows</span>
+                <span class="pill" data-lang="en">AI When Needed</span>
+                <span class="pill" data-lang="pt">IA Quando Necessário</span>
+              </div>
+            </div>
+            <div class="lg:col-span-5">
+              <div class="card glass rounded-2xl p-6">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <div class="text-sm text-white/70" data-lang="en">Quick start</div>
+                    <div class="text-sm text-white/70" data-lang="pt">Início rápido</div>
+                    <div class="text-lg font-semibold" data-lang="en">System Design Sprint</div>
+                    <div class="text-lg font-semibold" data-lang="pt">Sprint de Design de Sistema</div>
+                  </div>
+                  <div class="text-sm text-white/80 px-3 py-1.5 rounded-full bg-white/10 border border-white/10" data-lang="en">5 days</div>
+                  <div class="text-sm text-white/80 px-3 py-1.5 rounded-full bg-white/10 border border-white/10" data-lang="pt">5 dias</div>
+                </div>
+                <p class="mt-3 text-sm text-white/75" data-lang="en">
+                  Map your requirements, design system architecture, identify integration points, and deliver a technical specification with cost estimate.
+                </p>
+                <p class="mt-3 text-sm text-white/75" data-lang="pt">
+                  Mapeie seus requisitos, projete arquitetura do sistema, identifique pontos de integração e receba especificação técnica com estimativa de custo.
+                </p>
+                <ul class="mt-5 text-sm text-white/75 space-y-2" data-lang="en">
+                  <li>• Requirements gathering & user stories</li>
+                  <li>• System architecture & data model</li>
+                  <li>• Integration plan (APIs, webhooks, databases)</li>
+                  <li>• MVP scope + development timeline</li>
+                </ul>
+                <ul class="mt-5 text-sm text-white/75 space-y-2" data-lang="pt">
+                  <li>• Coleta de requisitos & user stories</li>
+                  <li>• Arquitetura do sistema & modelo de dados</li>
+                  <li>• Plano de integração (APIs, webhooks, bancos)</li>
+                  <li>• Escopo do MVP + timeline de desenvolvimento</li>
+                </ul>
+                <a href="#contact" class="mt-6 inline-flex w-full justify-center px-4 py-2.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium" data-lang="en">
+                  Request Design Sprint
+                </a>
+                <a href="#contact" class="mt-6 inline-flex w-full justify-center px-4 py-2.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium" data-lang="pt">
+                  Solicitar Sprint de Design
+                </a>
+              </div>
+              <div class="mt-4 card glass rounded-2xl p-6">
+                <h2 class="text-lg font-semibold" data-lang="en">What we actually build</h2>
+                <h2 class="text-lg font-semibold" data-lang="pt">O que realmente construímos</h2>
+                <div class="mt-4 grid gap-3 text-sm text-white/75">
+                  <div class="flex gap-3 items-start">
+                    <div class="mt-0.5 h-7 w-7 rounded-lg bg-white/10 border border-white/10 grid place-items-center">✓</div>
+                    <div>
+                      <div class="font-medium" data-lang="en">Custom Platforms</div>
+                      <div class="font-medium" data-lang="pt">Plataformas Customizadas</div>
+                      <div class="text-white/70" data-lang="en">Internal tools, dashboards, portals.</div>
+                      <div class="text-white/70" data-lang="pt">Ferramentas internas, dashboards, portais.</div>
+                    </div>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <div class="mt-0.5 h-7 w-7 rounded-lg bg-white/10 border border-white/10 grid place-items-center">✓</div>
+                    <div>
+                      <div class="font-medium" data-lang="en">API Development</div>
+                      <div class="font-medium" data-lang="pt">Desenvolvimento de APIs</div>
+                      <div class="text-white/70" data-lang="en">RESTful services, webhooks, integrations.</div>
+                      <div class="text-white/70" data-lang="pt">Serviços RESTful, webhooks, integrações.</div>
+                    </div>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <div class="mt-0.5 h-7 w-7 rounded-lg bg-white/10 border border-white/10 grid place-items-center">✓</div>
+                    <div>
+                      <div class="font-medium" data-lang="en">Smart Automation</div>
+                      <div class="font-medium" data-lang="pt">Automação Inteligente</div>
+                      <div class="text-white/70" data-lang="en">Workflows, data processing, AI features.</div>
+                      <div class="text-white/70" data-lang="pt">Workflows, processamento de dados, features de IA.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-6 rounded-xl bg-white/5 border border-white/10 p-4">
+                  <div class="text-sm text-white/70" data-lang="en">Our approach</div>
+                  <div class="text-sm text-white/70" data-lang="pt">Nossa abordagem</div>
+                  <div class="mt-1 text-sm text-white/85" data-lang="en">
+                    We use AI where it makes sense: document extraction, smart routing, search. But the foundation is solid full-stack engineering.
+                  </div>
+                  <div class="mt-1 text-sm text-white/85" data-lang="pt">
+                    Usamos IA onde faz sentido: extração de documentos, roteamento inteligente, busca. Mas a base é engenharia full-stack sólida.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
-  </header>
-
-  <!-- Skills -->
-  <section id="skills" class="py-16 bg-slate-50">
-    <div class="mx-auto max-w-6xl px-6">
-      <h2 class="text-3xl font-semibold tracking-tight text-center" data-en>Core Skills</h2>
-      <h2 class="text-3xl font-semibold tracking-tight text-center" data-pt hidden>Habilidades Principais</h2>
-      <div class="mt-10 grid md:grid-cols-3 gap-6">
-        <div class="card-light rounded-2xl p-6">
-          <h3 class="font-semibold text-lg" data-en>Frontend</h3>
-          <h3 class="font-semibold text-lg" data-pt hidden>Frontend</h3>
-          <p class="mt-2 text-sm text-slate-600">React • Next.js • Tailwind • TypeScript</p>
-        </div>
-        <div class="card-light rounded-2xl p-6">
-          <h3 class="font-semibold text-lg" data-en>Backend & Data</h3>
-          <h3 class="font-semibold text-lg" data-pt hidden>Backend & Dados</h3>
-          <p class="mt-2 text-sm text-slate-600">Node.js • Python/FastAPI • PostgreSQL • APIs</p>
-        </div>
-        <div class="card-light rounded-2xl p-6">
-          <h3 class="font-semibold text-lg" data-en>AI & Automation</h3>
-          <h3 class="font-semibold text-lg" data-pt hidden>IA & Automação</h3>
-          <p class="mt-2 text-sm text-slate-600">LLM • RAG • Agents • Document Extraction • Guardrails</p>
-        </div>
+          <div class="py-10"></div>
+        </section>
       </div>
-    </div>
-  </section>
-
-  <!-- Contact Section (exemplo resumido – adicione o form completo se quiser) -->
-  <section id="contact" class="py-16">
-    <div class="mx-auto max-w-6xl px-6 text-center">
-      <h2 class="text-3xl font-semibold tracking-tight" data-en>Contact Me</h2>
-      <h2 class="text-3xl font-semibold tracking-tight" data-pt hidden>Entre em Contato</h2>
-      <p class="mt-4 text-slate-600 max-w-2xl mx-auto" data-en>Describe your project. I'll reply with proposal and next steps.</p>
-      <p class="mt-4 text-slate-600 max-w-2xl mx-auto" data-pt hidden>Descreva seu projeto. Respondo com proposta e próximos passos.</p>
-
-      <!-- Seu formulário aqui – mantive o action original -->
-      <form action="https://formspree.io/f/xeejqrbk" method="POST" class="mt-10 max-w-lg mx-auto space-y-4">
-        <input name="name" required placeholder="Name / Nome" class="w-full p-3 border rounded" />
-        <input name="email" required type="email" placeholder="Email" class="w-full p-3 border rounded" />
-        <textarea name="message" required rows="5" placeholder="Your message / Sua mensagem" class="w-full p-3 border rounded"></textarea>
-        <button type="submit" class="w-full bg-indigo-600 text-white p-3 rounded hover:bg-indigo-700">
-          <span data-en>Send</span>
-          <span data-pt hidden>Enviar</span>
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <script>
-    function setLanguage(lang) {
-      document.body.setAttribute('data-lang', lang);
-      localStorage.setItem('lang', lang);
-    }
-
-    // Carrega idioma salvo ou default EN
-    const savedLang = localStorage.getItem('lang') || 'en';
-    setLanguage(savedLang);
-
-    // Mobile menu
-    document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
-    });
-  </script>
-</body>
-</html>
+    </header>
+    <!-- Services -->
+    <section id="services" class="py-16">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl font-semibold tracking-tight" data-lang="en">Services</h2>
+          <h2 class="text-3xl font-semibold tracking-tight" data-lang="pt">Serviços</h2>
+          <p class="mt-3 text-slate-600" data-lang="en">
+            End-to-end development: from system design to production deployment and ongoing maintenance.
+          </p>
+          <p class="mt-3 text-slate-600" data-lang="pt">
+            Desenvolvimento completo: do design de sistema à implantação em produção e manutenção contínua.
+          </p>
+        </div>
+        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg" data-lang="en">Full-Stack Development</h3>
+            <h3 class="font-semibold text-lg" data-lang="pt">Desenvolvimento Full-Stack</h3>
+            <p class="mt-2 text-slate-600 text-sm" data-lang="en">
+              Custom web applications, APIs, databases, and user interfaces built to your specifications.
+            </p>
+            <p class="mt-2 text-slate-600 text-sm" data-lang="pt">
+              Aplicações web customizadas, APIs, bancos de dados e interfaces construídas sob medida.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2" data-lang="en">
+              <li>• Frontend (React, Vue, modern CSS)</li>
+              <li>• Backend (Node.js, Python/FastAPI)</li>
+              <li>• Database design & optimization</li>
+            </ul>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2" data-lang="pt">
+              <li>• Frontend (React, Vue, CSS moderno)</li>
+              <li>• Backend (Node.js, Python/FastAPI)</li>
+              <li>• Design e otimização de banco de dados</li>
+            </ul>
+          </div>
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg" data-lang="en">System Integration</h3>
+            <h3 class="font-semibold text-lg" data-lang="pt">Integração de Sistemas</h3>
+            <p class="mt-2 text-slate-600 text-sm" data-lang="en">
+              Connect your existing tools: CRM, ERP, email, payment gateways, and third-party APIs.
+            </p>
+            <p class="mt-2 text-slate-600 text-sm" data-lang="pt">
+              Conecte suas ferramentas existentes: CRM, ERP, email, gateways de pagamento e APIs de terceiros.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2" data-lang="en">
+              <li>• API integrations & webhooks</li>
+              <li>• Data synchronization</li>
+              <li>• Legacy system modernization</li>
+            </ul>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2" data-lang="pt">
+              <li>• Integrações de API & webhooks</li>
+              <li>• Sincronização de dados</li>
+              <li>• Modernização de sistemas legados</li>
+            </ul>
+          </div>
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg" data-lang="en">Workflow Automation</h3>
+            <h3 class="font-semibold text-lg" data-lang="pt">Automação de Workflows</h3>
+            <p class="mt-2 text-slate-600 text-sm" data-lang="en">
+              Eliminate repetitive tasks with automated workflows, batch processing, and scheduled jobs.
+            </p>
+            <p class="mt-2 text-slate-600 text-sm" data-lang="pt">
+              Elimine tarefas repetitivas com workflows automatizados, processamento em lote e jobs agendados.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2" data-lang="en">
+              <li>• Document processing pipelines</li>
+              <li>• Email & notification automation</li>
+              <li>• Scheduled reports & exports</li>
+            </ul>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2" data-lang="pt">
+              <li>• Pipelines de processamento de docs</li>
+              <li>• Automação de email & notificações</li>
+              <li>• Relatórios e exports agendados</li>
+            </ul>
+          </div>
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg" data-lang="en">AI Integration</h3>
+            <h3 class="font-semibold text-lg" data-lang="pt">Integração de IA</h3>
+            <p class="mt-2 text-slate-600 text-sm" data-lang="en">
+              Add AI capabilities where they deliver value: search, extraction, classification, and content generation.
+            </p>
+            <p class="mt-2 text-slate-600 text-sm" data-lang="pt">
+              Adicione capacidades de IA onde geram valor: busca, extração, classificação e geração de conteúdo.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2" data-lang="en">
+              <li>• Document & data extraction</li>
+              <li>• Semantic search (RAG)</li>
+              <li>• Smart routing & classification</li>
+            </ul>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2" data-lang="pt">
+              <li>• Extração de documentos & dados</li>
+              <li>• Busca semântica (RAG)</li>
+              <li>• Roteamento e classificação inteligente</li>
+            </ul>
+          </div>
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg" data-lang="en">Production Operations</h3>
+            <h3 class="font-semibold text-lg" data-lang="pt">Operações em Produção</h3>
+            <p class="mt-2 text-slate-600 text-sm" data-lang="en">
+              Deployment, hosting, monitoring, security patches, and ongoing support with SLA.
+            </p>
+            <p class="mt-2 text-slate-600 text-sm" data-lang="pt">
+              Deploy, hospedagem, monitoramento, patches de segurança e suporte contínuo com SLA.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2" data-lang="en">
+              <li>• Cloud hosting (AWS, GCP, Azure)</li>
+              <li>• CI/CD pipelines</li>
+              <li>• Monitoring & incident response</li>
+            </ul>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2" data-lang="pt">
+              <li>• Hospedagem cloud (AWS, GCP, Azure)</li>
+              <li>• Pipelines CI/CD</li>
+              <li>• Monitoramento & resposta a incidentes</li>
+            </ul>
+          </div>
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg" data-lang="en">Technical Consulting</h3>
+            <h3 class="font-semibold text-lg" data-lang="pt">Consultoria Técnica</h3>
+            <p class="mt-2 text-slate-600 text-sm" data-lang="en">
+              Architecture reviews, technology selection, scalability planning, and team augmentation.
+            </p>
+            <p class="mt-2 text-slate-600 text-sm" data-lang="pt">
+              Revisões de arquitetura, seleção de tecnologia, planejamento de escalabilidade e aumento de equipe.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2" data-lang="en">
+              <li>• System architecture design</li>
+              <li>• Code reviews & optimization</li>
+              <li>• Tech stack recommendations</li>
+            </ul>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2" data-lang="pt">
