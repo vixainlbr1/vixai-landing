@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Vixai — Full Stack Developer & AI Solutions. Build complete web apps with practical AI integrations (LLM, RAG, automation), production-grade, Europe-based (Groningen, NL)." />
-  <meta name="keywords" content="full stack developer AI, AI automation developer, LLM integration, RAG full stack, freelancer full stack Groningen, desenvolvedor full stack IA, automação IA, integração LLM, desenvolvedor RAG" />
+  <meta name="keywords" content="full stack developer AI, AI automation developer, LLM integration, RAG full stack, freelancer full stack Groningen" />
   <meta name="robots" content="index, follow" />
   <title>Vixai — Full Stack Developer & AI Solutions | Groningen, NL</title>
 
@@ -26,14 +26,14 @@
     .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.75rem; border-radius: 9999px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); font-size: 0.875rem; }
     .pill { display: inline-flex; padding: 0.25rem 0.6rem; border-radius: 9999px; background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25); color: rgb(79,70,229); font-size: 0.75rem; font-weight: 600; }
 
-    /* Bilíngue: esconde/mostra conforme idioma */
-    [data-lang="pt"] { display: none; }
-    .lang-pt { display: none; }
-    .lang-en { display: inline; }
-    body[data-lang="pt"] [data-lang="pt"] { display: block; }
-    body[data-lang="pt"] [data-lang="en"] { display: none; }
-    body[data-lang="pt"] .lang-pt { display: inline; }
-    body[data-lang="pt"] .lang-en { display: none; }
+    /* Lógica bilíngue principal */
+    body[data-lang="pt"] [data-en] { display: none !important; }
+    body[data-lang="en"] [data-pt] { display: none !important; }
+    body[data-lang="pt"] [data-pt] { display: block !important; }
+    body[data-lang="en"] [data-en] { display: block !important; }
+
+    /* Para elementos inline que usam span com data-en / data-pt */
+    [data-en], [data-pt] { display: inline; }
   </style>
 </head>
 <body class="text-slate-900 bg-white antialiased" data-lang="en">
@@ -48,32 +48,44 @@
           </div>
           <div class="leading-tight">
             <div class="font-semibold tracking-tight text-lg">Vixai</div>
-            <div class="text-xs text-white/70">Full Stack & AI</div>
+            <div class="text-xs text-white/70" data-en>Full Stack & AI</div>
+            <div class="text-xs text-white/70" data-pt hidden>Full Stack & IA</div>
           </div>
         </a>
 
-        <div class="hidden md:flex items-center gap-6 text-sm text-white/90">
-          <a href="#skills" class="hover:text-white">Skills</a>
-          <a href="#what" class="hover:text-white">What I Deliver</a>
-          <a href="#services" class="hover:text-white">Services</a>
-          <a href="#packages" class="hover:text-white">Packages</a>
-          <a href="#process" class="hover:text-white">Process</a>
-          <a href="#contact" class="hover:text-white">Contact</a>
+        <div class="hidden md:flex items-center gap-7 text-sm text-white/80">
+          <a href="#skills" class="hover:text-white" data-en>Skills</a>
+          <a href="#skills" class="hover:text-white" data-pt hidden>Habilidades</a>
+
+          <a href="#what" class="hover:text-white" data-en>What I Deliver</a>
+          <a href="#what" class="hover:text-white" data-pt hidden>O que entrego</a>
+
+          <a href="#services" class="hover:text-white" data-en>Services</a>
+          <a href="#services" class="hover:text-white" data-pt hidden>Serviços</a>
+
+          <a href="#packages" class="hover:text-white" data-en>Packages</a>
+          <a href="#packages" class="hover:text-white" data-pt hidden>Pacotes</a>
+
+          <a href="#process" class="hover:text-white" data-en>Process</a>
+          <a href="#process" class="hover:text-white" data-pt hidden>Processo</a>
+
+          <a href="#contact" class="hover:text-white" data-en>Contact</a>
+          <a href="#contact" class="hover:text-white" data-pt hidden>Contato</a>
         </div>
 
         <div class="flex items-center gap-4">
           <!-- Language Switcher -->
-          <div class="flex items-center gap-1 text-sm font-medium">
-            <button onclick="setLanguage('en')" class="px-2 py-1 rounded hover:bg-white/20 active:bg-white/30 transition">EN</button>
-            <span class="opacity-60">/</span>
-            <button onclick="setLanguage('pt')" class="px-2 py-1 rounded hover:bg-white/20 active:bg-white/30 transition">PT</button>
+          <div class="flex items-center gap-2 text-sm font-medium">
+            <button onclick="setLanguage('en')" class="px-3 py-1.5 rounded hover:bg-white/20 transition font-bold" data-en>EN</button>
+            <button onclick="setLanguage('pt')" class="px-3 py-1.5 rounded hover:bg-white/20 transition" data-pt hidden>PT</button>
           </div>
 
-          <a href="#contact" class="hidden sm:inline-flex px-5 py-2.5 rounded-lg bg-white/15 hover:bg-white/25 border border-white/20 text-sm font-medium transition">
-            Book a Call
+          <a href="#contact" class="hidden sm:inline-flex px-5 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-sm font-medium transition">
+            <span data-en>Book a Call</span>
+            <span data-pt hidden>Agende uma Call</span>
           </a>
 
-          <button id="mobileMenuBtn" class="md:hidden px-4 py-2 rounded-lg bg-white/15 hover:bg-white/25 border border-white/20">
+          <button id="mobileMenuBtn" class="md:hidden px-4 py-2 rounded-lg bg-white/15 hover:bg-white/25 border border-white/20 text-sm">
             Menu
           </button>
         </div>
@@ -81,60 +93,82 @@
 
       <!-- Mobile Menu -->
       <div id="mobileMenu" class="md:hidden hidden pb-6">
-        <div class="glass card rounded-xl p-5 space-y-4 text-base">
-          <a href="#skills" class="block hover:text-white">Skills</a>
-          <a href="#what" class="block hover:text-white">What I Deliver</a>
-          <a href="#services" class="block hover:text-white">Services</a>
-          <a href="#packages" class="block hover:text-white">Packages</a>
-          <a href="#process" class="block hover:text-white">Process</a>
-          <a href="#contact" class="block hover:text-white">Contact</a>
+        <div class="glass card rounded-xl p-5 space-y-4 text-base text-white/90">
+          <a href="#skills" class="block hover:text-white" data-en>Skills</a>
+          <a href="#skills" class="block hover:text-white" data-pt hidden>Habilidades</a>
+
+          <a href="#what" class="block hover:text-white" data-en>What I Deliver</a>
+          <a href="#what" class="block hover:text-white" data-pt hidden>O que entrego</a>
+
+          <a href="#services" class="block hover:text-white" data-en>Services</a>
+          <a href="#services" class="block hover:text-white" data-pt hidden>Serviços</a>
+
+          <a href="#packages" class="block hover:text-white" data-en>Packages</a>
+          <a href="#packages" class="block hover:text-white" data-pt hidden>Pacotes</a>
+
+          <a href="#process" class="block hover:text-white" data-en>Process</a>
+          <a href="#process" class="block hover:text-white" data-pt hidden>Processo</a>
+
+          <a href="#contact" class="block hover:text-white" data-en>Contact</a>
+          <a href="#contact" class="block hover:text-white" data-pt hidden>Contato</a>
         </div>
       </div>
 
-      <section id="top" class="py-16 md:py-24">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
+      <section id="top" class="py-14 md:py-20">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
           <div class="lg:col-span-7">
-            <div class="badge inline-flex mb-6">
-              <span class="h-2 w-2 rounded-full bg-emerald-400 mr-2"></span>
-              Full Stack Developer + AI — Groningen, NL
+            <div class="badge">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              <span data-en>Full Stack Developer + AI — Groningen, NL</span>
+              <span data-pt hidden>Desenvolvedor Full Stack + IA — Groningen, NL</span>
             </div>
 
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-              Full stack solutions<br>with practical AI
+            <h1 class="mt-5 text-4xl md:text-5xl font-semibold tracking-tight">
+              <span data-en>Full stack solutions with integrated AI — fast, reliable, scalable</span>
+              <span data-pt hidden>Soluções full stack com IA integrada — rápidas, confiáveis e escaláveis</span>
             </h1>
 
-            <p class="mt-6 text-lg md:text-xl text-white/80 leading-relaxed max-w-3xl">
-              I build complete web applications (frontend, backend, database, integrations) and add AI where it actually creates value: automation, document extraction, intelligent search (RAG), workflows — always production-ready, with governance, audit logs and cost controls.
+            <p class="mt-4 text-lg text-white/75 leading-relaxed">
+              <span data-en>Vixai builds complete web applications and adds practical AI: automation, document extraction, intelligent chat (RAG), workflows — with governance, audit logs and cost controls.</span>
+              <span data-pt hidden>Vixai desenvolve aplicações web completas e adiciona IA prática: automações, extração de documentos, chat inteligente (RAG), fluxos — com governança, logs de auditoria e controle de custos.</span>
             </p>
 
-            <div class="mt-10 flex flex-wrap gap-4">
-              <a href="#contact" class="inline-flex px-7 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-lg transition shadow-lg shadow-indigo-500/20">
-                Get a Proposal
+            <div class="mt-7 flex flex-col sm:flex-row gap-3">
+              <a href="#contact" class="inline-flex justify-center px-5 py-3 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-medium">
+                <span data-en>Get Proposal</span>
+                <span data-pt hidden>Solicitar Proposta</span>
               </a>
-              <a href="#packages" class="inline-flex px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium text-lg transition">
-                See Packages
+              <a href="#packages" class="inline-flex justify-center px-5 py-3 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium">
+                <span data-en>View Packages</span>
+                <span data-pt hidden>Ver Pacotes</span>
               </a>
             </div>
           </div>
 
           <div class="lg:col-span-5">
-            <div class="card glass rounded-3xl p-8">
-              <h3 class="text-xl font-semibold mb-4">Quick Start Offer</h3>
-              <div class="flex items-center justify-between mb-4">
-                <div class="text-lg font-bold">AI Automation Audit</div>
-                <div class="text-sm px-3 py-1 rounded-full bg-white/15 border border-white/20">7 days</div>
+            <div class="card glass rounded-2xl p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-sm text-white/70" data-en>Quick offer</div>
+                  <div class="text-sm text-white/70" data-pt hidden>Oferta rápida</div>
+                  <div class="text-lg font-semibold" data-en>AI Automation Audit</div>
+                  <div class="text-lg font-semibold" data-pt hidden>Audit de Automação IA</div>
+                </div>
+                <div class="text-sm text-white/80 px-3 py-1.5 rounded-full bg-white/10 border border-white/10">7 days / 7 dias</div>
               </div>
-              <p class="text-white/80 mb-6">
-                I map your current processes, identify highest-ROI automation/AI opportunities, estimate impact and deliver a small working PoC.
+              <p class="mt-3 text-sm text-white/75">
+                <span data-en>Map processes, identify opportunities, estimate ROI, deliver small PoC.</span>
+                <span data-pt hidden>Mapeio processos, identifico oportunidades, estimo ROI, entrego PoC pequeno.</span>
               </p>
-              <ul class="space-y-3 text-white/90 mb-8">
-                <li class="flex items-start gap-3"><span class="text-emerald-400 font-bold">✓</span> Process map + opportunities</li>
-                <li class="flex items-start gap-3"><span class="text-emerald-400 font-bold">✓</span> ROI estimate (hours / € saved)</li>
-                <li class="flex items-start gap-3"><span class="text-emerald-400 font-bold">✓</span> Live PoC (limited scope)</li>
-                <li class="flex items-start gap-3"><span class="text-emerald-400 font-bold">✓</span> Production plan (security, ops, budget)</li>
+              <ul class="mt-5 text-sm text-white/75 space-y-2">
+                <li>• <span data-en>Process map + opportunities</span><span data-pt hidden>Mapa de processos + oportunidades</span></li>
+                <li>• <span data-en>ROI estimate</span><span data-pt hidden>Estimativa de ROI</span></li>
+                <li>• <span data-en>Live PoC</span><span data-pt hidden>PoC funcional</span></li>
+                <li>• <span data-en>Production plan</span><span data-pt hidden>Plano de produção</span></li>
               </ul>
-              <a href="#contact" class="block w-full text-center py-3 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 font-medium transition">
-                Request Audit →
+              <a href="#contact" class="mt-6 inline-flex w-full justify-center px-4 py-2.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium">
+                <span data-en>Request Audit</span>
+                <span data-pt hidden>Solicitar Audit</span>
               </a>
             </div>
           </div>
@@ -144,169 +178,65 @@
   </header>
 
   <!-- Skills -->
-  <section id="skills" class="py-20 bg-slate-50">
+  <section id="skills" class="py-16 bg-slate-50">
     <div class="mx-auto max-w-6xl px-6">
-      <h2 class="text-4xl font-bold tracking-tight text-center mb-16">Core Skills</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="card-light rounded-2xl p-8 hover:shadow-xl transition">
-          <h3 class="text-2xl font-semibold mb-4">Frontend</h3>
-          <p class="text-slate-600">React • Next.js • Tailwind • TypeScript • Responsive Design • Performance Optimization</p>
+      <h2 class="text-3xl font-semibold tracking-tight text-center" data-en>Core Skills</h2>
+      <h2 class="text-3xl font-semibold tracking-tight text-center" data-pt hidden>Habilidades Principais</h2>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="card-light rounded-2xl p-6">
+          <h3 class="font-semibold text-lg" data-en>Frontend</h3>
+          <h3 class="font-semibold text-lg" data-pt hidden>Frontend</h3>
+          <p class="mt-2 text-sm text-slate-600">React • Next.js • Tailwind • TypeScript</p>
         </div>
-        <div class="card-light rounded-2xl p-8 hover:shadow-xl transition">
-          <h3 class="text-2xl font-semibold mb-4">Backend & Data</h3>
-          <p class="text-slate-600">Node.js • FastAPI/Python • PostgreSQL • REST/GraphQL APIs • Queues • Webhooks</p>
+        <div class="card-light rounded-2xl p-6">
+          <h3 class="font-semibold text-lg" data-en>Backend & Data</h3>
+          <h3 class="font-semibold text-lg" data-pt hidden>Backend & Dados</h3>
+          <p class="mt-2 text-sm text-slate-600">Node.js • Python/FastAPI • PostgreSQL • APIs</p>
         </div>
-        <div class="card-light rounded-2xl p-8 hover:shadow-xl transition">
-          <h3 class="text-2xl font-semibold mb-4">AI & Automation</h3>
-          <p class="text-slate-600">LLM (OpenAI / Anthropic) • RAG • Embeddings • Agents • Document Extraction • Cost & Quality Guardrails</p>
+        <div class="card-light rounded-2xl p-6">
+          <h3 class="font-semibold text-lg" data-en>AI & Automation</h3>
+          <h3 class="font-semibold text-lg" data-pt hidden>IA & Automação</h3>
+          <p class="mt-2 text-sm text-slate-600">LLM • RAG • Agents • Document Extraction • Guardrails</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- What I Deliver -->
-  <section id="what" class="py-20">
-    <div class="mx-auto max-w-6xl px-6">
-      <h2 class="text-4xl font-bold tracking-tight text-center mb-16">What I Deliver</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="card-light rounded-2xl p-8">
-          <h3 class="text-xl font-semibold mb-4">Full Web Applications</h3>
-          <p class="text-slate-600">Internal tools, dashboards, custom CRMs, portals — from UI to database.</p>
-        </div>
-        <div class="card-light rounded-2xl p-8">
-          <h3 class="text-xl font-semibold mb-4">Process Automation + AI</h3>
-          <p class="text-slate-600">Document processing, email/ticket triage, reporting, rule-based + AI decisions.</p>
-        </div>
-        <div class="card-light rounded-2xl p-8">
-          <h3 class="text-xl font-semibold mb-4">Intelligent Search & Chat (RAG)</h3>
-          <p class="text-slate-600">Chat over internal docs with citations, multilingual support, audit trail.</p>
-        </div>
-        <div class="card-light rounded-2xl p-8">
-          <h3 class="text-xl font-semibold mb-4">Production & Maintenance</h3>
-          <p class="text-slate-600">Hosting, monitoring, backups, security patches, continuous improvements.</p>
-        </div>
-      </div>
+  <!-- Contact Section (exemplo resumido – adicione o form completo se quiser) -->
+  <section id="contact" class="py-16">
+    <div class="mx-auto max-w-6xl px-6 text-center">
+      <h2 class="text-3xl font-semibold tracking-tight" data-en>Contact Me</h2>
+      <h2 class="text-3xl font-semibold tracking-tight" data-pt hidden>Entre em Contato</h2>
+      <p class="mt-4 text-slate-600 max-w-2xl mx-auto" data-en>Describe your project. I'll reply with proposal and next steps.</p>
+      <p class="mt-4 text-slate-600 max-w-2xl mx-auto" data-pt hidden>Descreva seu projeto. Respondo com proposta e próximos passos.</p>
+
+      <!-- Seu formulário aqui – mantive o action original -->
+      <form action="https://formspree.io/f/xeejqrbk" method="POST" class="mt-10 max-w-lg mx-auto space-y-4">
+        <input name="name" required placeholder="Name / Nome" class="w-full p-3 border rounded" />
+        <input name="email" required type="email" placeholder="Email" class="w-full p-3 border rounded" />
+        <textarea name="message" required rows="5" placeholder="Your message / Sua mensagem" class="w-full p-3 border rounded"></textarea>
+        <button type="submit" class="w-full bg-indigo-600 text-white p-3 rounded hover:bg-indigo-700">
+          <span data-en>Send</span>
+          <span data-pt hidden>Enviar</span>
+        </button>
+      </form>
     </div>
   </section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-20 bg-slate-50">
-    <div class="mx-auto max-w-6xl px-6">
-      <div class="grid lg:grid-cols-2 gap-12">
-        <div>
-          <h2 class="text-4xl font-bold tracking-tight mb-6">Let's talk about your project</h2>
-          <p class="text-lg text-slate-600 mb-8">
-            Describe what you need — repetitive work to eliminate, systems to integrate, features to build. I'll reply with a clear proposal, timeline and ballpark pricing.
-          </p>
-          <div class="bg-white rounded-2xl p-8 border border-slate-200">
-            <h3 class="text-xl font-semibold mb-4">Help me help you faster</h3>
-            <ul class="space-y-3 text-slate-700">
-              <li>• What problem are you trying to solve?</li>
-              <li>• Which tools/systems are involved?</li>
-              <li>• Rough timeline and budget range?</li>
-              <li>• Any compliance needs (GDPR, audit logs, etc.)?</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
-          <form action="https://formspree.io/f/xeejqrbk" method="POST" class="space-y-6">
-            <div class="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Name</label>
-                <input name="name" required type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Your name" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Company</label>
-                <input name="company" type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Company name" />
-              </div>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                <input name="email" required type="email" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="you@company.com" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Phone (optional)</label>
-                <input name="phone" type="tel" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="+31 ..." />
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-sm font-medium text-slate-700 mb-1">What do you need?</label>
-              <textarea name="message" required rows="5" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Describe the problem, tools involved, desired outcome..."></textarea>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Preferred starting point</label>
-                <select name="starting_point" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
-                  <option>Audit (7 days)</option>
-                  <option>MVP / Full Project</option>
-                  <option>Monthly Maintenance</option>
-                  <option>Not sure yet</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Budget range (€)</label>
-                <select name="budget" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
-                  <option>Not specified</option>
-                  <option>€2k – €5k</option>
-                  <option>€5k – €15k</option>
-                  <option>€15k – €50k</option>
-                  <option>€50k+</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <input type="checkbox" id="consent" required class="mt-1" />
-              <label for="consent" class="text-sm text-slate-600">I agree that Vixai may contact me regarding this request.</label>
-            </div>
-
-            <button type="submit" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl transition text-lg">
-              Send Message
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-slate-900 text-white py-12">
-    <div class="mx-auto max-w-6xl px-6 text-center md:text-left">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div>
-          <div class="text-xl font-bold">Vixai</div>
-          <div class="text-slate-400 mt-1">Full Stack & AI Solutions — Groningen, Netherlands</div>
-        </div>
-        <div class="text-slate-400 text-sm">
-          © <span id="year"></span> Vixai. All rights reserved.
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <script>
-    // Mobile menu toggle
-    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
-    });
-
-    // Language switcher
     function setLanguage(lang) {
       document.body.setAttribute('data-lang', lang);
-      localStorage.setItem('preferredLang', lang);
+      localStorage.setItem('lang', lang);
     }
 
-    // Load saved preference or default to EN
-    const savedLang = localStorage.getItem('preferredLang') || 'en';
+    // Carrega idioma salvo ou default EN
+    const savedLang = localStorage.getItem('lang') || 'en';
     setLanguage(savedLang);
 
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Mobile menu
+    document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
   </script>
 </body>
 </html>
