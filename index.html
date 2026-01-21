@@ -1,718 +1,717 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vixai — Search-Grade AI for Unstructured Data</title>
-  <meta name="description" content="Vixai turns messy emails, documents, spreadsheets and attachments into searchable, explainable knowledge. Grounded answers with citations — for end users and via API." />
-  
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="Vixai — Search-Grade AI for Unstructured Data" />
-  <meta property="og:description" content="Vixai turns messy emails, documents, spreadsheets and attachments into searchable, explainable knowledge. Grounded answers with citations — for end users and via API." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://vixai.app" />
-  
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Vixai — Search-Grade AI for Unstructured Data" />
-  <meta name="twitter:description" content="Vixai turns messy emails, documents, spreadsheets and attachments into searchable, explainable knowledge. Grounded answers with citations — for end users and via API." />
-  
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  
-  <style>
-    :root{
-      --bg: #f7f9fc;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --line: rgba(15,23,42,.10);
-      --brand: #2563eb;
-      --brand2:#06b6d4;
-      --ok:#16a34a;
-      --warn:#f59e0b;
-      --shadow: 0 18px 50px rgba(2,6,23,.08);
-      --radius: 18px;
-      --radius2: 14px;
-      --max: 1120px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    }
-    *{ box-sizing: border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: var(--sans);
-      color: var(--text);
-      background: radial-gradient(1200px 600px at 20% -10%, rgba(37,99,235,.16), transparent 60%),
-                  radial-gradient(900px 520px at 90% 10%, rgba(6,182,212,.14), transparent 55%),
-                  var(--bg);
-      line-height: 1.45;
-    }
-    a{ color: inherit; text-decoration: none; }
-    .container{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-    .nav{
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(247,249,252,.78);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 14px 0;
-      gap: 14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-    .logo{
-      width: 34px; height: 34px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      box-shadow: 0 10px 20px rgba(37,99,235,.20);
-      position: relative;
-    }
-    .logo:after{
-      content:"";
-      position:absolute; inset: 7px;
-      border-radius: 9px;
-      background: rgba(255,255,255,.85);
-      mix-blend-mode: overlay;
-    }
-    .nav-links{
-      display:flex; align-items:center; gap: 18px;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 14px;
-    }
-    .nav-links a{ padding: 8px 10px; border-radius: 10px; }
-    .nav-links a:hover{ background: rgba(15,23,42,.05); color: var(--text); }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding: 10px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.65);
-      color: var(--text);
-      font-weight: 700;
-      font-size: 14px;
-      cursor:pointer;
-      transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
-    }
-    .btn:hover{ background: #fff; box-shadow: 0 14px 30px rgba(2,6,23,.10); }
-    .btn:active{ transform: translateY(1px); }
-    .btn-primary{
-      border-color: rgba(37,99,235,.25);
-      background: linear-gradient(135deg, rgba(37,99,235,1), rgba(6,182,212,1));
-      color: #fff;
-      box-shadow: 0 18px 40px rgba(37,99,235,.25);
-    }
-    .btn-primary:hover{ box-shadow: 0 22px 50px rgba(37,99,235,.30); }
-    .hero{
-      padding: 56px 0 26px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-    .hero-card{
-      background: rgba(255,255,255,.75);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 26px;
-    }
-    .kicker{
-      display:inline-flex; align-items:center; gap: 8px;
-      font-size: 13px; font-weight: 800;
-      color: rgba(37,99,235,1);
-      background: rgba(37,99,235,.10);
-      border: 1px solid rgba(37,99,235,.18);
-      padding: 6px 10px;
-      border-radius: 999px;
-      margin-bottom: 14px;
-    }
-    h1{
-      margin: 0 0 10px;
-      font-size: clamp(28px, 3.4vw, 44px);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-    .sub{
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 60ch;
-    }
-    .beta-note{
-      font-weight:600;
-      color:var(--brand);
-      margin:16px 0;
-      font-size:15px;
-    }
-    .hero-actions{
-      display:flex; flex-wrap:wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-    .stats{
-      display:grid; grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 18px;
-    }
-    .stat{
-      background: rgba(255,255,255,.7);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px 12px;
-    }
-    .stat b{ display:block; font-size: 14px; }
-    .stat span{ color: var(--muted); font-size: 12px; }
-    .hero-side{
-      display:grid; gap: 12px;
-    }
-    .side-card{
-      background: rgba(255,255,255,.75);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      overflow:hidden;
-      position: relative;
-    }
-    .chip-row{ display:flex; flex-wrap:wrap; gap: 8px; margin-top: 10px; }
-    .chip{
-      font-size: 12px; font-weight: 700;
-      color: rgba(15,23,42,.85);
-      background: rgba(15,23,42,.05);
-      border: 1px solid rgba(15,23,42,.08);
-      padding: 6px 10px;
-      border-radius: 999px;
-    }
-    .mono{
-      font-family: var(--mono);
-      font-size: 12px;
-      color: rgba(15,23,42,.80);
-      background: rgba(2,6,23,.03);
-      border: 1px solid rgba(2,6,23,.06);
-      border-radius: 14px;
-      padding: 12px;
-      margin-top: 10px;
-      overflow:auto;
-      white-space: pre;
-    }
-    section{ padding: 28px 0; }
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-    h2{
-      margin:0;
-      font-size: 22px;
-      letter-spacing: -0.02em;
-    }
-    .lead{
-      margin:0;
-      color: var(--muted);
-      max-width: 85ch;
-      font-size: 14px;
-    }
-    .grid-3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .grid-2{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-    .card{
-      background: rgba(255,255,255,.78);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-    }
-    .card h3{ margin: 0 0 8px; font-size: 16px; letter-spacing: -0.01em; }
-    .card p{ margin: 0; color: var(--muted); font-size: 13px; }
-    .bullet{
-      margin-top: 10px;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .bullet li{ margin: 6px 0; }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(22,163,74,.18);
-      background: rgba(22,163,74,.10);
-      color: rgba(22,163,74,1);
-      font-weight: 800;
-      font-size: 12px;
-    }
-    .api{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      align-items: stretch;
-    }
-    .codebox{
-      font-family: var(--mono);
-      font-size: 12px;
-      color: rgba(15,23,42,.88);
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 14px;
-      overflow:auto;
-      white-space: pre;
-      margin: 0;
-    }
-    .tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 12px; }
-    .tag{
-      font-size: 12px;
-      font-weight: 800;
-      border-radius: 999px;
-      padding: 6px 10px;
-      border: 1px solid rgba(37,99,235,.18);
-      background: rgba(37,99,235,.10);
-      color: rgba(37,99,235,1);
-    }
-    .form-wrap{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 12px;
-      align-items: stretch;
-    }
-    form{
-      display:grid;
-      gap: 10px;
-    }
-    label{
-      font-size: 12px;
-      color: rgba(15,23,42,.75);
-      font-weight: 800;
-    }
-    input, select, textarea{
-      width: 100%;
-      padding: 12px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(15,23,42,.12);
-      background: rgba(255,255,255,.95);
-      outline: none;
-      font: inherit;
-      font-size: 14px;
-    }
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(37,99,235,.45);
-      box-shadow: 0 0 0 4px rgba(37,99,235,.12);
-    }
-    textarea{ min-height: 120px; resize: vertical; }
-    .row{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .form-note{
-      color: var(--muted);
-      font-size: 12px;
-      margin: 0;
-    }
-    footer{
-      padding: 22px 0 38px;
-      border-top: 1px solid var(--line);
-      color: rgba(71,85,105,.9);
-      font-size: 12px;
-    }
-    .foot{
-      display:flex; justify-content:space-between; align-items:center;
-      gap: 10px; flex-wrap:wrap;
-    }
-    @media (max-width: 980px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .api{ grid-template-columns: 1fr; }
-      .form-wrap{ grid-template-columns: 1fr; }
-      .grid-3{ grid-template-columns: 1fr; }
-      .grid-2{ grid-template-columns: 1fr; }
-      .stats{ grid-template-columns: 1fr; }
-      .nav-links{ display:none; }
-    }
-  </style>
-</head>
-<body>
-  <div class="nav">
-    <div class="container">
-      <div class="nav-inner">
-        <a class="brand" href="#top" aria-label="Vixai Home">
-          <span class="logo" aria-hidden="true"></span>
-          <span>Vixai</span>
-        </a>
-        <div class="nav-links" aria-label="Primary navigation">
-          <a href="#product">Product</a>
-          <a href="#api">API</a>
-          <a href="#trust">Trust</a>
-          <a href="#how">How it works</a>
-          <a href="#signup">Sign up</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Vixai automates business systems with AI — practical workflows, measurable ROI, and production-grade operations across Europe."
+    />
+    <title>Vixai — AI Automation for Business Systems</title>
+
+    <!-- Tailwind CDN (fast launch). For production, consider compiling Tailwind. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      .glass { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+      .gradient-bg {
+        background:
+          radial-gradient(900px circle at 18% 12%, rgba(99,102,241,0.28), transparent 42%),
+          radial-gradient(900px circle at 82% 18%, rgba(16,185,129,0.22), transparent 42%),
+          radial-gradient(1000px circle at 40% 92%, rgba(168,85,247,0.18), transparent 48%),
+          #0b1220;
+      }
+      .card {
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.10);
+      }
+      .card-light {
+        background: rgba(0,0,0,0.02);
+        border: 1px solid rgba(0,0,0,0.08);
+      }
+      .focus-ring:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+        border-color: rgba(99, 102, 241, 0.6);
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 9999px;
+        background: rgba(255,255,255,0.10);
+        border: 1px solid rgba(255,255,255,0.12);
+        color: rgba(255,255,255,0.85);
+        font-size: 0.875rem;
+      }
+      .pill {
+        display: inline-flex;
+        padding: 0.25rem 0.6rem;
+        border-radius: 9999px;
+        background: rgba(99,102,241,0.12);
+        border: 1px solid rgba(99,102,241,0.25);
+        color: rgb(79,70,229);
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-900 bg-white">
+    <!-- Header / Hero -->
+    <header class="gradient-bg text-white">
+      <div class="mx-auto max-w-6xl px-6">
+        <nav class="flex items-center justify-between py-6">
+          <a href="#top" class="flex items-center gap-2">
+            <div class="h-9 w-9 rounded-lg bg-white/10 border border-white/10 grid place-items-center">
+              <span class="font-semibold tracking-tight">V</span>
+            </div>
+            <div class="leading-tight">
+              <div class="font-semibold tracking-tight text-lg">Vixai</div>
+              <div class="text-xs text-white/70">AI Automation Studio</div>
+            </div>
+          </a>
+
+          <div class="hidden md:flex items-center gap-7 text-sm text-white/80">
+            <a class="hover:text-white" href="#what">What We Automate</a>
+            <a class="hover:text-white" href="#services">Services</a>
+            <a class="hover:text-white" href="#packages">Packages</a>
+            <a class="hover:text-white" href="#process">Process</a>
+            <a class="hover:text-white" href="#stack">Stack</a>
+            <a class="hover:text-white" href="#contact">Contact</a>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-sm font-medium">
+              Book a Call
+            </a>
+
+            <button id="mobileMenuBtn" class="md:hidden inline-flex px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-sm">
+              Menu
+            </button>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden pb-6">
+          <div class="glass card rounded-xl p-4">
+            <div class="grid gap-3 text-sm text-white/85">
+              <a class="hover:text-white" href="#what">What We Automate</a>
+              <a class="hover:text-white" href="#services">Services</a>
+              <a class="hover:text-white" href="#packages">Packages</a>
+              <a class="hover:text-white" href="#process">Process</a>
+              <a class="hover:text-white" href="#stack">Stack</a>
+              <a class="hover:text-white" href="#contact">Contact</a>
+            </div>
+          </div>
         </div>
-        <a class="btn btn-primary" href="#signup">Request Early Access</a>
+
+        <section id="top" class="py-14 md:py-20">
+          <div class="grid lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-7">
+              <div class="badge">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                AI-first automation for business systems (Europe)
+              </div>
+
+              <h1 class="mt-5 text-4xl md:text-5xl font-semibold tracking-tight">
+                Automate operations with AI — reduce manual work, accelerate decisions, and scale reliably.
+              </h1>
+
+              <p class="mt-4 text-lg text-white/75 leading-relaxed">
+                Vixai builds AI-powered automations on top of your existing tools and data. We deliver end-to-end:
+                design, engineering, deployment, and ongoing maintenance with measurable outcomes.
+              </p>
+
+              <div class="mt-7 flex flex-col sm:flex-row gap-3">
+                <a href="#contact" class="inline-flex justify-center px-5 py-3 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-medium">
+                  Get an AI Automation Proposal
+                </a>
+                <a href="#packages" class="inline-flex justify-center px-5 py-3 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium">
+                  View Packages
+                </a>
+              </div>
+
+              <div class="mt-8 grid sm:grid-cols-3 gap-4">
+                <div class="card glass rounded-xl p-4">
+                  <div class="text-sm text-white/70">Typical ROI drivers</div>
+                  <div class="mt-1 text-xl font-semibold">Time + Cost</div>
+                  <div class="mt-1 text-sm text-white/70">Less manual work, fewer errors</div>
+                </div>
+                <div class="card glass rounded-xl p-4">
+                  <div class="text-sm text-white/70">Core capability</div>
+                  <div class="mt-1 text-xl font-semibold">Automation</div>
+                  <div class="mt-1 text-sm text-white/70">AI workflows + integrations</div>
+                </div>
+                <div class="card glass rounded-xl p-4">
+                  <div class="text-sm text-white/70">Operations</div>
+                  <div class="mt-1 text-xl font-semibold">Reliable</div>
+                  <div class="mt-1 text-sm text-white/70">Monitoring, budgets, governance</div>
+                </div>
+              </div>
+
+              <div class="mt-8 flex flex-wrap gap-2">
+                <span class="pill">RAG / Knowledge Chat</span>
+                <span class="pill">Email + Ticket triage</span>
+                <span class="pill">Document automation</span>
+                <span class="pill">Customer support copilots</span>
+                <span class="pill">Reporting automation</span>
+                <span class="pill">AI cost controls</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5">
+              <div class="card glass rounded-2xl p-6">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <div class="text-sm text-white/70">Fast entry offer</div>
+                    <div class="text-lg font-semibold">AI Automation Audit</div>
+                  </div>
+                  <div class="text-sm text-white/80 px-3 py-1.5 rounded-full bg-white/10 border border-white/10">7 days</div>
+                </div>
+
+                <p class="mt-3 text-sm text-white/75">
+                  Identify the highest-leverage workflows to automate, quantify impact, and deliver a small working proof of concept.
+                </p>
+
+                <ul class="mt-5 text-sm text-white/75 space-y-2">
+                  <li>• Workflow map + automation opportunities</li>
+                  <li>• ROI estimate (time saved / cost avoided)</li>
+                  <li>• PoC: one automation live (limited scope)</li>
+                  <li>• Production plan (security, ops, budget controls)</li>
+                </ul>
+
+                <a href="#contact" class="mt-6 inline-flex w-full justify-center px-4 py-2.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium">
+                  Request the Audit
+                </a>
+              </div>
+
+              <div class="mt-4 card glass rounded-2xl p-6">
+                <h2 class="text-lg font-semibold">What “AI automation” means in practice</h2>
+                <div class="mt-4 grid gap-3 text-sm text-white/75">
+                  <div class="flex gap-3 items-start">
+                    <div class="mt-0.5 h-7 w-7 rounded-lg bg-white/10 border border-white/10 grid place-items-center">✓</div>
+                    <div>
+                      <div class="font-medium">Read + Extract</div>
+                      <div class="text-white/70">Invoices, PDFs, emails → structured data.</div>
+                    </div>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <div class="mt-0.5 h-7 w-7 rounded-lg bg-white/10 border border-white/10 grid place-items-center">✓</div>
+                    <div>
+                      <div class="font-medium">Decide + Route</div>
+                      <div class="text-white/70">Classify, prioritize, assign, escalate.</div>
+                    </div>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <div class="mt-0.5 h-7 w-7 rounded-lg bg-white/10 border border-white/10 grid place-items-center">✓</div>
+                    <div>
+                      <div class="font-medium">Act + Report</div>
+                      <div class="text-white/70">Update systems, trigger tasks, send summaries.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-6 rounded-xl bg-white/5 border border-white/10 p-4">
+                  <div class="text-sm text-white/70">Important</div>
+                  <div class="mt-1 text-sm text-white/85">
+                    We implement governance: audit logs, access control, data retention, and AI usage budgets to avoid runaway costs.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="py-10"></div>
+        </section>
       </div>
-    </div>
-  </div>
-  <main id="top" class="container">
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-card">
-          <div class="kicker">Search-grade AI for unstructured data</div>
-          <h1>Vixai: Find the needle in your emails and documents — with proof.</h1>
-          <p class="sub">
-            Vixai ingests unstructured information (email threads, PDFs, images, attachments, notes),
-            structures it progressively, and delivers high-recall search + grounded answers with citations.
-            Built to work across domains — legal, engineering, operations, finance, and beyond.
+    </header>
+
+    <!-- What we automate -->
+    <section id="what" class="py-16">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl font-semibold tracking-tight">What We Automate</h2>
+          <p class="mt-3 text-slate-600">
+            High-frequency, high-cost workflows where AI reliably reduces manual effort and improves consistency.
           </p>
-          <p class="beta-note">Currently in private beta — accepting select users and API partners.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#signup">Request Early Access</a>
-            <a class="btn" href="#api">Explore the API</a>
-            <a class="btn" href="#how">See how it works</a>
-          </div>
-          <div class="stats" aria-label="Key capabilities">
-            <div class="stat">
-              <b>High recall retrieval</b>
-              <span>Hybrid search + reranking</span>
-            </div>
-            <div class="stat">
-              <b>Grounded answers</b>
-              <span>Citations + “not found” support</span>
-            </div>
-            <div class="stat">
-              <b>Multi-tenant by design</b>
-              <span>Isolation, auditability, cost control</span>
-            </div>
-          </div>
         </div>
-        <div class="hero-side">
-          <div class="side-card">
-            <div class="pill">Production-ready pipeline</div>
-            <div class="chip-row" aria-label="Highlights">
-              <span class="chip">IMAP sync</span>
-              <span class="chip">Attachments</span>
-              <span class="chip">Deduplication</span>
-              <span class="chip">Incremental ingest</span>
-              <span class="chip">Explainable retrieval</span>
-            </div>
-            <pre class="mono" aria-label="Example query + answer">
-Q: “Do we have a clause about termination notice?”
-A: Found in 2 documents.
-- Contract_2024.pdf (Section 9.2), citation included
-- Email thread “Renewal terms” (Mar 18), citation included
-Confidence: High
-            </pre>
-          </div>
-          <div class="side-card">
-            <div style="font-weight:900; letter-spacing:-0.01em;">Built for both end users and builders</div>
-            <p style="margin:8px 0 0; color: var(--muted); font-size:13px;">
-              Use Vixai as a full product or integrate it as your internal search engine via API — same core, same guarantees.
+
+        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg">Knowledge & Search (RAG)</h3>
+            <p class="mt-2 text-slate-600 text-sm">
+              Chat over internal documents, SOPs, policies, and technical manuals with traceable sources.
             </p>
-            <div class="tag-row">
-              <span class="tag">Search</span>
-              <span class="tag">Ingestion</span>
-              <span class="tag">RAG</span>
-              <span class="tag">API-first</span>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2">
+              <li>• Document ingestion (PDF/Office/Email)</li>
+              <li>• Answer with citations and audit trail</li>
+              <li>• Multilingual Q&A</li>
+            </ul>
+          </div>
+
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg">Email & Ticket Automation</h3>
+            <p class="mt-2 text-slate-600 text-sm">
+              Classify, summarize, route, and draft replies. Escalate only what needs humans.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2">
+              <li>• Priority detection</li>
+              <li>• Auto-tagging and assignment</li>
+              <li>• Suggested responses</li>
+            </ul>
+          </div>
+
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg">Document Extraction</h3>
+            <p class="mt-2 text-slate-600 text-sm">
+              Turn unstructured PDFs into structured fields for systems, finance, and operations.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2">
+              <li>• Invoices, contracts, forms</li>
+              <li>• Validation rules + human review</li>
+              <li>• Sync to ERP/CRM</li>
+            </ul>
+          </div>
+
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg">Reporting & Summaries</h3>
+            <p class="mt-2 text-slate-600 text-sm">
+              Automated daily/weekly reports from multiple sources, with highlights and action items.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2">
+              <li>• KPI summaries</li>
+              <li>• Anomaly highlights</li>
+              <li>• Executive-ready notes</li>
+            </ul>
+          </div>
+
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg">Workflow Orchestration</h3>
+            <p class="mt-2 text-slate-600 text-sm">
+              AI as a decision layer inside workflows: approve, route, schedule, and notify.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2">
+              <li>• Rules + AI (hybrid)</li>
+              <li>• Audit logs and traceability</li>
+              <li>• Safe fallbacks</li>
+            </ul>
+          </div>
+
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold text-lg">AI Cost & Quality Control</h3>
+            <p class="mt-2 text-slate-600 text-sm">
+              Usage tracking, budgets, and guardrails so AI features stay predictable and stable.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2">
+              <li>• Token/cost tracking</li>
+              <li>• Quality feedback loops</li>
+              <li>• Fail-closed safety patterns</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-16 bg-slate-50">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl font-semibold tracking-tight">Services</h2>
+          <p class="mt-3 text-slate-600">
+            We build automations, ship them to production, and operate them with governance and reliability.
+          </p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="rounded-2xl p-6 bg-white border border-slate-200">
+            <h3 class="font-semibold text-lg">AI Automation Engineering</h3>
+            <p class="mt-2 text-slate-600 text-sm">
+              End-to-end automation: ingestion → reasoning → actions → monitoring.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2">
+              <li>• Workflow design</li>
+              <li>• Integration and orchestration</li>
+              <li>• Human-in-the-loop when needed</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl p-6 bg-white border border-slate-200">
+            <h3 class="font-semibold text-lg">AI-Powered Systems</h3>
+            <p class="mt-2 text-slate-600 text-sm">
+              New products or internal systems built with AI as a core capability, not an add-on.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2">
+              <li>• Web apps + APIs</li>
+              <li>• Secure auth + roles</li>
+              <li>• Audit logs</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl p-6 bg-white border border-slate-200">
+            <h3 class="font-semibold text-lg">Operations & Maintenance</h3>
+            <p class="mt-2 text-slate-600 text-sm">
+              Hosting, monitoring, backups, security patches, and SLA-based support.
+            </p>
+            <ul class="mt-4 text-sm text-slate-700 space-y-2">
+              <li>• Production deployments</li>
+              <li>• Incident response</li>
+              <li>• Continuous improvement</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-8 text-sm text-slate-600">
+          AI features are implemented with guardrails: auditability, access control, retention options, and usage budgets.
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section id="packages" class="py-16">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl font-semibold tracking-tight">Packages</h2>
+          <p class="mt-3 text-slate-600">
+            Fixed-scope delivery to prevent scope creep. If Vixai hosts your system, a monthly retainer is required.
+          </p>
+        </div>
+
+        <div class="mt-10 grid lg:grid-cols-3 gap-6">
+          <div class="card-light rounded-2xl p-6">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold text-lg">A) AI Automation Audit</h3>
+              <span class="text-xs px-3 py-1.5 rounded-full bg-slate-100 text-slate-700">7 days</span>
+            </div>
+            <p class="mt-2 text-slate-600 text-sm">
+              Identify high-impact automations, quantify ROI, and ship one small PoC into a safe environment.
+            </p>
+            <div class="mt-5">
+              <div class="text-3xl font-semibold">€ <span class="text-slate-400">TBD</span></div>
+              <div class="text-sm text-slate-500 mt-1">Fixed price (complexity-based)</div>
+            </div>
+            <ul class="mt-5 text-sm text-slate-700 space-y-2">
+              <li>• Workflow map + opportunities</li>
+              <li>• ROI estimate (hours/cost saved)</li>
+              <li>• PoC automation (limited scope)</li>
+              <li>• Production plan + risks</li>
+            </ul>
+            <a href="#contact" class="mt-6 inline-flex w-full justify-center px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-medium">
+              Start with the Audit
+            </a>
+          </div>
+
+          <div class="rounded-2xl p-6 bg-white border-2 border-indigo-300 shadow-sm">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold text-lg">B) Automation MVP</h3>
+              <span class="text-xs px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-700">4–6 weeks</span>
+            </div>
+            <p class="mt-2 text-slate-600 text-sm">
+              Production-ready automation system: ingestion, routing, action layer, and dashboards.
+            </p>
+            <div class="mt-5">
+              <div class="text-3xl font-semibold">€ <span class="text-slate-400">TBD</span></div>
+              <div class="text-sm text-slate-500 mt-1">Milestones (40/40/20)</div>
+            </div>
+            <ul class="mt-5 text-sm text-slate-700 space-y-2">
+              <li>• Integrations + workflows</li>
+              <li>• Human-in-the-loop reviews</li>
+              <li>• Audit logs + governance</li>
+              <li>• AI usage budgets + metrics</li>
+              <li>• Monitoring + backups</li>
+            </ul>
+            <a href="#contact" class="mt-6 inline-flex w-full justify-center px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium">
+              Request MVP Proposal
+            </a>
+          </div>
+
+          <div class="card-light rounded-2xl p-6">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold text-lg">C) Operate & Improve</h3>
+              <span class="text-xs px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700">Monthly</span>
+            </div>
+            <p class="mt-2 text-slate-600 text-sm">
+              Hosting, SLA support, security updates, and continuous automation improvements.
+            </p>
+            <div class="mt-5">
+              <div class="text-3xl font-semibold">€ <span class="text-slate-400">TBD</span> /mo</div>
+              <div class="text-sm text-slate-500 mt-1">Tiered retainer (Basic / Standard / Premium)</div>
+            </div>
+            <ul class="mt-5 text-sm text-slate-700 space-y-2">
+              <li>• Hosting + uptime monitoring</li>
+              <li>• Backups + restore plan</li>
+              <li>• Dependency + security patches</li>
+              <li>• Included support hours</li>
+              <li>• SLA response windows</li>
+            </ul>
+            <a href="#contact" class="mt-6 inline-flex w-full justify-center px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-medium">
+              Discuss Retainer
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-8 text-sm text-slate-600">
+          Change Requests apply to new features beyond the agreed scope. We keep delivery predictable by design.
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="py-16 bg-slate-50">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl font-semibold tracking-tight">Process</h2>
+          <p class="mt-3 text-slate-600">
+            Practical, measurable, production-first. AI is only “good” if it is reliable, auditable, and controlled.
+          </p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="rounded-2xl p-6 bg-white border border-slate-200">
+            <div class="text-xs font-semibold text-indigo-700">Step 1</div>
+            <h3 class="mt-2 font-semibold">Identify ROI</h3>
+            <p class="mt-2 text-sm text-slate-600">
+              Map workflows, quantify time spent, and select automations with clear ROI.
+            </p>
+          </div>
+          <div class="rounded-2xl p-6 bg-white border border-slate-200">
+            <div class="text-xs font-semibold text-indigo-700">Step 2</div>
+            <h3 class="mt-2 font-semibold">Build with Guardrails</h3>
+            <p class="mt-2 text-sm text-slate-600">
+              Hybrid rules + AI, human review points, audit logs, and safe fallbacks.
+            </p>
+          </div>
+          <div class="rounded-2xl p-6 bg-white border border-slate-200">
+            <div class="text-xs font-semibold text-indigo-700">Step 3</div>
+            <h3 class="mt-2 font-semibold">Deploy to Production</h3>
+            <p class="mt-2 text-sm text-slate-600">
+              Monitoring, backups, alerts, and usage budgets. No “demo-only” automations.
+            </p>
+          </div>
+          <div class="rounded-2xl p-6 bg-white border border-slate-200">
+            <div class="text-xs font-semibold text-indigo-700">Step 4</div>
+            <h3 class="mt-2 font-semibold">Operate & Improve</h3>
+            <p class="mt-2 text-sm text-slate-600">
+              Track performance, cost, and quality. Iterate with controlled changes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stack -->
+    <section id="stack" class="py-16">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl font-semibold tracking-tight">Engineering Stack</h2>
+          <p class="mt-3 text-slate-600">
+            We build automation systems using modern, maintainable components and production-grade defaults.
+          </p>
+        </div>
+
+        <div class="mt-10 grid lg:grid-cols-3 gap-6">
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold">AI Layer</h3>
+            <p class="mt-2 text-sm text-slate-600">
+              LLM-powered reasoning with retrieval (RAG), evaluation, and cost controls.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-slate-100">RAG</span>
+              <span class="px-2 py-1 rounded bg-slate-100">Embeddings</span>
+              <span class="px-2 py-1 rounded bg-slate-100">Evaluation</span>
+              <span class="px-2 py-1 rounded bg-slate-100">Budgets</span>
+            </div>
+          </div>
+
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold">Backend & Data</h3>
+            <p class="mt-2 text-sm text-slate-600">
+              APIs, databases, background jobs, and integrations with clear ownership.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-slate-100">FastAPI / Node.js</span>
+              <span class="px-2 py-1 rounded bg-slate-100">PostgreSQL</span>
+              <span class="px-2 py-1 rounded bg-slate-100">Queues / Workers</span>
+              <span class="px-2 py-1 rounded bg-slate-100">Webhooks</span>
+            </div>
+          </div>
+
+          <div class="card-light rounded-2xl p-6">
+            <h3 class="font-semibold">Operations</h3>
+            <p class="mt-2 text-sm text-slate-600">
+              Docker deployment, monitoring, alerting, backups, and secure secrets management.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-slate-100">Docker</span>
+              <span class="px-2 py-1 rounded bg-slate-100">CI/CD</span>
+              <span class="px-2 py-1 rounded bg-slate-100">Sentry</span>
+              <span class="px-2 py-1 rounded bg-slate-100">Grafana</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 text-sm text-slate-600">
+          We implement multilingual experiences when relevant: users can ask in one language and receive answers in their preferred language.
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 bg-slate-50">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-6">
+            <h2 class="text-3xl font-semibold tracking-tight">Contact Vixai</h2>
+            <p class="mt-3 text-slate-600">
+              Describe your workflows and systems. We will propose the best automation path, expected ROI, and an execution plan.
+            </p>
+
+            <div class="mt-8 rounded-2xl bg-white border border-slate-200 p-6">
+              <h3 class="font-semibold">Best requests include</h3>
+              <ul class="mt-3 text-sm text-slate-700 space-y-2">
+                <li>• What is the repetitive work you want to eliminate?</li>
+                <li>• Where does the data live (email, PDFs, ERP, CRM)?</li>
+                <li>• What decisions need to be made (routing, approvals, classification)?</li>
+                <li>• Timeline and budget range</li>
+                <li>• Compliance needs (GDPR, audit logs, retention)</li>
+              </ul>
+            </div>
+
+            <div class="mt-6 text-sm text-slate-500">
+              Replace the placeholders below with your real contact details.
+            </div>
+
+            <div class="mt-3 text-sm">
+              <div><span class="font-medium">Email:</span> <span class="text-slate-600">contact@vixai.app</span></div>
+              <div class="mt-1"><span class="font-medium">Location:</span> <span class="text-slate-600">Europe (Remote)</span></div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6">
+            <div class="rounded-2xl bg-white border border-slate-200 p-6">
+              <form id="contactForm" class="space-y-4">
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-sm font-medium text-slate-700">Name</label>
+                    <input name="name" required class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring" placeholder="Your name" />
+                  </div>
+                  <div>
+                    <label class="text-sm font-medium text-slate-700">Company</label>
+                    <input name="company" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring" placeholder="Company name" />
+                  </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-sm font-medium text-slate-700">Email</label>
+                    <input name="email" type="email" required class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring" placeholder="you@company.com" />
+                  </div>
+                  <div>
+                    <label class="text-sm font-medium text-slate-700">Phone (optional)</label>
+                    <input name="phone" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring" placeholder="+31 ..." />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="text-sm font-medium text-slate-700">What do you want to automate?</label>
+                  <textarea name="message" required rows="6" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring" placeholder="Describe the manual workflow, the tools involved, and what “success” looks like."></textarea>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-sm font-medium text-slate-700">Preferred starting point</label>
+                    <select name="package" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring">
+                      <option>AI Automation Audit (7 days)</option>
+                      <option>Automation MVP (4–6 weeks)</option>
+                      <option>Operate & Improve (Monthly)</option>
+                      <option>Not sure yet</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="text-sm font-medium text-slate-700">Budget range</label>
+                    <select name="budget" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 focus-ring">
+                      <option>Not specified</option>
+                      <option>€2k–€5k</option>
+                      <option>€5k–€15k</option>
+                      <option>€15k–€50k</option>
+                      <option>€50k+</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <input id="consent" type="checkbox" required class="mt-1" />
+                  <label for="consent" class="text-sm text-slate-600">
+                    I agree that Vixai may contact me about this request. (Add GDPR/DPA language here if needed.)
+                  </label>
+                </div>
+
+                <button type="submit" class="w-full px-4 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium">
+                  Send Request
+                </button>
+
+                <p id="formStatus" class="text-sm text-slate-600 hidden"></p>
+
+                <p class="text-xs text-slate-500">
+                  This form is static by default. Connect it to your backend endpoint or a form provider.
+                </p>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PRODUCT -->
-    <section id="product">
-      <div class="section-title">
-        <div>
-          <h2>For end users: clarity, speed, and traceability</h2>
-          <p class="lead">
-            Vixai turns messy information into a reliable knowledge layer. Ask questions, locate sources, and validate answers instantly.
-          </p>
-        </div>
-      </div>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Ingest everything you already use</h3>
-          <p>Emails, threads, PDFs, images, attachments and documents — processed and structured without manual tagging.</p>
-          <ul class="bullet">
-            <li>Incremental sync and deduplication to avoid reprocessing</li>
-            <li>Progress tracking per sync job</li>
-            <li>Multi-tenant isolation by default</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Search that doesn’t miss the rare detail</h3>
-          <p>Hybrid retrieval is built to catch identifiers, names, and rare terms — not just “similar” content.</p>
-          <ul class="bullet">
-            <li>Dense + sparse signals (needle-friendly)</li>
-            <li>Reranking for precision</li>
-            <li>Document/thread consolidation</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Answers you can trust</h3>
-          <p>Every response is grounded in source material with citations. If it’s not there, Vixai says so.</p>
-          <ul class="bullet">
-            <li>Mandatory citations</li>
-            <li>Explicit “not found” behavior</li>
-            <li>Auditability and traceability</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section id="how">
-      <div class="section-title">
-        <div>
-          <h2>How it works</h2>
-          <p class="lead">
-            A universal ingestion + retrieval pipeline designed for any domain, with progressive structure and explainable outcomes.
-          </p>
-        </div>
-      </div>
-      <div class="grid-2">
-        <div class="card">
-          <h3>1) Ingest & normalize</h3>
-          <p>Connect your mailbox (IMAP), sync manual or automatic, extract email body + attachments, and normalize into a canonical model.</p>
-          <ul class="bullet">
-            <li>Canonical entities: Document, Artifact, Chunk, Relations</li>
-            <li>Universal metadata: source, time, author, type, language</li>
-            <li>Deduplication: Message-ID + normalized fingerprint fallback</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>2) Structure progressively</h3>
-          <p>Build lightweight hierarchy and summaries over time — without domain-specific assumptions.</p>
-          <ul class="bullet">
-            <li>Section/page hierarchy when available</li>
-            <li>Email ↔ attachment relationships</li>
-            <li>Summaries per section and per document</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>3) Index multi-representation</h3>
-          <p>Multiple search views for higher recall: chunk, document, title/subject, and sparse tokens for rare identifiers.</p>
-          <ul class="bullet">
-            <li>Chunk embeddings + doc-level embeddings</li>
-            <li>Title/subject embeddings</li>
-            <li>Sparse representation for exact matches</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>4) Retrieve, rerank, cite</h3>
-          <p>Candidate generation → reranking → consolidation → grounded response with citations (or explicit “not found”).</p>
-          <ul class="bullet">
-            <li>Hybrid candidate generation</li>
-            <li>Lightweight reranking for precision</li>
-            <li>Citations and confidence signals</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- API -->
-    <section id="api">
-      <div class="section-title">
-        <div>
-          <h2>For builders: Vixai as your Search & Intelligence Engine (API)</h2>
-          <p class="lead">
-            Integrate Vixai into your product as a retrieval layer over unstructured data — with multi-tenant isolation, observability, and grounded outputs.
-          </p>
-        </div>
-      </div>
-      <div class="api">
-        <div class="card">
-          <h3>API outcomes (what you get)</h3>
-          <p>Not just embeddings: a complete retrieval pipeline with explainability and operational guarantees.</p>
-          <ul class="bullet">
-            <li>Ingestion + incremental sync + deduplication</li>
-            <li>Hybrid retrieval + reranking pipeline</li>
-            <li>Grounded answers with citations, confidence, and “not found”</li>
-            <li>Per-tenant cost control and job progress traceability</li>
-          </ul>
-          <div class="tag-row" aria-label="API characteristics">
-            <span class="tag">Multi-tenant</span>
-            <span class="tag">Hybrid search</span>
-            <span class="tag">Reranking</span>
-            <span class="tag">Citations</span>
-            <span class="tag">Observability</span>
+    <!-- Footer -->
+    <footer class="py-10">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <div class="font-semibold">Vixai</div>
+            <div class="text-sm text-slate-600">AI Automation for Business Systems</div>
+          </div>
+          <div class="text-sm text-slate-600">
+            © <span id="year"></span> Vixai. All rights reserved.
           </div>
         </div>
-        <pre class="codebox" aria-label="Illustrative API shape (example)">
-# Illustrative API shape (example)
-POST /v1/ingest
-{
-  "tenant_id": "t_123",
-  "source": { "type": "imap", "mailbox": "INBOX" },
-  "mode": "incremental"
-}
-POST /v1/search
-{
-  "tenant_id": "t_123",
-  "query": "termination notice clause",
-  "filters": { "source_type": ["email","pdf"], "date_from": "2024-01-01" },
-  "k": 25
-}
-POST /v1/answer
-{
-  "tenant_id": "t_123",
-  "query": "What is the termination notice period?",
-  "policy": { "require_citations": true, "allow_not_found": true }
-}
-# Response returns:
-# - citations (doc_id + excerpt)
-# - confidence
-# - retrieval trace (optional)
-        </pre>
       </div>
-    </section>
+    </footer>
 
-    <!-- TRUST / SECURITY -->
-    <section id="trust">
-      <div class="section-title">
-        <div>
-          <h2>Trust, safety, and operational control</h2>
-          <p class="lead">
-            Built for production realities: isolation, traceability, and conservative behavior when evidence is insufficient.
-          </p>
-        </div>
-      </div>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Isolation by tenant</h3>
-          <p>Collections and storage are segmented per tenant, preventing cross-tenant leakage and enabling clean compliance boundaries.</p>
-        </div>
-        <div class="card">
-          <h3>Auditability</h3>
-          <p>Every sync run is a job with status, progress, errors, and cost signals — designed to debug production issues fast.</p>
-        </div>
-        <div class="card">
-          <h3>Conservative answers</h3>
-          <p>Grounding is mandatory. If evidence is missing, Vixai returns “not found” instead of guessing.</p>
-        </div>
-      </div>
-    </section>
+    <script>
+      // Mobile menu toggle
+      const btn = document.getElementById("mobileMenuBtn");
+      const menu = document.getElementById("mobileMenu");
+      if (btn && menu) {
+        btn.addEventListener("click", () => menu.classList.toggle("hidden"));
+      }
 
-    <!-- SIGNUP (FORMULÁRIO COMPLETO PRESERVADO) -->
-    <section id="signup">
-      <div class="section-title">
-        <div>
-          <h2>Request access</h2>
-          <p class="lead">
-            Tell us what you want to use: the end-user product, the API, or both. We’ll follow up with the next steps.
-          </p>
-        </div>
-      </div>
-      <div class="form-wrap">
-        <div class="card">
-          <h3>Sign up</h3>
-          <p class="form-note">No pricing shown here. We’ll contact you with onboarding details.</p>
-          <div style="height:10px"></div>
-          <form action="https://formspree.io/f/xeejqrbk" method="POST">
-            <div class="row">
-              <div>
-                <label for="name">Full name</label>
-                <input id="name" name="name" type="text" placeholder="Jane Doe" required />
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="jane@company.com" required />
-              </div>
-            </div>
-            <div class="row">
-              <div>
-                <label for="company">Company (optional)</label>
-                <input id="company" name="company" type="text" placeholder="Vixai Technologies Ltd" />
-              </div>
-              <div>
-                <label for="interest">Interested in</label>
-                <select id="interest" name="interest" required>
-                  <option value="" disabled selected>Select an option</option>
-                  <option value="consumer">End-user product</option>
-                  <option value="api">API / Engine</option>
-                  <option value="both">Both</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <label for="message">What do you want to solve?</label>
-              <textarea id="message" name="message" placeholder="Example: We want to search across emails and PDFs and always cite the source."></textarea>
-            </div>
-            <input type="hidden" name="_subject" value="New Vixai signup request" />
-            <button class="btn btn-primary" type="submit">Submit request</button>
-            <p class="form-note">By submitting, you agree to be contacted about Vixai. Do not include sensitive secrets in this form.</p>
-          </form>
-        </div>
-        <div class="card">
-          <h3>What happens next</h3>
-          <p>We’ll reply with access and onboarding guidance depending on your use case.</p>
-          <ul class="bullet">
-            <li><b>End-user product:</b> connect your mailbox, ingest documents, and start asking questions with citations.</li>
-            <li><b>API:</b> receive integration details, tenant provisioning, and example workflows.</li>
-            <li><b>Both:</b> use the UI for validation and the API for embedding in your product.</li>
-          </ul>
-          <div style="height:12px"></div>
-          <h3 style="margin-top:0;">Use cases that fit any domain</h3>
-          <ul class="bullet">
-            <li>Contract / policy discovery with citations</li>
-            <li>Engineering support over manuals and incident emails</li>
-            <li>Operations: approvals, receipts, and decision trails</li>
-            <li>Finance: invoices, vendor terms, audit preparation</li>
-            <li>Customer support escalation and root-cause discovery</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+      // Footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-    <!-- FAQ -->
-    <section id="faq">
-      <div class="section-title">
-        <div>
-          <h2>FAQ</h2>
-          <p class="lead">Short, direct answers.</p>
-        </div>
-      </div>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Does Vixai work outside a specific niche?</h3>
-          <p>Yes. The ingestion model and retrieval pipeline are domain-agnostic. Optional per-tenant calibration improves relevance without custom development.</p>
-        </div>
-        <div class="card">
-          <h3>Will Vixai hallucinate answers?</h3>
-          <p>Grounding is mandatory. Responses include citations, and Vixai can explicitly return “not found” when evidence is insufficient.</p>
-        </div>
-        <div class="card">
-          <h3>Can I integrate via API only?</h3>
-          <p>Yes. The same retrieval engine that powers the product can be exposed as an API layer for your application.</p>
-        </div>
-        <div class="card">
-          <h3>Do you support automatic sync?</h3>
-          <p>Yes. Sync runs can be manual or scheduled, with job status, progress, and error visibility.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container">
-      <div class="foot">
-        <div><b>Vixai</b> — Unstructured data, searchable and explainable.</div>
-        <div>© <script>document.write(new Date().getFullYear())</script> Vixai. All rights reserved.</div>
-      </div>
-    </div>
-  </footer>
-</body>
+      // Contact form behavior (static demo)
+      // Replace with a real POST to your backend, e.g. /api/contact
+      const form = document.getElementById("contactForm");
+      const statusEl = document.getElementById("formStatus");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+
+        statusEl.classList.remove("hidden");
+        statusEl.textContent =
+          "Form captured locally. Connect this to your backend endpoint to send email/CRM. Data: " +
+          JSON.stringify(data);
+
+        // Example real request:
+        // const res = await fetch("/api/contact", {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify(data),
+        // });
+        // statusEl.textContent = res.ok ? "Sent. We'll respond shortly." : "Error sending. Try again.";
+        // if (res.ok) form.reset();
+      });
+    </script>
+  </body>
 </html>
